@@ -8,8 +8,10 @@ from typing import Any
 from google import genai
 from google.genai import types
 
-logger = logging.getLogger(__name__)
+from dotenv import load_dotenv
 
+logger = logging.getLogger(__name__)
+load_dotenv()
 MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
 
 

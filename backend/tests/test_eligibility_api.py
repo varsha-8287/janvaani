@@ -5,10 +5,28 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from unittest.mock import patch
+
 from app.main import app
+from app.database.session import get_db
+from app.eligibility.repository import (
+    SchemeNotFoundError,
+    ReviewRequiredError,
+)
+
+from types import SimpleNamespace
+
+
+from app.eligibility.models import (
+    ConditionResult,
+    ConditionStatus,
+    EligibilityResult,
+    EligibilityStatus,
+    Rule,
+)
+
 
 client = TestClient(app)
-
 
 def make_request():
     return {
@@ -82,3 +100,109 @@ def test_health_endpoint_returns_ok():
 
     assert response.status_code == 200
     assert response.json()["status"] == "ok"
+
+
+
+def test_reviewed_endpoint_returns_404_for_missing_scheme():
+    def fake_load(db, scheme_id):
+        raise SchemeNotFoundError("Scheme not found")
+
+    with patch(
+        "app.api.routes.load_reviewed_scheme",
+        side_effect=fake_load,
+    ):
+        response = client.post(
+            "/api/eligibility/evaluate-reviewed",
+            json={"scheme_id": "missing-scheme", "profile": {}},
+        )
+
+    assert response.status_code == 404
+
+
+def test_reviewed_endpoint_returns_409_when_review_is_required():
+    def fake_load(db, scheme_id):
+        raise ReviewRequiredError("Scheme requires review")
+
+    with patch(
+        "app.api.routes.load_reviewed_scheme",
+        side_effect=fake_load,
+    ):
+        response = client.post(
+            "/api/eligibility/evaluate-reviewed",
+            json={"scheme_id": "test-scheme", "profile": {}},
+        )
+
+    assert response.status_code == 409
+
+
+def test_reviewed_endpoint_rejects_request_without_scheme_id():
+    response = client.post(
+        "/api/eligibility/evaluate-reviewed",
+        json={"profile": {}},
+    )
+
+    assert response.status_code == 422
+
+
+def test_reviewed_endpoint_returns_contract_metadata():
+    fake_scheme = SimpleNamespace(
+        id="test-scheme-id",
+        title="Test Scheme",
+    )
+    fake_version = SimpleNamespace(
+        version_number=1,
+        eligibility_criteria={"schema_version": 1},
+        review_status="approved",
+    )
+    fake_rule = Rule(
+        rule_id="age",
+        field="age",
+        operator="gte",
+        expected=18,
+        explanation="Applicant must be at least 18.",
+    )
+
+    def fake_load(db, scheme_id):
+        return fake_scheme, fake_version, "all", (fake_rule,)
+
+    with (
+        patch(
+            "app.api.routes.load_reviewed_scheme",
+            side_effect=fake_load,
+        ),
+        patch("app.api.routes.evaluate_contract") as mock_evaluate,
+    ):
+        mock_evaluate.return_value = EligibilityResult(
+            scheme_id="test-scheme-id",
+            scheme_name="Test Scheme",
+            rule_version="1",
+            status=EligibilityStatus.ELIGIBLE,
+            summary="All required criteria were met.",
+            reviewed=True,
+            conditions=(
+                ConditionResult(
+                    rule_id="age",
+                    field="age",
+                    status=ConditionStatus.PASS,
+                    required=True,
+                    explanation="Applicant must be at least 18.",
+                    actual_value=25,
+                    expected_value=18,
+                ),
+            ),
+        )
+
+        response = client.post(
+            "/api/eligibility/evaluate-reviewed",
+            json={
+                "scheme_id": "test-scheme-id",
+                "profile": {"age": 25},
+            },
+        )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["logic"] == "all"
+    assert body["criteria_schema_version"] == 1
+    assert body["review_status"] == "approved"
+    assert body["status"] == "ELIGIBLE"

@@ -171,7 +171,16 @@ def test_reviewed_endpoint_returns_contract_metadata():
             side_effect=fake_load,
         ),
         patch("app.api.routes.evaluate_contract") as mock_evaluate,
+        patch(
+            "app.api.routes.generate_eligibility_explanation",
+            return_value={
+                "explanation": "Your age meets the reviewed requirement.",
+                "generated_by": "gemini",
+                "source_references_included": False,
+            },
+        ) as mock_explanation,
     ):
+
         mock_evaluate.return_value = EligibilityResult(
             scheme_id="test-scheme-id",
             scheme_name="Test Scheme",
@@ -206,3 +215,9 @@ def test_reviewed_endpoint_returns_contract_metadata():
     assert body["criteria_schema_version"] == 1
     assert body["review_status"] == "approved"
     assert body["status"] == "ELIGIBLE"
+    assert body["explanation"] == (
+        "Your age meets the reviewed requirement."
+    )
+    assert body["explanation_generated_by"] == "gemini"
+    assert body["source_references_included"] is False
+    mock_explanation.assert_called_once()

@@ -3,8 +3,8 @@ from fastapi import FastAPI, HTTPException
 
 from app.api.profiles import router as profiles_router
 from app.api.routes import router as schemes_router
+from app.api.routes import eligibility_router
 from app.database.session import check_db_connection
-from app.api.routes import eligibility_router, router as schemes_router
 
 app = FastAPI(
     title="Janvaani NLP API",

@@ -14,6 +14,10 @@ from app.eligibility.repository import (
     ReviewRequiredError,
 )
 
+from app.services.explanation_service import (
+    generate_eligibility_explanation,
+)
+
 router = APIRouter()
 
 
@@ -100,8 +104,21 @@ def evaluate_reviewed(
         response["criteria_schema_version"] = (
             version.eligibility_criteria["schema_version"]
         )
+
         response["review_status"] = version.review_status
         response["reason_code"] = result.status.value.lower()
+
+        explanation_result = generate_eligibility_explanation(
+            response,
+            evidence=response["conditions"],
+        )
+
+        response["explanation"] = explanation_result["explanation"]
+        response["explanation_generated_by"] = explanation_result["generated_by"]
+        response["source_references_included"] = (
+            explanation_result["source_references_included"]
+        )
+
         return response
 
     except SchemeNotFoundError as exc:

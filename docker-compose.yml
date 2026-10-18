@@ -20,4 +20,3 @@ services:
 
 volumes:
   janvaani_postgres_data:
-

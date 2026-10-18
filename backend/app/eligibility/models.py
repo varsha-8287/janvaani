@@ -66,6 +66,7 @@ class Rule:
             raise ValueError("field must not be empty")
 
 
+
 @dataclass(frozen=True)
 class SchemeRuleSet:
     scheme_id: str
@@ -73,12 +74,16 @@ class SchemeRuleSet:
     version: str
     rules: Sequence[Rule] = field(default_factory=tuple)
     reviewed: bool = False
+    logic: str = "all"
 
     def __post_init__(self) -> None:
         if not self.scheme_id.strip() or not self.scheme_name.strip():
             raise ValueError("scheme_id and scheme_name must not be empty")
         if not self.version.strip():
             raise ValueError("version must not be empty")
+        if self.logic not in {"all", "any"}:
+            raise ValueError("logic must be 'all' or 'any'")
+
 
 
 @dataclass(frozen=True)

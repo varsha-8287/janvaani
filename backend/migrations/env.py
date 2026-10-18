@@ -6,6 +6,7 @@ from sqlalchemy import engine_from_config, pool
 
 from app.config import settings
 from app.database.base import Base
+import app.database.models  # noqa: F401
 
 # Alembic configuration
 config = context.config

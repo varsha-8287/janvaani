@@ -90,3 +90,62 @@ def test_source_provenance_is_serialized():
         {"age": 21},
     ).to_dict()
     assert result["conditions"][0]["source"]["source_url"] == "https://example.invalid/test"
+
+
+def test_missing_optional_field_does_not_block_eligibility():
+    scheme = reviewed_scheme(
+        Rule("r1", "age", "gte", 18),
+        Rule(
+            "r2",
+            "district",
+            "eq",
+            "A",
+            required=False,
+        ),
+    )
+
+    result = evaluate_eligibility(scheme, {"age": 25})
+
+    assert result.status == EligibilityStatus.ELIGIBLE
+    assert result.conditions[0].status == ConditionStatus.PASS
+    assert result.conditions[1].status == ConditionStatus.MISSING
+
+
+def test_unreviewed_scheme_never_returns_eligible_when_all_rules_pass():
+    scheme = SchemeRuleSet(
+        scheme_id="unreviewed-test",
+        scheme_name="Unreviewed test fixture",
+        version="v1",
+        rules=(
+            Rule("r1", "age", "gte", 18),
+            Rule("r2", "state", "eq", "TN"),
+        ),
+        reviewed=False,
+    )
+
+    result = evaluate_eligibility(
+        scheme,
+        {"age": 25, "state": "TN"},
+    )
+
+    assert result.status == EligibilityStatus.INSUFFICIENT_INFORMATION
+    assert result.reviewed is False
+    assert all(
+        condition.status == ConditionStatus.PASS
+        for condition in result.conditions
+    )
+
+
+def test_empty_profile_does_not_crash():
+    scheme = reviewed_scheme(
+        Rule("r1", "age", "gte", 18),
+        Rule("r2", "state", "eq", "TN"),
+    )
+
+    result = evaluate_eligibility(scheme, {})
+
+    assert result.status == EligibilityStatus.INSUFFICIENT_INFORMATION
+    assert all(
+        condition.status == ConditionStatus.MISSING
+        for condition in result.conditions
+    )

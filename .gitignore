@@ -111,3 +111,11 @@ Desktop.ini
 test-results/
 playwright-report/
 coverage/
+
+# Local speech integration test artifacts
+/asr_response.json
+/asr_test.wav
+/asr_test_16k.wav
+/recording.m4a
+/tts_api_test.wav
+/tts_test.wav

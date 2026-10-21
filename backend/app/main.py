@@ -8,6 +8,7 @@ from app.database.session import check_db_connection
 from app.api.retrieval import router as retrieval_router
 from app.api.ask import router as rag_router
 from app.api.chat import router as chat_router
+from app.speech.router import router as speech_router
 
 app = FastAPI(
     title="Janvaani NLP API",
@@ -21,6 +22,7 @@ app.include_router(eligibility_router)
 app.include_router(retrieval_router)
 app.include_router(rag_router)
 app.include_router(chat_router)
+app.include_router(speech_router)
 
 @app.get("/health")
 def health_check():

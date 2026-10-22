@@ -51,9 +51,9 @@ def test_benchmark_reports_aggregate_and_per_query_metrics(synthetic_chunks):
     assert report.results[1].retrieved_chunk_ids[0] == 2
 
 
-def test_benchmark_reports_zero_when_nothing_matches(synthetic_chunks):
+def test_benchmark_reports_zero_for_unanswerable_query(synthetic_chunks):
     cases = [
-        EvaluationCase("unicorn spaceship", frozenset({99})),
+        EvaluationCase("unicorn spaceship", frozenset()),
     ]
 
     report = evaluate_retriever(cases, synthetic_chunks)
@@ -61,6 +61,7 @@ def test_benchmark_reports_zero_when_nothing_matches(synthetic_chunks):
     assert report.recall_at_k == 0.0
     assert report.mean_reciprocal_rank == 0.0
     assert report.results[0].retrieved_chunk_ids == ()
+    assert report.results[0].reciprocal_rank == 0.0
 
 
 def test_benchmark_rejects_empty_cases(synthetic_chunks):
@@ -68,10 +69,11 @@ def test_benchmark_rejects_empty_cases(synthetic_chunks):
         evaluate_retriever([], synthetic_chunks)
 
 
-def test_benchmark_rejects_empty_relevance_labels(synthetic_chunks):
-    cases = [EvaluationCase("scholarship", frozenset())]
-
-    with pytest.raises(ValueError, match="relevant chunk IDs"):
+def test_benchmark_rejects_unknown_relevant_chunk_ids(synthetic_chunks):
+    cases = [
+        EvaluationCase("college scholarship", frozenset({99})),
+    ]
+    with pytest.raises(ValueError, match="unknown chunk IDs"):
         evaluate_retriever(cases, synthetic_chunks)
 
 

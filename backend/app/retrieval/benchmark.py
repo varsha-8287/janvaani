@@ -37,6 +37,7 @@ class BenchmarkReport:
     results: tuple[QueryEvaluation, ...]
 
 
+
 def evaluate_retriever(
     cases: Sequence[EvaluationCase],
     chunks: list[TextChunk],
@@ -55,8 +56,15 @@ def evaluate_retriever(
     if not cases:
         raise ValueError("at least one evaluation case is required")
 
-    if any(not case.relevant_chunk_ids for case in cases):
-        raise ValueError("each evaluation case must have relevant chunk IDs")
+    available_chunk_ids = {chunk.chunk_id for chunk in chunks}
+
+    for case in cases:
+        unknown_ids = case.relevant_chunk_ids - available_chunk_ids
+        if unknown_ids:
+            raise ValueError(
+                f"query {case.query!r} references unknown chunk IDs: "
+                f"{sorted(unknown_ids)}"
+            )
 
     query_results: list[QueryEvaluation] = []
 
@@ -68,10 +76,10 @@ def evaluate_retriever(
             QueryEvaluation(
                 query=case.query,
                 retrieved_chunk_ids=retrieved_ids,
-                recall=recall_at_k(
-                    set(case.relevant_chunk_ids),
-                    retrieved_ids,
-                    k=k,
+                recall=(
+                    recall_at_k(set(case.relevant_chunk_ids), retrieved_ids, k=k)
+                    if case.relevant_chunk_ids
+                    else 0.0
                 ),
                 reciprocal_rank=_reciprocal_rank(
                     case.relevant_chunk_ids,
@@ -91,6 +99,7 @@ def evaluate_retriever(
         query_count=len(query_results),
         results=tuple(query_results),
     )
+
 
 
 def _reciprocal_rank(

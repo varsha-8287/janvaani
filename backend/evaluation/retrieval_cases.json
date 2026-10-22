@@ -1,0 +1,33 @@
+
+{
+  "dataset_type": "synthetic_test_fixture",
+  "description": "Synthetic keyword-retrieval cases for validating the offline benchmark runner. Not real government scheme data.",
+  "cases": [
+    {
+      "query": "college scholarship",
+      "relevant_chunk_ids": [1, 3]
+    },
+    {
+      "query": "farmers equipment",
+      "relevant_chunk_ids": [2]
+    },
+    {
+      "query": "unicorn spaceship",
+      "relevant_chunk_ids": []
+    }
+  ],
+  "chunks": [
+    {
+      "chunk_id": 1,
+      "text": "Scholarship assistance for eligible college students"
+    },
+    {
+      "chunk_id": 2,
+      "text": "Farmers can apply for agricultural equipment support"
+    },
+    {
+      "chunk_id": 3,
+      "text": "College scholarship applications require income proof"
+    }
+  ]
+}

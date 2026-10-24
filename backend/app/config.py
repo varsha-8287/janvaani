@@ -14,6 +14,7 @@ class Settings:
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", "postgres")
     POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", "")
     DATABASE_URL: str = os.getenv("DATABASE_URL", "")
+    JANVAANI_DEV_AUTH: str = os.getenv("JANVAANI_DEV_AUTH", "false")
 
 
 settings = Settings()

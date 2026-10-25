@@ -1,10 +1,10 @@
 
 from fastapi import FastAPI, HTTPException
 
+from app.api.ingestion import router as ingestion_router
 from app.api.profiles import router as profiles_router
-from app.api.routes import router as schemes_router
-from app.database.session import check_db_connection
 from app.api.routes import eligibility_router, router as schemes_router
+from app.database.session import check_db_connection
 
 app = FastAPI(
     title="Janvaani NLP API",
@@ -15,6 +15,7 @@ app = FastAPI(
 app.include_router(schemes_router)
 app.include_router(profiles_router)
 app.include_router(eligibility_router)
+app.include_router(ingestion_router)
 
 
 @app.get("/health")

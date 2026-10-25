@@ -5,6 +5,7 @@ from uuid import uuid4
 
 import pytest
 from fastapi.testclient import TestClient
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.api.auth import get_current_reviewer
 from app.database.models import Scheme, SchemeVersion, SourceDocument
@@ -145,7 +146,6 @@ def test_reject_returns_404_for_missing_version(review_client):
 def test_approve_rejects_pending_source(review_client):
     client, db = review_client
     _, version, _ = make_review_records()
-
     db.scalar.return_value = version
 
     response = client.post(f"/review/versions/{version.id}/approve")
@@ -175,7 +175,6 @@ def test_approve_rejects_missing_eligibility_schema_version(review_client):
         source_status="verified",
         criteria={"rules": []},
     )
-
     db.scalar.return_value = version
 
     response = client.post(f"/review/versions/{version.id}/approve")
@@ -192,7 +191,6 @@ def test_rejected_version_cannot_be_approved(review_client):
         version_status="rejected",
         source_status="verified",
     )
-
     db.scalar.return_value = version
 
     response = client.post(f"/review/versions/{version.id}/approve")
@@ -201,13 +199,11 @@ def test_rejected_version_cannot_be_approved(review_client):
     assert "pending review" in response.json()["detail"]
     db.commit.assert_not_called()
 
-    
 
 def test_approve_version_with_verified_source(review_client):
     client, db = review_client
     scheme, version, source = make_review_records(source_status="verified")
     version.eligibility_criteria = valid_review_criteria(source)
-
     db.scalar.return_value = version
 
     response = client.post(f"/review/versions/{version.id}/approve")
@@ -220,15 +216,10 @@ def test_approve_version_with_verified_source(review_client):
     db.commit.assert_called_once()
 
 
-    
-
 def test_approve_rolls_back_on_database_error(review_client):
-    from sqlalchemy.exc import SQLAlchemyError
-
     client, db = review_client
     _, version, source = make_review_records(source_status="verified")
     version.eligibility_criteria = valid_review_criteria(source)
-
     db.scalar.return_value = version
     db.commit.side_effect = SQLAlchemyError("simulated commit failure")
 
@@ -239,14 +230,9 @@ def test_approve_rolls_back_on_database_error(review_client):
     db.rollback.assert_called_once()
 
 
-
-
 def test_verify_source_rolls_back_on_database_error(review_client):
-    from sqlalchemy.exc import SQLAlchemyError
-
     client, db = review_client
     _, version, source = make_review_records(source_status="pending")
-
     version.review_status = "pending_review"
     db.scalar.side_effect = [version, source]
     db.commit.side_effect = SQLAlchemyError("simulated commit failure")
@@ -260,13 +246,9 @@ def test_verify_source_rolls_back_on_database_error(review_client):
     db.rollback.assert_called_once()
 
 
-
 def test_reject_rolls_back_on_database_error(review_client):
-    from sqlalchemy.exc import SQLAlchemyError
-
     client, db = review_client
     _, version, _ = make_review_records()
-
     db.scalar.return_value = version
     db.commit.side_effect = SQLAlchemyError("simulated commit failure")
 
@@ -287,7 +269,6 @@ def test_approve_rejects_malformed_eligibility_criteria(review_client):
             "rules": [],
         },
     )
-
     db.scalar.return_value = version
 
     response = client.post(f"/review/versions/{version.id}/approve")
@@ -333,8 +314,6 @@ def test_submit_review_rejects_non_draft_version(review_client):
 
 
 def test_submit_review_rolls_back_on_commit_failure(review_client):
-    from sqlalchemy.exc import SQLAlchemyError
-
     client, db = review_client
     _, version, _ = make_review_records(version_status="draft")
     db.scalar.return_value = version

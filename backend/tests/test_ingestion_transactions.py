@@ -1,6 +1,6 @@
-
 import os
 from datetime import datetime, timezone
+from unittest.mock import MagicMock
 from uuid import uuid4
 
 import pytest
@@ -206,3 +206,45 @@ def test_write_failure_rolls_back_all_ingestion_records(
     assert scheme_count == 0
     assert version_count == 0
     assert source_count == 0
+
+
+def test_ingestion_creates_draft_scheme_and_pending_source():
+    db = MagicMock()
+    db.scalar.return_value = None
+
+    data = make_input()
+    scheme = ingest_scheme(db, data)
+
+    added_objects = [
+        call.args[0] for call in db.add.call_args_list
+    ]
+    version = added_objects[1]
+    source = added_objects[2]
+
+    assert scheme.status == "draft"
+    assert version.version_number == 1
+    assert version.review_status == "draft"
+
+    assert source.source_url == data.source_url
+    assert source.publisher == data.publisher
+    assert source.language == data.language
+    assert source.review_status == "pending"
+    assert source.retrieved_at == data.retrieved_at
+
+
+def test_ingestion_content_hash_is_stable_for_same_input():
+    first_db = MagicMock()
+    first_db.scalar.return_value = None
+
+    second_db = MagicMock()
+    second_db.scalar.return_value = None
+
+    data = make_input()
+
+    ingest_scheme(first_db, data)
+    ingest_scheme(second_db, data)
+
+    first_source = first_db.add.call_args_list[2].args[0]
+    second_source = second_db.add.call_args_list[2].args[0]
+
+    assert first_source.content_hash == second_source.content_hash

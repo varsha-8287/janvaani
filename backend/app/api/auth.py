@@ -35,3 +35,24 @@ def get_current_user(
         )
 
     return CurrentUser(uid="local-dev-user")
+
+def get_current_reviewer(
+    authorization: str | None = Header(default=None),
+) -> CurrentUser:
+    """Temporary development-only reviewer authentication.
+
+    Replace with real identity and role verification before production.
+    """
+    if settings.JANVAANI_DEV_REVIEWER_AUTH.lower() != "true":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Reviewer access is not enabled",
+        )
+
+    if authorization != "Bearer local-reviewer-token":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Reviewer access required",
+        )
+
+    return CurrentUser(uid="local-dev-reviewer")

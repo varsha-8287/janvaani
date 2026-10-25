@@ -1,5 +1,6 @@
 
 from fastapi import FastAPI, HTTPException
+from app.api.review import router as review_router
 
 from app.api.ingestion import router as ingestion_router
 from app.api.profiles import router as profiles_router
@@ -16,6 +17,7 @@ app.include_router(schemes_router)
 app.include_router(profiles_router)
 app.include_router(eligibility_router)
 app.include_router(ingestion_router)
+app.include_router(review_router)
 
 
 @app.get("/health")

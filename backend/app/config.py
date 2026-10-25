@@ -16,5 +16,11 @@ class Settings:
     DATABASE_URL: str = os.getenv("DATABASE_URL", "")
     JANVAANI_DEV_AUTH: str = os.getenv("JANVAANI_DEV_AUTH", "false")
 
+    # Development-only reviewer authentication.
+    # This is not a replacement for verified production authentication.
+    JANVAANI_DEV_REVIEWER_AUTH: str = os.getenv(
+        "JANVAANI_DEV_REVIEWER_AUTH", "false"
+    )
+
 
 settings = Settings()

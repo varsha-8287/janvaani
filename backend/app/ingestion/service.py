@@ -47,7 +47,7 @@ def ingest_scheme(
     canonical_content = json.dumps(
         content, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     )
-    content_hash = data.content_hash or hashlib.sha256(
+    content_hash = hashlib.sha256(
         canonical_content.encode("utf-8")
     ).hexdigest()
 

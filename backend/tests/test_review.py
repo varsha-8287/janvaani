@@ -296,3 +296,52 @@ def test_approve_rejects_malformed_eligibility_criteria(review_client):
     assert "rules must be a non-empty list" in response.json()["detail"]
     db.commit.assert_not_called()
 
+
+def test_submit_draft_for_review(review_client):
+    client, db = review_client
+    _, version, _ = make_review_records(version_status="draft")
+    db.scalar.return_value = version
+
+    response = client.post(f"/review/versions/{version.id}/submit")
+
+    assert response.status_code == 200
+    assert response.json()["review_status"] == "pending_review"
+    assert version.review_status == "pending_review"
+    db.commit.assert_called_once()
+
+
+def test_submit_review_returns_404_for_missing_version(review_client):
+    client, db = review_client
+    db.scalar.return_value = None
+
+    response = client.post(f"/review/versions/{uuid4()}/submit")
+
+    assert response.status_code == 404
+    db.commit.assert_not_called()
+
+
+def test_submit_review_rejects_non_draft_version(review_client):
+    client, db = review_client
+    _, version, _ = make_review_records(version_status="pending_review")
+    db.scalar.return_value = version
+
+    response = client.post(f"/review/versions/{version.id}/submit")
+
+    assert response.status_code == 409
+    assert version.review_status == "pending_review"
+    db.commit.assert_not_called()
+
+
+def test_submit_review_rolls_back_on_commit_failure(review_client):
+    from sqlalchemy.exc import SQLAlchemyError
+
+    client, db = review_client
+    _, version, _ = make_review_records(version_status="draft")
+    db.scalar.return_value = version
+    db.commit.side_effect = SQLAlchemyError("database failure")
+
+    response = client.post(f"/review/versions/{version.id}/submit")
+
+    assert response.status_code == 500
+    assert version.review_status == "pending_review"
+    db.rollback.assert_called_once()

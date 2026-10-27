@@ -221,3 +221,83 @@ def test_reviewed_endpoint_returns_contract_metadata():
     assert body["explanation_generated_by"] == "gemini"
     assert body["source_references_included"] is False
     mock_explanation.assert_called_once()
+
+def test_reviewed_endpoint_returns_eligibility_when_gemini_fails():
+    fake_scheme = SimpleNamespace(
+        id="test-scheme-id",
+        title="Test Scheme",
+    )
+    fake_version = SimpleNamespace(
+        version_number=1,
+        eligibility_criteria={"schema_version": 1},
+        review_status="approved",
+    )
+    fake_rule = Rule(
+        rule_id="age",
+        field="age",
+        operator="gte",
+        expected=18,
+        explanation="Applicant must be at least 18.",
+    )
+
+    def fake_load(db, scheme_id):
+        return fake_scheme, fake_version, "all", (fake_rule,)
+
+    with (
+        patch(
+            "app.api.routes.load_reviewed_scheme",
+            side_effect=fake_load,
+        ),
+        patch("app.api.routes.evaluate_contract") as mock_evaluate,
+        patch(
+            "app.api.routes.generate_eligibility_explanation",
+            return_value={
+                "explanation": (
+                    "The reviewed eligibility checks indicate that "
+                    "you may qualify. Confirm the details with the "
+                    "official scheme authority."
+                ),
+                "generated_by": "fallback",
+                "source_references_included": False,
+            },
+        ) as mock_explanation,
+    ):
+        mock_evaluate.return_value = EligibilityResult(
+            scheme_id="test-scheme-id",
+            scheme_name="Test Scheme",
+            rule_version="1",
+            status=EligibilityStatus.ELIGIBLE,
+            summary="All required criteria were met.",
+            reviewed=True,
+            conditions=(
+                ConditionResult(
+                    rule_id="age",
+                    field="age",
+                    status=ConditionStatus.PASS,
+                    required=True,
+                    explanation="Applicant must be at least 18.",
+                    actual_value=25,
+                    expected_value=18,
+                ),
+            ),
+        )
+
+        response = client.post(
+            "/api/eligibility/evaluate-reviewed",
+            json={
+                "scheme_id": "test-scheme-id",
+                "profile": {"age": 25},
+            },
+        )
+
+    assert response.status_code == 200
+    body = response.json()
+
+    # The original deterministic decision must remain unchanged.
+    assert body["status"] == "ELIGIBLE"
+    assert body["reason_code"] == "eligible"
+
+    # The endpoint should still return an explanation.
+    assert body["explanation_generated_by"] == "fallback"
+    assert "may qualify" in body["explanation"]
+    mock_explanation.assert_called_once()

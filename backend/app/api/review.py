@@ -1,12 +1,18 @@
 
 from uuid import UUID
-
+from datetime import datetime, timezone
+from typing import Any
+from pydantic import BaseModel
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.auth import CurrentUser, get_current_reviewer
+from app.api.auth import (
+    CurrentUser,
+    get_current_user,
+    get_current_reviewer,
+)
 from app.database.models import Scheme, SchemeVersion, SourceDocument
 from app.database.session import get_db
 
@@ -17,6 +23,8 @@ from app.eligibility.contract import (
 
 router = APIRouter(prefix="/review", tags=["Scheme Review"])
 
+class EligibilityCriteriaUpdate(BaseModel):
+    eligibility_criteria: dict[str, Any]
 
 @router.post("/versions/{version_id}/submit")
 def submit_version_for_review(
@@ -378,3 +386,113 @@ def test_submit_review_rolls_back_on_commit_failure(review_client):
     assert response.status_code == 500
     assert version.review_status == "pending_review"
     db.rollback.assert_called_once()
+
+@router.put("/versions/{version_id}/eligibility-criteria")
+def update_eligibility_criteria(
+    version_id: UUID,
+    request: EligibilityCriteriaUpdate,
+    user: CurrentUser = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Update eligibility criteria on a draft version only."""
+
+    version = db.scalar(
+        select(SchemeVersion).where(SchemeVersion.id == version_id)
+    )
+
+    if version is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Scheme version not found",
+        )
+
+    if version.review_status != "draft":
+        raise HTTPException(
+            status_code=409,
+            detail="Eligibility criteria can only be updated on draft versions",
+        )
+
+    criteria = request.eligibility_criteria
+
+    try:
+        parse_criteria(criteria)
+    except CriteriaValidationError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Invalid eligibility criteria: {exc}",
+        ) from exc
+
+    for index, rule in enumerate(criteria["rules"]):
+        source_info = rule["source"]
+
+        try:
+            source_id = UUID(source_info["source_document_id"])
+        except (ValueError, TypeError, AttributeError) as exc:
+            raise HTTPException(
+                status_code=422,
+                detail=f"Invalid source document ID in rule {index}",
+            ) from exc
+
+        source = db.scalar(
+            select(SourceDocument).where(
+                SourceDocument.id == source_id,
+                SourceDocument.scheme_version_id == version.id,
+            )
+        )
+
+        if source is None:
+            raise HTTPException(
+                status_code=422,
+                detail=(
+                    f"Source document in rule {index} does not belong "
+                    "to this scheme version"
+                ),
+            )
+
+        if source_info["source_url"] != source.source_url:
+            raise HTTPException(
+                status_code=422,
+                detail=f"Source URL mismatch in rule {index}",
+            )
+
+        try:
+            criteria_time = datetime.fromisoformat(
+                source_info["retrieved_at"].replace("Z", "+00:00")
+            )
+
+            stored_time = source.retrieved_at
+
+            if criteria_time.tzinfo is None or stored_time.tzinfo is None:
+                raise ValueError("Timestamps must include timezone information")
+
+            criteria_time = criteria_time.astimezone(timezone.utc)
+            stored_time = stored_time.astimezone(timezone.utc)
+
+        except (ValueError, TypeError, AttributeError) as exc:
+            raise HTTPException(
+                status_code=422,
+                detail=f"Invalid source timestamp in rule {index}",
+            ) from exc
+
+        if criteria_time != stored_time:
+            raise HTTPException(
+                status_code=422,
+                detail=f"Source timestamp mismatch in rule {index}",
+            )
+
+    version.eligibility_criteria = criteria
+
+    try:
+        db.commit()
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail="Could not save eligibility criteria",
+        ) from exc
+
+    return {
+        "message": "Eligibility criteria saved to draft version",
+        "version_id": str(version.id),
+        "review_status": version.review_status,
+    }

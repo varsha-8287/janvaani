@@ -2,7 +2,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session
+from sqlalchemy import select
 
+from app.database.models import SchemeVersion, SourceDocument
 from app.api.auth import CurrentUser, get_current_user
 from app.database.session import get_db
 from app.ingestion.schemas import SchemeIngestionInput
@@ -22,10 +24,36 @@ def create_scheme_from_ingestion(
         scheme = ingest_scheme(db, data)
         db.commit()
         db.refresh(scheme)
+        version = db.scalar(
+            select(SchemeVersion)
+            .where(SchemeVersion.scheme_id == scheme.id)
+            .order_by(SchemeVersion.version_number.desc())
+        )
 
+        if version is None:
+            db.rollback()
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Could not retrieve the created scheme version.",
+            )
+
+        source = db.scalar(
+            select(SourceDocument)
+            .where(SourceDocument.scheme_version_id == version.id)
+            .order_by(SourceDocument.retrieved_at.desc())
+        )
+
+        if source is None:
+            db.rollback()
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Could not retrieve the created source document.",
+            )
         return {
             "message": "Scheme ingested successfully and saved as a draft.",
-            "scheme_id": scheme.id,
+            "scheme_id": str(scheme.id),
+            "version_id": str(version.id),
+            "source_document_id": str(source.id),
             "slug": scheme.slug,
             "title": scheme.title,
             "status": scheme.status,

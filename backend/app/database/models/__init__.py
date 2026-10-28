@@ -57,6 +57,12 @@ class Profile(Base):
         onupdate=utc_now,
     )
 
+    conversations: Mapped[list["Conversation"]] = relationship(
+        back_populates="profile",
+        cascade="all, delete-orphan",
+        order_by="Conversation.updated_at.desc()",
+    )
+
 
 class Scheme(Base):
     """Stable identity and catalogue metadata for a government scheme."""
@@ -207,4 +213,80 @@ class SourceDocument(Base):
 
     scheme_version: Mapped["SchemeVersion"] = relationship(
         back_populates="source_documents"
+    )
+
+
+class Conversation(Base):
+    """User conversation thread with the chatbot."""
+
+    __tablename__ = "conversations"
+    __table_args__ = (
+        Index("ix_conversations_profile_updated", "profile_id", "updated_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(
+        Uuid(as_uuid=True), primary_key=True, default=uuid4
+    )
+    profile_id: Mapped[UUID] = mapped_column(
+        Uuid(as_uuid=True),
+        ForeignKey("profiles.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    title: Mapped[str] = mapped_column(
+        String(200), nullable=False, default="New Conversation"
+    )
+    language: Mapped[str] = mapped_column(
+        String(12), nullable=False, default="en"
+    )
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+        onupdate=utc_now,
+    )
+
+    profile: Mapped["Profile"] = relationship(back_populates="conversations")
+    messages: Mapped[list["ChatMessage"]] = relationship(
+        back_populates="conversation",
+        cascade="all, delete-orphan",
+        order_by="ChatMessage.created_at",
+    )
+
+
+class ChatMessage(Base):
+    """A single turn/message within a conversation."""
+
+    __tablename__ = "chat_messages"
+    __table_args__ = (
+        CheckConstraint(
+            "role IN ('user', 'assistant')",
+            name="ck_chat_messages_role",
+        ),
+        Index("ix_chat_messages_conversation_created", "conversation_id", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(
+        Uuid(as_uuid=True), primary_key=True, default=uuid4
+    )
+    conversation_id: Mapped[UUID] = mapped_column(
+        Uuid(as_uuid=True),
+        ForeignKey("conversations.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    role: Mapped[str] = mapped_column(String(20), nullable=False)
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    sources: Mapped[list | dict | None] = mapped_column(JSONB, nullable=True)
+
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+
+    conversation: Mapped["Conversation"] = relationship(
+        back_populates="messages"
     )

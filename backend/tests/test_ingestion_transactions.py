@@ -25,7 +25,7 @@ def validate_test_database_url(url: str) -> None:
     if (
         parsed.get_backend_name() != "postgresql"
         or parsed.host != "127.0.0.1"
-        or parsed.port != 5433
+        or parsed.port != 5432
         or parsed.database != "janvaani_test"
         or parsed.username != "janvaani_test"
     ):

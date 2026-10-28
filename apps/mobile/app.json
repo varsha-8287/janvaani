@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Janvaani",
+    "slug": "janvaani",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "janvaani",
+    "android": {
+      "package": "org.janvaani.mobile",
+      "googleServicesFile": "./google-services.json"
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "./plugins/withKotlinCompilerVersion"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1318c49a-5d11-4e82-8dcb-1df9037b3280"
+      }
+    }
+  }
+}

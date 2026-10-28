@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "375024101186",
+    "project_id": "janvaani-94042",
+    "storage_bucket": "janvaani-94042.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375024101186:android:48e92e506a11ab5b480adb",
+        "android_client_info": {
+          "package_name": "org.janvaani.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-xmR68SYbfN0jrol3oVuTVXcs0wZ0-4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

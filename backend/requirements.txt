@@ -9,3 +9,4 @@ pytest
 httpx
 google-genai
 firebase-admin
+requests

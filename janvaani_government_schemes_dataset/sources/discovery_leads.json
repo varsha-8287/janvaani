@@ -1,0 +1,42 @@
+[
+  {
+    "lead_name": "National Portal of India - Government Schemes",
+    "url": "https://www.india.gov.in/my-government/schemes",
+    "scope": "central_and_state_ut_discovery",
+    "purpose": "Discovery/navigation only; follow through to administering authority's official primary source.",
+    "ingest_status": "not_ingested",
+    "reuse_check": "Review terms for each content item; portal scheme data says sourced from myScheme."
+  },
+  {
+    "lead_name": "Open Government Data Platform India",
+    "url": "https://data.gov.in/",
+    "scope": "central_and_state_resource_discovery",
+    "purpose": "Search for scheme datasets or official service APIs; record per-resource terms/license and ID.",
+    "ingest_status": "not_ingested",
+    "reuse_check": "Resource-specific license and reuse basis required."
+  },
+  {
+    "lead_name": "Local Government Directory",
+    "url": "https://lgdirectory.gov.in/",
+    "scope": "geographic_reference",
+    "purpose": "Canonical state/UT/district/local identifiers for applicability and deduplication.",
+    "ingest_status": "not_ingested",
+    "reuse_check": "Check applicable reuse terms."
+  },
+  {
+    "lead_name": "Press Information Bureau",
+    "url": "https://pib.gov.in/",
+    "scope": "official_announcements",
+    "purpose": "Discover new/changed schemes and validity updates; cross-check with administering department guidelines.",
+    "ingest_status": "not_ingested",
+    "reuse_check": "Do not use press release alone for detailed eligibility if official guidelines exist."
+  },
+  {
+    "lead_name": "myScheme",
+    "url": "https://www.myscheme.gov.in/",
+    "scope": "discovery_reference",
+    "purpose": "Potentially useful national scheme discovery index.",
+    "ingest_status": "blocked_for_automated_collection_pending_written_authorization",
+    "reuse_check": "Terms of Use prohibit bots/scrapers and automatic copying without express written authorization."
+  }
+]

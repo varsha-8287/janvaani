@@ -1,0 +1,3983 @@
+{
+  "generated_at_utc": "2026-10-28T16:25:23.513270+00:00",
+  "source_file": "janvaani_government_schemes_dataset\\incoming\\kaggle_structured\\structured.csv",
+  "source_sha256": "60246938f542f9807273f0e3828ddb46cd35b2a721c3964d81319c2d564946ab",
+  "output_file": "janvaani_government_schemes_dataset\\staging\\structured.cleaned.csv",
+  "input_rows": 3534,
+  "output_rows": 3534,
+  "columns": [
+    "slug",
+    "scheme_id",
+    "scheme_name",
+    "short_title",
+    "state",
+    "department",
+    "level",
+    "categories",
+    "subcategories",
+    "tags",
+    "beneficiaries",
+    "brief_description",
+    "description",
+    "benefits",
+    "eligibility",
+    "application_process",
+    "documents",
+    "references",
+    "faqs"
+  ],
+  "html_like_values_changed_by_column": {
+    "eligibility": 790,
+    "description": 1038,
+    "benefits": 1025,
+    "application_process": 1323,
+    "documents": 580,
+    "faqs": 403
+  },
+  "non_html_whitespace_changes_by_column": {
+    "benefits": 964,
+    "documents": 1151,
+    "faqs": 3126,
+    "eligibility": 1616,
+    "application_process": 1226,
+    "description": 426,
+    "scheme_name": 126,
+    "brief_description": 4,
+    "short_title": 11,
+    "department": 9,
+    "subcategories": 2
+  },
+  "missing_values_before_by_column": {
+    "benefits": 214,
+    "application_process": 214,
+    "documents": 342,
+    "state": 488,
+    "department": 172,
+    "subcategories": 247,
+    "beneficiaries": 46,
+    "references": 5,
+    "faqs": 4
+  },
+  "missing_values_after_by_column": {
+    "benefits": 215,
+    "application_process": 214,
+    "documents": 345,
+    "state": 488,
+    "department": 172,
+    "subcategories": 247,
+    "beneficiaries": 46,
+    "references": 5,
+    "faqs": 4
+  },
+  "duplicate_scheme_name_groups": [
+    {
+      "normalized_name": "freeship less than ₹1,00,000 (ug students only)",
+      "count": 2
+    }
+  ],
+  "review_item_count": 779,
+  "review_items": [
+    {
+      "csv_row": 4,
+      "scheme_id": "643f6c168bc93657e59ddaf9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 4,
+      "scheme_id": "643f6c168bc93657e59ddaf9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 4,
+      "scheme_id": "643f6c168bc93657e59ddaf9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 5,
+      "scheme_id": "638edac4657b8af471a32b5d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 14,
+      "scheme_id": "6423d685a544ea127dd0edb8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 15,
+      "scheme_id": "6423c21108cd6ddba3db3f2d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 17,
+      "scheme_id": "6460ad505f56d6325f980955",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 17,
+      "scheme_id": "6460ad505f56d6325f980955",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 17,
+      "scheme_id": "6460ad505f56d6325f980955",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 55,
+      "scheme_id": "6423c481af77a056f65be9ee",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 69,
+      "scheme_id": "64211735aa7df9a8bf84b9b7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 119,
+      "scheme_id": "641bf914cc819a7df73dcdc6",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 119,
+      "scheme_id": "641bf914cc819a7df73dcdc6",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 119,
+      "scheme_id": "641bf914cc819a7df73dcdc6",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 128,
+      "scheme_id": "641b55458ed5b17cf6fc26c8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 128,
+      "scheme_id": "641b55458ed5b17cf6fc26c8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 128,
+      "scheme_id": "641b55458ed5b17cf6fc26c8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 134,
+      "scheme_id": "638cba9e287052e4a7621a01",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 135,
+      "scheme_id": "6307042db1f2f6118d2a10b4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 147,
+      "scheme_id": "644a5a87323b59881422b987",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 147,
+      "scheme_id": "644a5a87323b59881422b987",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 147,
+      "scheme_id": "644a5a87323b59881422b987",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 153,
+      "scheme_id": "641d5ee0a34ff56ee0c0e72c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 153,
+      "scheme_id": "641d5ee0a34ff56ee0c0e72c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 153,
+      "scheme_id": "641d5ee0a34ff56ee0c0e72c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 161,
+      "scheme_id": "641abfb8121f43bad80009e8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 161,
+      "scheme_id": "641abfb8121f43bad80009e8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 161,
+      "scheme_id": "641abfb8121f43bad80009e8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 162,
+      "scheme_id": "631045931f0db328b8191bf9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 165,
+      "scheme_id": "644a1b4da782eb960900071b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 168,
+      "scheme_id": "6426b753b7269f9015f9f533",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 168,
+      "scheme_id": "6426b753b7269f9015f9f533",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 168,
+      "scheme_id": "6426b753b7269f9015f9f533",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 171,
+      "scheme_id": "62a2e4078021f04b470efa89",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 171,
+      "scheme_id": "62a2e4078021f04b470efa89",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 171,
+      "scheme_id": "62a2e4078021f04b470efa89",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 173,
+      "scheme_id": "6450b88e8653a8f862d7ef9d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 180,
+      "scheme_id": "6462e86982a71a879d524e0d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 180,
+      "scheme_id": "6462e86982a71a879d524e0d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 180,
+      "scheme_id": "6462e86982a71a879d524e0d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 200,
+      "scheme_id": "64635e7f8919dbd7e6f56f69",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 200,
+      "scheme_id": "64635e7f8919dbd7e6f56f69",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 200,
+      "scheme_id": "64635e7f8919dbd7e6f56f69",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 215,
+      "scheme_id": "646506c4023a49deceaa9e6f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 219,
+      "scheme_id": "643653324c3c696691d309b6",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 219,
+      "scheme_id": "643653324c3c696691d309b6",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 219,
+      "scheme_id": "643653324c3c696691d309b6",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 236,
+      "scheme_id": "642170470912d761b99e8a1d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 236,
+      "scheme_id": "642170470912d761b99e8a1d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 236,
+      "scheme_id": "642170470912d761b99e8a1d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 237,
+      "scheme_id": "64217b310912d761b99e8acd",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 237,
+      "scheme_id": "64217b310912d761b99e8acd",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 237,
+      "scheme_id": "64217b310912d761b99e8acd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 250,
+      "scheme_id": "64352d6e28b7c296ec59a7da",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 250,
+      "scheme_id": "64352d6e28b7c296ec59a7da",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 250,
+      "scheme_id": "64352d6e28b7c296ec59a7da",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 252,
+      "scheme_id": "6447c0aa57090b5439ee486b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 252,
+      "scheme_id": "6447c0aa57090b5439ee486b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 252,
+      "scheme_id": "6447c0aa57090b5439ee486b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 259,
+      "scheme_id": "6424203b39162868567572dc",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 259,
+      "scheme_id": "6424203b39162868567572dc",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 259,
+      "scheme_id": "6424203b39162868567572dc",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 281,
+      "scheme_id": "641d6a23829e7f7a6d09a377",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 281,
+      "scheme_id": "641d6a23829e7f7a6d09a377",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 281,
+      "scheme_id": "641d6a23829e7f7a6d09a377",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 291,
+      "scheme_id": "6465e6648919dbd7e6f65fc9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 315,
+      "scheme_id": "64479ffd9510f83a467b2340",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 315,
+      "scheme_id": "64479ffd9510f83a467b2340",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 315,
+      "scheme_id": "64479ffd9510f83a467b2340",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 321,
+      "scheme_id": "6426b7d3b2550cc0a6b944c7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 337,
+      "scheme_id": "641808db7240b91e90bfb0f3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 339,
+      "scheme_id": "638afadd8d1c81f96de25bf8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 346,
+      "scheme_id": "6459a18fa8205db95fde1c9b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 346,
+      "scheme_id": "6459a18fa8205db95fde1c9b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 346,
+      "scheme_id": "6459a18fa8205db95fde1c9b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 356,
+      "scheme_id": "64263ef755128caeb7320784",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 358,
+      "scheme_id": "6420fce5aa7df9a8bf84b825",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 358,
+      "scheme_id": "6420fce5aa7df9a8bf84b825",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 358,
+      "scheme_id": "6420fce5aa7df9a8bf84b825",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 360,
+      "scheme_id": "6419780be4ece9121dd89e90",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 368,
+      "scheme_id": "641c331426e5566b4114add9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 368,
+      "scheme_id": "641c331426e5566b4114add9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 368,
+      "scheme_id": "641c331426e5566b4114add9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 379,
+      "scheme_id": "6426ae6eb2550cc0a6b9433b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 379,
+      "scheme_id": "6426ae6eb2550cc0a6b9433b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 379,
+      "scheme_id": "6426ae6eb2550cc0a6b9433b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 385,
+      "scheme_id": "641bcab9d88401653151a09f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 418,
+      "scheme_id": "646206f7c6d3df7691b6d625",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 418,
+      "scheme_id": "646206f7c6d3df7691b6d625",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 418,
+      "scheme_id": "646206f7c6d3df7691b6d625",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 423,
+      "scheme_id": "6423ea0b595ee70716d0d8be",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 423,
+      "scheme_id": "6423ea0b595ee70716d0d8be",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 423,
+      "scheme_id": "6423ea0b595ee70716d0d8be",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 424,
+      "scheme_id": "642186aa4149152a5caefbc4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 438,
+      "scheme_id": "63ec71b6df687019476912d2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 443,
+      "scheme_id": "62f626bef16ba41eabac77f1",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 443,
+      "scheme_id": "62f626bef16ba41eabac77f1",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 443,
+      "scheme_id": "62f626bef16ba41eabac77f1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 444,
+      "scheme_id": "6462eaff82a71a879d524eea",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 444,
+      "scheme_id": "6462eaff82a71a879d524eea",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 444,
+      "scheme_id": "6462eaff82a71a879d524eea",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 462,
+      "scheme_id": "642257f515612c1db763d0f7",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 462,
+      "scheme_id": "642257f515612c1db763d0f7",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 462,
+      "scheme_id": "642257f515612c1db763d0f7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 474,
+      "scheme_id": "64184215d79e02218230b052",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 474,
+      "scheme_id": "64184215d79e02218230b052",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 474,
+      "scheme_id": "64184215d79e02218230b052",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 477,
+      "scheme_id": "63bbb8400d2bd718ff71d9b2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 494,
+      "scheme_id": "64490376a84aed7193d5b9c2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 494,
+      "scheme_id": "64490376a84aed7193d5b9c2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 494,
+      "scheme_id": "64490376a84aed7193d5b9c2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 496,
+      "scheme_id": "6462fece84254e8304cfd45e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 496,
+      "scheme_id": "6462fece84254e8304cfd45e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 496,
+      "scheme_id": "6462fece84254e8304cfd45e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 497,
+      "scheme_id": "6461f8a731c37e7ea0d52bd1",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 497,
+      "scheme_id": "6461f8a731c37e7ea0d52bd1",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 497,
+      "scheme_id": "6461f8a731c37e7ea0d52bd1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 500,
+      "scheme_id": "6463afc1023a49deceaa2797",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 500,
+      "scheme_id": "6463afc1023a49deceaa2797",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 500,
+      "scheme_id": "6463afc1023a49deceaa2797",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 501,
+      "scheme_id": "64621b3680aed0494306c705",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 501,
+      "scheme_id": "64621b3680aed0494306c705",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 501,
+      "scheme_id": "64621b3680aed0494306c705",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 502,
+      "scheme_id": "6440fe83ecfd2fb2b25added",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 502,
+      "scheme_id": "6440fe83ecfd2fb2b25added",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 502,
+      "scheme_id": "6440fe83ecfd2fb2b25added",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 503,
+      "scheme_id": "64460797b0d40451db218805",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 503,
+      "scheme_id": "64460797b0d40451db218805",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 503,
+      "scheme_id": "64460797b0d40451db218805",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 504,
+      "scheme_id": "64421e5b6d197502adc17843",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 504,
+      "scheme_id": "64421e5b6d197502adc17843",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 504,
+      "scheme_id": "64421e5b6d197502adc17843",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 510,
+      "scheme_id": "642a575ff1a4e351b5308331",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 510,
+      "scheme_id": "642a575ff1a4e351b5308331",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 510,
+      "scheme_id": "642a575ff1a4e351b5308331",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 512,
+      "scheme_id": "641bc580d88401653151a051",
+      "issue": "missing_reference"
+    },
+    {
+      "csv_row": 512,
+      "scheme_id": "641bc580d88401653151a051",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 512,
+      "scheme_id": "641bc580d88401653151a051",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 512,
+      "scheme_id": "641bc580d88401653151a051",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 515,
+      "scheme_id": "644556aa642a2a597437849c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 515,
+      "scheme_id": "644556aa642a2a597437849c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 515,
+      "scheme_id": "644556aa642a2a597437849c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 519,
+      "scheme_id": "65d83237938a0b13cc8eaa67",
+      "issue": "missing_reference"
+    },
+    {
+      "csv_row": 522,
+      "scheme_id": "64644cb38919dbd7e6f5bebd",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 522,
+      "scheme_id": "64644cb38919dbd7e6f5bebd",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 522,
+      "scheme_id": "64644cb38919dbd7e6f5bebd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 532,
+      "scheme_id": "643fb92fdee45852a35a94f9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 537,
+      "scheme_id": "646331bc023a49decea9e7b2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 537,
+      "scheme_id": "646331bc023a49decea9e7b2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 537,
+      "scheme_id": "646331bc023a49decea9e7b2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 539,
+      "scheme_id": "646310bb43ea7819f223ad00",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 553,
+      "scheme_id": "64213467aa7df9a8bf84c21e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 553,
+      "scheme_id": "64213467aa7df9a8bf84c21e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 553,
+      "scheme_id": "64213467aa7df9a8bf84c21e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 555,
+      "scheme_id": "63fd9e527b0e90da1e94bd36",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 555,
+      "scheme_id": "63fd9e527b0e90da1e94bd36",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 555,
+      "scheme_id": "63fd9e527b0e90da1e94bd36",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 556,
+      "scheme_id": "6420363bcedbbbbc622b570f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 557,
+      "scheme_id": "64420d6e97db775ca8fd780f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 557,
+      "scheme_id": "64420d6e97db775ca8fd780f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 557,
+      "scheme_id": "64420d6e97db775ca8fd780f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 558,
+      "scheme_id": "64410f1523a2e3065cab92ac",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 558,
+      "scheme_id": "64410f1523a2e3065cab92ac",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 558,
+      "scheme_id": "64410f1523a2e3065cab92ac",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 559,
+      "scheme_id": "6427ddb403bfdca5ad43b7b8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 559,
+      "scheme_id": "6427ddb403bfdca5ad43b7b8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 559,
+      "scheme_id": "6427ddb403bfdca5ad43b7b8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 560,
+      "scheme_id": "642823c903bfdca5ad43c19c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 560,
+      "scheme_id": "642823c903bfdca5ad43c19c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 560,
+      "scheme_id": "642823c903bfdca5ad43c19c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 562,
+      "scheme_id": "64625b6bd61c71f22aa2fd33",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 562,
+      "scheme_id": "64625b6bd61c71f22aa2fd33",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 562,
+      "scheme_id": "64625b6bd61c71f22aa2fd33",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 564,
+      "scheme_id": "64657da58919dbd7e6f62a67",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 564,
+      "scheme_id": "64657da58919dbd7e6f62a67",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 564,
+      "scheme_id": "64657da58919dbd7e6f62a67",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 573,
+      "scheme_id": "6434dc93bd37517394eb21e3",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 573,
+      "scheme_id": "6434dc93bd37517394eb21e3",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 573,
+      "scheme_id": "6434dc93bd37517394eb21e3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 598,
+      "scheme_id": "6437e68c880b261b78e8034c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 598,
+      "scheme_id": "6437e68c880b261b78e8034c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 598,
+      "scheme_id": "6437e68c880b261b78e8034c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 599,
+      "scheme_id": "6434e9f7266a7abcb07c1d7a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 599,
+      "scheme_id": "6434e9f7266a7abcb07c1d7a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 599,
+      "scheme_id": "6434e9f7266a7abcb07c1d7a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 620,
+      "scheme_id": "64423b12b0d40451db212573",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 620,
+      "scheme_id": "64423b12b0d40451db212573",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 620,
+      "scheme_id": "64423b12b0d40451db212573",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 621,
+      "scheme_id": "63eb321af587abc5f2d0cef4",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 621,
+      "scheme_id": "63eb321af587abc5f2d0cef4",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 621,
+      "scheme_id": "63eb321af587abc5f2d0cef4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 635,
+      "scheme_id": "6304af2659cea0957fda3086",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 635,
+      "scheme_id": "6304af2659cea0957fda3086",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 635,
+      "scheme_id": "6304af2659cea0957fda3086",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 650,
+      "scheme_id": "644647c4ffb3f2cde2689091",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 653,
+      "scheme_id": "6464bc88023a49deceaa8198",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 653,
+      "scheme_id": "6464bc88023a49deceaa8198",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 653,
+      "scheme_id": "6464bc88023a49deceaa8198",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 680,
+      "scheme_id": "638c50bab0d21eb8c31ad761",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 684,
+      "scheme_id": "6462f0c384254e8304cfce79",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 684,
+      "scheme_id": "6462f0c384254e8304cfce79",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 684,
+      "scheme_id": "6462f0c384254e8304cfce79",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 703,
+      "scheme_id": "645c6d4e6cc516a6fd6d0383",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 703,
+      "scheme_id": "645c6d4e6cc516a6fd6d0383",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 703,
+      "scheme_id": "645c6d4e6cc516a6fd6d0383",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 704,
+      "scheme_id": "641c2d1206c7f3a77455eb28",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 706,
+      "scheme_id": "64114826d58cf01bf7d0ac0d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 707,
+      "scheme_id": "64234e5ab78dc4dfde8146fc",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 707,
+      "scheme_id": "64234e5ab78dc4dfde8146fc",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 707,
+      "scheme_id": "64234e5ab78dc4dfde8146fc",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 708,
+      "scheme_id": "6461f5e731c37e7ea0d52a69",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 708,
+      "scheme_id": "6461f5e731c37e7ea0d52a69",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 708,
+      "scheme_id": "6461f5e731c37e7ea0d52a69",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 731,
+      "scheme_id": "6422b30d2ecaf61484469449",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 731,
+      "scheme_id": "6422b30d2ecaf61484469449",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 731,
+      "scheme_id": "6422b30d2ecaf61484469449",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 751,
+      "scheme_id": "636ca205198968cee17f4320",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 751,
+      "scheme_id": "636ca205198968cee17f4320",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 751,
+      "scheme_id": "636ca205198968cee17f4320",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 756,
+      "scheme_id": "641be7731fef8954606c77ba",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 756,
+      "scheme_id": "641be7731fef8954606c77ba",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 756,
+      "scheme_id": "641be7731fef8954606c77ba",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 774,
+      "scheme_id": "638c5a57cc23e7d91b3929ec",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 779,
+      "scheme_id": "642289cf7b92dcb84ac7193e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 779,
+      "scheme_id": "642289cf7b92dcb84ac7193e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 779,
+      "scheme_id": "642289cf7b92dcb84ac7193e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 825,
+      "scheme_id": "646a6cab9062e559675d429a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 829,
+      "scheme_id": "641b1c6c8ed5b17cf6fc2463",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 829,
+      "scheme_id": "641b1c6c8ed5b17cf6fc2463",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 829,
+      "scheme_id": "641b1c6c8ed5b17cf6fc2463",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 883,
+      "scheme_id": "64534b9f9a0bca12ac11add8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 883,
+      "scheme_id": "64534b9f9a0bca12ac11add8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 883,
+      "scheme_id": "64534b9f9a0bca12ac11add8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 907,
+      "scheme_id": "64536f10ca93efcf5840b34a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 907,
+      "scheme_id": "64536f10ca93efcf5840b34a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 907,
+      "scheme_id": "64536f10ca93efcf5840b34a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 929,
+      "scheme_id": "644664963650ad1ea50e3403",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 935,
+      "scheme_id": "64645613023a49deceaa5d36",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 948,
+      "scheme_id": "6465e8d3023a49deceaaedb8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 953,
+      "scheme_id": "636c94fb9e8409224067f66a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 974,
+      "scheme_id": "64298fd95d75a5f7b931dde4",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 974,
+      "scheme_id": "64298fd95d75a5f7b931dde4",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 974,
+      "scheme_id": "64298fd95d75a5f7b931dde4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 998,
+      "scheme_id": "6453594b390d50b6173ee354",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 998,
+      "scheme_id": "6453594b390d50b6173ee354",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 998,
+      "scheme_id": "6453594b390d50b6173ee354",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1038,
+      "scheme_id": "640085baaeda913e8634e6cb",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1067,
+      "scheme_id": "6416fb4415c5d420740d8150",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1067,
+      "scheme_id": "6416fb4415c5d420740d8150",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1067,
+      "scheme_id": "6416fb4415c5d420740d8150",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1075,
+      "scheme_id": "6388b3a7a5a3f76ea0355573",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1076,
+      "scheme_id": "6464d897023a49deceaa8a94",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1078,
+      "scheme_id": "6459ba02ee656f6b1ad52631",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1078,
+      "scheme_id": "6459ba02ee656f6b1ad52631",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1078,
+      "scheme_id": "6459ba02ee656f6b1ad52631",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1083,
+      "scheme_id": "64224f36af25fd4fcf837ddd",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1083,
+      "scheme_id": "64224f36af25fd4fcf837ddd",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1083,
+      "scheme_id": "64224f36af25fd4fcf837ddd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1115,
+      "scheme_id": "6415a6b915c5d420740d738a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1117,
+      "scheme_id": "6440e07eecfd2fb2b25ad966",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1117,
+      "scheme_id": "6440e07eecfd2fb2b25ad966",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1117,
+      "scheme_id": "6440e07eecfd2fb2b25ad966",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1146,
+      "scheme_id": "6458d9568539c89f46a5678d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1146,
+      "scheme_id": "6458d9568539c89f46a5678d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1146,
+      "scheme_id": "6458d9568539c89f46a5678d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1148,
+      "scheme_id": "6465ee268919dbd7e6f662d0",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1148,
+      "scheme_id": "6465ee268919dbd7e6f662d0",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1148,
+      "scheme_id": "6465ee268919dbd7e6f662d0",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1156,
+      "scheme_id": "62f62a9447a7b4ca2e8bda38",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1185,
+      "scheme_id": "644a2bbe948e9611448d849f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1214,
+      "scheme_id": "6461e0ddb2a653472630bf15",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1214,
+      "scheme_id": "6461e0ddb2a653472630bf15",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1214,
+      "scheme_id": "6461e0ddb2a653472630bf15",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1216,
+      "scheme_id": "638d73a416383aac8cc203aa",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1224,
+      "scheme_id": "641d40ed40b3c858593616d5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1232,
+      "scheme_id": "6448d34657090b5439ee7c40",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1232,
+      "scheme_id": "6448d34657090b5439ee7c40",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1232,
+      "scheme_id": "6448d34657090b5439ee7c40",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1253,
+      "scheme_id": "641c1a0426e5566b4114ac87",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1253,
+      "scheme_id": "641c1a0426e5566b4114ac87",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1253,
+      "scheme_id": "641c1a0426e5566b4114ac87",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1255,
+      "scheme_id": "64638ab48919dbd7e6f58e4a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1271,
+      "scheme_id": "641d0d53c63b9301193392fb",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1305,
+      "scheme_id": "63fc975b7b0e90da1e94b274",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1305,
+      "scheme_id": "63fc975b7b0e90da1e94b274",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1305,
+      "scheme_id": "63fc975b7b0e90da1e94b274",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1317,
+      "scheme_id": "64421bbb6d197502adc177d5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1324,
+      "scheme_id": "6458aee7607242dc9bf0f890",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1324,
+      "scheme_id": "6458aee7607242dc9bf0f890",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1324,
+      "scheme_id": "6458aee7607242dc9bf0f890",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1325,
+      "scheme_id": "630461abfabd836693cb4329",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1333,
+      "scheme_id": "62999e3272acc0e5ffb4e42c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1333,
+      "scheme_id": "62999e3272acc0e5ffb4e42c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1333,
+      "scheme_id": "62999e3272acc0e5ffb4e42c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1339,
+      "scheme_id": "64626841aadbb423f42fecca",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1339,
+      "scheme_id": "64626841aadbb423f42fecca",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1339,
+      "scheme_id": "64626841aadbb423f42fecca",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1351,
+      "scheme_id": "6459e1383782f1556f200055",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1351,
+      "scheme_id": "6459e1383782f1556f200055",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1351,
+      "scheme_id": "6459e1383782f1556f200055",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1356,
+      "scheme_id": "641c350826e5566b4114adf7",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1356,
+      "scheme_id": "641c350826e5566b4114adf7",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1356,
+      "scheme_id": "641c350826e5566b4114adf7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1367,
+      "scheme_id": "642861e033c9353b99266823",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1367,
+      "scheme_id": "642861e033c9353b99266823",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1367,
+      "scheme_id": "642861e033c9353b99266823",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1379,
+      "scheme_id": "63b8062d35c11794025d7b12",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1380,
+      "scheme_id": "6422a9087d0a0a2ed19c4759",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1391,
+      "scheme_id": "64217df20912d761b99e8b01",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1391,
+      "scheme_id": "64217df20912d761b99e8b01",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1391,
+      "scheme_id": "64217df20912d761b99e8b01",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1414,
+      "scheme_id": "641dad68ed6317c1931b12da",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1414,
+      "scheme_id": "641dad68ed6317c1931b12da",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1414,
+      "scheme_id": "641dad68ed6317c1931b12da",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1417,
+      "scheme_id": "64462939582dee54435498d1",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1417,
+      "scheme_id": "64462939582dee54435498d1",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1417,
+      "scheme_id": "64462939582dee54435498d1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1418,
+      "scheme_id": "629092822ad78f71fb7bc3a9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1426,
+      "scheme_id": "64464343ffb3f2cde268900e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1426,
+      "scheme_id": "64464343ffb3f2cde268900e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1426,
+      "scheme_id": "64464343ffb3f2cde268900e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1432,
+      "scheme_id": "645cbbe838e5ed218062fc9d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1432,
+      "scheme_id": "645cbbe838e5ed218062fc9d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1432,
+      "scheme_id": "645cbbe838e5ed218062fc9d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1436,
+      "scheme_id": "64427796642a2a5974373a92",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1436,
+      "scheme_id": "64427796642a2a5974373a92",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1436,
+      "scheme_id": "64427796642a2a5974373a92",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1437,
+      "scheme_id": "628c79f250b52bb011ccb5ee",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1475,
+      "scheme_id": "63e9b739556c28ed4a6c1bcc",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1475,
+      "scheme_id": "63e9b739556c28ed4a6c1bcc",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1475,
+      "scheme_id": "63e9b739556c28ed4a6c1bcc",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1527,
+      "scheme_id": "642d415468da74277a17240b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1528,
+      "scheme_id": "6459de5243e51a1da856a54e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1528,
+      "scheme_id": "6459de5243e51a1da856a54e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1528,
+      "scheme_id": "6459de5243e51a1da856a54e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1531,
+      "scheme_id": "63e9e444176538a6b00b289e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1531,
+      "scheme_id": "63e9e444176538a6b00b289e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1531,
+      "scheme_id": "63e9e444176538a6b00b289e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1545,
+      "scheme_id": "66615c6b6cbcc730048dfba8",
+      "issue": "missing_reference"
+    },
+    {
+      "csv_row": 1560,
+      "scheme_id": "63eb1ab4a861cf592efe44a3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1561,
+      "scheme_id": "63ea0fa243e94a7d814183e8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1561,
+      "scheme_id": "63ea0fa243e94a7d814183e8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1561,
+      "scheme_id": "63ea0fa243e94a7d814183e8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1562,
+      "scheme_id": "63eb242890f8bce6189ea21b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1562,
+      "scheme_id": "63eb242890f8bce6189ea21b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1562,
+      "scheme_id": "63eb242890f8bce6189ea21b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1563,
+      "scheme_id": "63ea1ecf176538a6b00b2b75",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1563,
+      "scheme_id": "63ea1ecf176538a6b00b2b75",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1563,
+      "scheme_id": "63ea1ecf176538a6b00b2b75",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1593,
+      "scheme_id": "64105c13d58cf01bf7d09db5",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1593,
+      "scheme_id": "64105c13d58cf01bf7d09db5",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1593,
+      "scheme_id": "64105c13d58cf01bf7d09db5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1594,
+      "scheme_id": "629f47e2eaca073ef507c847",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1594,
+      "scheme_id": "629f47e2eaca073ef507c847",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1594,
+      "scheme_id": "629f47e2eaca073ef507c847",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1599,
+      "scheme_id": "645f28c15f56d6325f976ab1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1601,
+      "scheme_id": "6448f341773d6e47b16590aa",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1601,
+      "scheme_id": "6448f341773d6e47b16590aa",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1601,
+      "scheme_id": "6448f341773d6e47b16590aa",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1602,
+      "scheme_id": "6433da0aa70c53013be2f99f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1602,
+      "scheme_id": "6433da0aa70c53013be2f99f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1602,
+      "scheme_id": "6433da0aa70c53013be2f99f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1605,
+      "scheme_id": "686e1533acae349c5c30c56f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1611,
+      "scheme_id": "63870f842a2767f5d558a8f0",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1611,
+      "scheme_id": "63870f842a2767f5d558a8f0",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1611,
+      "scheme_id": "63870f842a2767f5d558a8f0",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1614,
+      "scheme_id": "638855cb040cb64891a1da4e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1629,
+      "scheme_id": "629f00667823adaea3eb3aa5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1636,
+      "scheme_id": "642186fa0912d761b99e8bb1",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1636,
+      "scheme_id": "642186fa0912d761b99e8bb1",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1636,
+      "scheme_id": "642186fa0912d761b99e8bb1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1638,
+      "scheme_id": "641db4c917a488013cbb36c3",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1638,
+      "scheme_id": "641db4c917a488013cbb36c3",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1638,
+      "scheme_id": "641db4c917a488013cbb36c3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1646,
+      "scheme_id": "63d65d39eed73423e389f973",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1647,
+      "scheme_id": "64106dcfd58cf01bf7d0a327",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1648,
+      "scheme_id": "63ee756ac61413d9c4221a95",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1659,
+      "scheme_id": "62862b705c708f567e107f1a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1663,
+      "scheme_id": "6448f123cc64ef23bef44a09",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1663,
+      "scheme_id": "6448f123cc64ef23bef44a09",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1663,
+      "scheme_id": "6448f123cc64ef23bef44a09",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1666,
+      "scheme_id": "64520aaa9b1f2a92780a6961",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1666,
+      "scheme_id": "64520aaa9b1f2a92780a6961",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1666,
+      "scheme_id": "64520aaa9b1f2a92780a6961",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1678,
+      "scheme_id": "62f50b8e55b1415632052b80",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1678,
+      "scheme_id": "62f50b8e55b1415632052b80",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1678,
+      "scheme_id": "62f50b8e55b1415632052b80",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1698,
+      "scheme_id": "6451f928ba3a1ddfc948e608",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1698,
+      "scheme_id": "6451f928ba3a1ddfc948e608",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1698,
+      "scheme_id": "6451f928ba3a1ddfc948e608",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1702,
+      "scheme_id": "6433de7a115770cc78d50e4e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1702,
+      "scheme_id": "6433de7a115770cc78d50e4e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1702,
+      "scheme_id": "6433de7a115770cc78d50e4e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1705,
+      "scheme_id": "63aab5975e62ed7bead26883",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1705,
+      "scheme_id": "63aab5975e62ed7bead26883",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1705,
+      "scheme_id": "63aab5975e62ed7bead26883",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1707,
+      "scheme_id": "6450d37d79b668b0461e4b5f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1707,
+      "scheme_id": "6450d37d79b668b0461e4b5f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1707,
+      "scheme_id": "6450d37d79b668b0461e4b5f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1716,
+      "scheme_id": "63086bbf6ca89de5526b5d7c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1717,
+      "scheme_id": "628b2b49c9b440ca7f31fb29",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1723,
+      "scheme_id": "6450c45b79b668b0461e497a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1723,
+      "scheme_id": "6450c45b79b668b0461e497a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1723,
+      "scheme_id": "6450c45b79b668b0461e497a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1727,
+      "scheme_id": "6451e551a14a95679a614687",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1727,
+      "scheme_id": "6451e551a14a95679a614687",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1727,
+      "scheme_id": "6451e551a14a95679a614687",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1733,
+      "scheme_id": "6451ddd1812ea25500251de8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1733,
+      "scheme_id": "6451ddd1812ea25500251de8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1733,
+      "scheme_id": "6451ddd1812ea25500251de8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1762,
+      "scheme_id": "6451eb1ef91462b213f71eaf",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1762,
+      "scheme_id": "6451eb1ef91462b213f71eaf",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1762,
+      "scheme_id": "6451eb1ef91462b213f71eaf",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1768,
+      "scheme_id": "645872b182abf04de47c7c12",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1768,
+      "scheme_id": "645872b182abf04de47c7c12",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1768,
+      "scheme_id": "645872b182abf04de47c7c12",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1773,
+      "scheme_id": "6464eb1b8919dbd7e6f6067a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1773,
+      "scheme_id": "6464eb1b8919dbd7e6f6067a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1773,
+      "scheme_id": "6464eb1b8919dbd7e6f6067a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1779,
+      "scheme_id": "646435fe023a49deceaa4410",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1779,
+      "scheme_id": "646435fe023a49deceaa4410",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1779,
+      "scheme_id": "646435fe023a49deceaa4410",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1805,
+      "scheme_id": "63bdabd7536fd7f60d5067c6",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1852,
+      "scheme_id": "641bb6f85060e4e057a2b04c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1862,
+      "scheme_id": "6464889b8919dbd7e6f5e342",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1886,
+      "scheme_id": "64427e6f642a2a5974373b6f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1888,
+      "scheme_id": "63b2c26a7b85941ff8294952",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1899,
+      "scheme_id": "6462edf884254e8304cfcd89",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1924,
+      "scheme_id": "62a2d9c8af0a039a396f7137",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1940,
+      "scheme_id": "6459bde5ee656f6b1ad526b3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1951,
+      "scheme_id": "6422c11e2ecaf614844696a5",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1951,
+      "scheme_id": "6422c11e2ecaf614844696a5",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1951,
+      "scheme_id": "6422c11e2ecaf614844696a5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1956,
+      "scheme_id": "644a45df323b598814229279",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1956,
+      "scheme_id": "644a45df323b598814229279",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1956,
+      "scheme_id": "644a45df323b598814229279",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1964,
+      "scheme_id": "641bf698b1f2fd9fac0f1694",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1974,
+      "scheme_id": "641d5375ded5a517c845511d",
+      "issue": "missing_reference"
+    },
+    {
+      "csv_row": 1974,
+      "scheme_id": "641d5375ded5a517c845511d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1974,
+      "scheme_id": "641d5375ded5a517c845511d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1974,
+      "scheme_id": "641d5375ded5a517c845511d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1977,
+      "scheme_id": "64490cf44d160f59bc28f6c2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1977,
+      "scheme_id": "64490cf44d160f59bc28f6c2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1977,
+      "scheme_id": "64490cf44d160f59bc28f6c2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1978,
+      "scheme_id": "642169ee4149152a5caef36c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 1978,
+      "scheme_id": "642169ee4149152a5caef36c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 1978,
+      "scheme_id": "642169ee4149152a5caef36c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 1984,
+      "scheme_id": "6459d7a3ee656f6b1ad529d4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2014,
+      "scheme_id": "6458c1e528748c105565b1e7",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2014,
+      "scheme_id": "6458c1e528748c105565b1e7",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2014,
+      "scheme_id": "6458c1e528748c105565b1e7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2016,
+      "scheme_id": "6421902bb04969635da5eefd",
+      "issue": "missing_reference"
+    },
+    {
+      "csv_row": 2016,
+      "scheme_id": "6421902bb04969635da5eefd",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2016,
+      "scheme_id": "6421902bb04969635da5eefd",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2016,
+      "scheme_id": "6421902bb04969635da5eefd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2021,
+      "scheme_id": "6426a13eb2550cc0a6b9412b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2038,
+      "scheme_id": "638eef3adcf0cf91a59d494b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2038,
+      "scheme_id": "638eef3adcf0cf91a59d494b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2038,
+      "scheme_id": "638eef3adcf0cf91a59d494b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2042,
+      "scheme_id": "6433f9c3cffe2fe211e37e2b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2042,
+      "scheme_id": "6433f9c3cffe2fe211e37e2b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2042,
+      "scheme_id": "6433f9c3cffe2fe211e37e2b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2048,
+      "scheme_id": "6434ef27266a7abcb07c2a36",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2048,
+      "scheme_id": "6434ef27266a7abcb07c2a36",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2048,
+      "scheme_id": "6434ef27266a7abcb07c2a36",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2056,
+      "scheme_id": "6413e7ed92a692ec44e07e04",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2091,
+      "scheme_id": "643d0f21137b32bd1daf739e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2091,
+      "scheme_id": "643d0f21137b32bd1daf739e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2091,
+      "scheme_id": "643d0f21137b32bd1daf739e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2104,
+      "scheme_id": "6434680dbd37517394eb15b5",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2104,
+      "scheme_id": "6434680dbd37517394eb15b5",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2104,
+      "scheme_id": "6434680dbd37517394eb15b5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2108,
+      "scheme_id": "6451f784764d8354dc2a83b2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2108,
+      "scheme_id": "6451f784764d8354dc2a83b2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2108,
+      "scheme_id": "6451f784764d8354dc2a83b2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2113,
+      "scheme_id": "644107cf82ab7d12f6995121",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2113,
+      "scheme_id": "644107cf82ab7d12f6995121",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2113,
+      "scheme_id": "644107cf82ab7d12f6995121",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2118,
+      "scheme_id": "64633226023a49decea9e7ed",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2118,
+      "scheme_id": "64633226023a49decea9e7ed",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2118,
+      "scheme_id": "64633226023a49decea9e7ed",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2128,
+      "scheme_id": "64368bf122aef62779da388b",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2128,
+      "scheme_id": "64368bf122aef62779da388b",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2128,
+      "scheme_id": "64368bf122aef62779da388b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2129,
+      "scheme_id": "645dd7bf4e72becb3fe8135a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2129,
+      "scheme_id": "645dd7bf4e72becb3fe8135a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2129,
+      "scheme_id": "645dd7bf4e72becb3fe8135a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2145,
+      "scheme_id": "629f1b99c6fb7a5b6cd181de",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2164,
+      "scheme_id": "62f09d9929a5701dba8d9414",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2166,
+      "scheme_id": "644a06cffd649fea7a099cf4",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2166,
+      "scheme_id": "644a06cffd649fea7a099cf4",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2166,
+      "scheme_id": "644a06cffd649fea7a099cf4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2170,
+      "scheme_id": "6446522f0fdbe339f9bb737c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2170,
+      "scheme_id": "6446522f0fdbe339f9bb737c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2170,
+      "scheme_id": "6446522f0fdbe339f9bb737c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2171,
+      "scheme_id": "629f0e28c6fb7a5b6cd17927",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2177,
+      "scheme_id": "643c632bb80d39bcd9841836",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2177,
+      "scheme_id": "643c632bb80d39bcd9841836",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2177,
+      "scheme_id": "643c632bb80d39bcd9841836",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2178,
+      "scheme_id": "638865ee199bd78d6f47ce36",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2180,
+      "scheme_id": "645243a4eb02f71137eb1af8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2180,
+      "scheme_id": "645243a4eb02f71137eb1af8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2180,
+      "scheme_id": "645243a4eb02f71137eb1af8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2187,
+      "scheme_id": "644b528a8a310f6ae8a835f8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2187,
+      "scheme_id": "644b528a8a310f6ae8a835f8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2187,
+      "scheme_id": "644b528a8a310f6ae8a835f8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2188,
+      "scheme_id": "644a4529864059a907e7c384",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2189,
+      "scheme_id": "6449145dc642f2a3bc39f35e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2193,
+      "scheme_id": "644a5316323b59881422ac34",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2193,
+      "scheme_id": "644a5316323b59881422ac34",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2193,
+      "scheme_id": "644a5316323b59881422ac34",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2197,
+      "scheme_id": "63bd9e0335c11794025db58f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2198,
+      "scheme_id": "64216226eb5671c0e45ac74c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2198,
+      "scheme_id": "64216226eb5671c0e45ac74c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2198,
+      "scheme_id": "64216226eb5671c0e45ac74c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2205,
+      "scheme_id": "64648f5c8919dbd7e6f5e58f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2205,
+      "scheme_id": "64648f5c8919dbd7e6f5e58f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2205,
+      "scheme_id": "64648f5c8919dbd7e6f5e58f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2207,
+      "scheme_id": "62935f89097604f9c6b0d3a3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2212,
+      "scheme_id": "64363aba17ce12bc514c1f4c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2212,
+      "scheme_id": "64363aba17ce12bc514c1f4c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2212,
+      "scheme_id": "64363aba17ce12bc514c1f4c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2215,
+      "scheme_id": "63b7f2f772ddfd539b3f81c9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2215,
+      "scheme_id": "63b7f2f772ddfd539b3f81c9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2216,
+      "scheme_id": "6421ad1bdb63e235af50f97f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2218,
+      "scheme_id": "64264af255128caeb7320975",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2223,
+      "scheme_id": "643fd37a94b82f15373b4b77",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2230,
+      "scheme_id": "631aff8b243f2f4f0fa77620",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2237,
+      "scheme_id": "6422c2f1d463b77d46895529",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2243,
+      "scheme_id": "6437c642697ac498ede1abcf",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2243,
+      "scheme_id": "6437c642697ac498ede1abcf",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2243,
+      "scheme_id": "6437c642697ac498ede1abcf",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2244,
+      "scheme_id": "628620db006d968be8d60866",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2245,
+      "scheme_id": "6302596b09bb160a0610bc31",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2245,
+      "scheme_id": "6302596b09bb160a0610bc31",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2245,
+      "scheme_id": "6302596b09bb160a0610bc31",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2246,
+      "scheme_id": "6423da9c60aeadfda995ff93",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2246,
+      "scheme_id": "6423da9c60aeadfda995ff93",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2246,
+      "scheme_id": "6423da9c60aeadfda995ff93",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2255,
+      "scheme_id": "6295f98072acc0e5ffb2e880",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2255,
+      "scheme_id": "6295f98072acc0e5ffb2e880",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2255,
+      "scheme_id": "6295f98072acc0e5ffb2e880",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2297,
+      "scheme_id": "6450e6c398866705deb2f414",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2297,
+      "scheme_id": "6450e6c398866705deb2f414",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2297,
+      "scheme_id": "6450e6c398866705deb2f414",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2309,
+      "scheme_id": "6422d53de15a6471f9611b9a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2313,
+      "scheme_id": "629afad408f5ca097d344a25",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2321,
+      "scheme_id": "63a52da197da3d02867ac23b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2327,
+      "scheme_id": "646315782f8b5e73501914bd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2329,
+      "scheme_id": "6459d9acee656f6b1ad5376c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2329,
+      "scheme_id": "6459d9acee656f6b1ad5376c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2329,
+      "scheme_id": "6459d9acee656f6b1ad5376c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2334,
+      "scheme_id": "628b36ffc9b440ca7f31fd9c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2334,
+      "scheme_id": "628b36ffc9b440ca7f31fd9c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2334,
+      "scheme_id": "628b36ffc9b440ca7f31fd9c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2366,
+      "scheme_id": "6421b453db63e235af50f9e9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2366,
+      "scheme_id": "6421b453db63e235af50f9e9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2366,
+      "scheme_id": "6421b453db63e235af50f9e9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2370,
+      "scheme_id": "644a0721b01bea85bb96f9f3",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2370,
+      "scheme_id": "644a0721b01bea85bb96f9f3",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2370,
+      "scheme_id": "644a0721b01bea85bb96f9f3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2386,
+      "scheme_id": "641db7e8aa7df9a8bf848c98",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2400,
+      "scheme_id": "631b167899d5444e11b5faf3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2422,
+      "scheme_id": "6299a47e72acc0e5ffb4e8ae",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2433,
+      "scheme_id": "62ac1088144a74bd6d761ad7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2442,
+      "scheme_id": "6347dfde6c4c896fef134fa2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2442,
+      "scheme_id": "6347dfde6c4c896fef134fa2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2442,
+      "scheme_id": "6347dfde6c4c896fef134fa2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2444,
+      "scheme_id": "6319853248063dc46f33b28d",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2444,
+      "scheme_id": "6319853248063dc46f33b28d",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2444,
+      "scheme_id": "6319853248063dc46f33b28d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2447,
+      "scheme_id": "62a1a38e07ac3b4e623091b1",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2454,
+      "scheme_id": "63dc61e147011f38d286cbd6",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2462,
+      "scheme_id": "6290a249e65001fa5dfa97b0",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2478,
+      "scheme_id": "64265ec155128caeb7320c46",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2478,
+      "scheme_id": "64265ec155128caeb7320c46",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2478,
+      "scheme_id": "64265ec155128caeb7320c46",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2493,
+      "scheme_id": "6453354fb5f9f175e4120d6a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2493,
+      "scheme_id": "6453354fb5f9f175e4120d6a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2493,
+      "scheme_id": "6453354fb5f9f175e4120d6a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2496,
+      "scheme_id": "62a2ea32f038bd8499a5ec00",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2510,
+      "scheme_id": "6295b62612d04da98a55a17c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2512,
+      "scheme_id": "63639d0c4f88ef7bd027632d",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2521,
+      "scheme_id": "64364bf0280fc66558ce757f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2525,
+      "scheme_id": "6295cbb572acc0e5ffb2cfde",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2525,
+      "scheme_id": "6295cbb572acc0e5ffb2cfde",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2525,
+      "scheme_id": "6295cbb572acc0e5ffb2cfde",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2555,
+      "scheme_id": "6457e200f8f589c9782eea3e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2560,
+      "scheme_id": "6465f4992c20e99f26101021",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2560,
+      "scheme_id": "6465f4992c20e99f26101021",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2560,
+      "scheme_id": "6465f4992c20e99f26101021",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2576,
+      "scheme_id": "642e41a2c0dc428bd8a81263",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2578,
+      "scheme_id": "686e41118a1ff1233bd2ae27",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2584,
+      "scheme_id": "64362f6017ce12bc514c1de9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2584,
+      "scheme_id": "64362f6017ce12bc514c1de9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2584,
+      "scheme_id": "64362f6017ce12bc514c1de9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2597,
+      "scheme_id": "645b323c76bec230878ae4c4",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2597,
+      "scheme_id": "645b323c76bec230878ae4c4",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2597,
+      "scheme_id": "645b323c76bec230878ae4c4",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2605,
+      "scheme_id": "6417f8cae88cf6dc84ef7194",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2605,
+      "scheme_id": "6417f8cae88cf6dc84ef7194",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2605,
+      "scheme_id": "6417f8cae88cf6dc84ef7194",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2606,
+      "scheme_id": "641d9453ed6317c1931b1134",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2606,
+      "scheme_id": "641d9453ed6317c1931b1134",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2606,
+      "scheme_id": "641d9453ed6317c1931b1134",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2616,
+      "scheme_id": "62f607680bc6cba30d808584",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2616,
+      "scheme_id": "62f607680bc6cba30d808584",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2616,
+      "scheme_id": "62f607680bc6cba30d808584",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2622,
+      "scheme_id": "645cd1c898ef11ad5f052078",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2622,
+      "scheme_id": "645cd1c898ef11ad5f052078",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2622,
+      "scheme_id": "645cd1c898ef11ad5f052078",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2627,
+      "scheme_id": "6387237e41063e1802054b1e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2627,
+      "scheme_id": "6387237e41063e1802054b1e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2627,
+      "scheme_id": "6387237e41063e1802054b1e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2663,
+      "scheme_id": "64646e0f8919dbd7e6f5d9de",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2663,
+      "scheme_id": "64646e0f8919dbd7e6f5d9de",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2663,
+      "scheme_id": "64646e0f8919dbd7e6f5d9de",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2671,
+      "scheme_id": "6451ffd4764d8354dc2a84fa",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2671,
+      "scheme_id": "6451ffd4764d8354dc2a84fa",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2671,
+      "scheme_id": "6451ffd4764d8354dc2a84fa",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2690,
+      "scheme_id": "636b6d3eb0bc5f28f4c9399e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2690,
+      "scheme_id": "636b6d3eb0bc5f28f4c9399e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2690,
+      "scheme_id": "636b6d3eb0bc5f28f4c9399e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2697,
+      "scheme_id": "628b2e6bc9b440ca7f31fbd5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2706,
+      "scheme_id": "62ef5620cc6c45ab9b2ec7d5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2707,
+      "scheme_id": "62ef63d910fed6f0e4116e8e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2731,
+      "scheme_id": "6429221904c8c8e6936153f9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2731,
+      "scheme_id": "6429221904c8c8e6936153f9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2731,
+      "scheme_id": "6429221904c8c8e6936153f9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2739,
+      "scheme_id": "63fd77f79347be0f4e6dd960",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2739,
+      "scheme_id": "63fd77f79347be0f4e6dd960",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2739,
+      "scheme_id": "63fd77f79347be0f4e6dd960",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2743,
+      "scheme_id": "642ab41cf1a4e351b530a693",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2743,
+      "scheme_id": "642ab41cf1a4e351b530a693",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2743,
+      "scheme_id": "642ab41cf1a4e351b530a693",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2752,
+      "scheme_id": "628df483ba09b53babccbeb5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2754,
+      "scheme_id": "645e08f6c6c27dd966a138d0",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2754,
+      "scheme_id": "645e08f6c6c27dd966a138d0",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2754,
+      "scheme_id": "645e08f6c6c27dd966a138d0",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2760,
+      "scheme_id": "638d9071657b8af471a31dc3",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2771,
+      "scheme_id": "686e326e5028722a6aa61aca",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2776,
+      "scheme_id": "6421520d5e5fbf4ab5ba305f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2776,
+      "scheme_id": "6421520d5e5fbf4ab5ba305f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2776,
+      "scheme_id": "6421520d5e5fbf4ab5ba305f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2778,
+      "scheme_id": "641d8abbd11073c4c8f2a17b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2783,
+      "scheme_id": "6302fcec09bb160a0610c2eb",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2783,
+      "scheme_id": "6302fcec09bb160a0610c2eb",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2783,
+      "scheme_id": "6302fcec09bb160a0610c2eb",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2835,
+      "scheme_id": "64240c0aafeef1fdbd95e83f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2835,
+      "scheme_id": "64240c0aafeef1fdbd95e83f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2835,
+      "scheme_id": "64240c0aafeef1fdbd95e83f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2845,
+      "scheme_id": "645227a63cd7ca3499a97889",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2845,
+      "scheme_id": "645227a63cd7ca3499a97889",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2845,
+      "scheme_id": "645227a63cd7ca3499a97889",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2881,
+      "scheme_id": "641991635ffe6c3f877ae4b5",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2916,
+      "scheme_id": "64466d6ae79a5741731cd640",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2924,
+      "scheme_id": "645dc43b7556e20740a46703",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2924,
+      "scheme_id": "645dc43b7556e20740a46703",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2924,
+      "scheme_id": "645dc43b7556e20740a46703",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2937,
+      "scheme_id": "64589f0f607242dc9bf0f64c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2968,
+      "scheme_id": "6386ebd2530bb65cce323fa9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2978,
+      "scheme_id": "64226ba8c7009e71ef8ea97c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2978,
+      "scheme_id": "64226ba8c7009e71ef8ea97c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2978,
+      "scheme_id": "64226ba8c7009e71ef8ea97c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2989,
+      "scheme_id": "64235939872f874ac74d4a82",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2989,
+      "scheme_id": "64235939872f874ac74d4a82",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2989,
+      "scheme_id": "64235939872f874ac74d4a82",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2993,
+      "scheme_id": "6429f28819e020adbd9bd1e2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2993,
+      "scheme_id": "6429f28819e020adbd9bd1e2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2993,
+      "scheme_id": "6429f28819e020adbd9bd1e2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2995,
+      "scheme_id": "63d373ebfa205bbbf4d8970a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2995,
+      "scheme_id": "63d373ebfa205bbbf4d8970a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2995,
+      "scheme_id": "63d373ebfa205bbbf4d8970a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 2997,
+      "scheme_id": "62f34f7c4bd323d6e31e90f2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 2997,
+      "scheme_id": "62f34f7c4bd323d6e31e90f2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 2997,
+      "scheme_id": "62f34f7c4bd323d6e31e90f2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3002,
+      "scheme_id": "6295b2d5b958ab1c5e80e780",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3002,
+      "scheme_id": "6295b2d5b958ab1c5e80e780",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3002,
+      "scheme_id": "6295b2d5b958ab1c5e80e780",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3003,
+      "scheme_id": "628b3347c9b440ca7f31fce0",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3011,
+      "scheme_id": "641a8888e6250357b3e9f066",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3011,
+      "scheme_id": "641a8888e6250357b3e9f066",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3011,
+      "scheme_id": "641a8888e6250357b3e9f066",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3048,
+      "scheme_id": "64521a6a7ae3966fdca2525c",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3048,
+      "scheme_id": "64521a6a7ae3966fdca2525c",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3048,
+      "scheme_id": "64521a6a7ae3966fdca2525c",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3057,
+      "scheme_id": "6435425e742b6991c00e44d2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3057,
+      "scheme_id": "6435425e742b6991c00e44d2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3057,
+      "scheme_id": "6435425e742b6991c00e44d2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3082,
+      "scheme_id": "6459dd4f3f7b5c3a4e103c81",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3082,
+      "scheme_id": "6459dd4f3f7b5c3a4e103c81",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3082,
+      "scheme_id": "6459dd4f3f7b5c3a4e103c81",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3089,
+      "scheme_id": "645a14ef8c1e80f2ea501b3e",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3089,
+      "scheme_id": "645a14ef8c1e80f2ea501b3e",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3089,
+      "scheme_id": "645a14ef8c1e80f2ea501b3e",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3092,
+      "scheme_id": "6447b055aca47f16a8710c05",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3092,
+      "scheme_id": "6447b055aca47f16a8710c05",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3092,
+      "scheme_id": "6447b055aca47f16a8710c05",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3099,
+      "scheme_id": "64104691d58cf01bf7d09ca7",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3099,
+      "scheme_id": "64104691d58cf01bf7d09ca7",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3099,
+      "scheme_id": "64104691d58cf01bf7d09ca7",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3123,
+      "scheme_id": "6420f4559473e4658dfc93fd",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3129,
+      "scheme_id": "641817f7a8d743085c0b3370",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3185,
+      "scheme_id": "6421357070f79b6aa73e7a08",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3185,
+      "scheme_id": "6421357070f79b6aa73e7a08",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3185,
+      "scheme_id": "6421357070f79b6aa73e7a08",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3207,
+      "scheme_id": "6461fc87b2a653472630cc3a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3207,
+      "scheme_id": "6461fc87b2a653472630cc3a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3207,
+      "scheme_id": "6461fc87b2a653472630cc3a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3219,
+      "scheme_id": "6458df44b845713f4552387a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3219,
+      "scheme_id": "6458df44b845713f4552387a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3219,
+      "scheme_id": "6458df44b845713f4552387a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3221,
+      "scheme_id": "645356438f2d75c8cacd7782",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3221,
+      "scheme_id": "645356438f2d75c8cacd7782",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3221,
+      "scheme_id": "645356438f2d75c8cacd7782",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3229,
+      "scheme_id": "641ad1201a359840d1966416",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3229,
+      "scheme_id": "641ad1201a359840d1966416",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3229,
+      "scheme_id": "641ad1201a359840d1966416",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3247,
+      "scheme_id": "64466ce93650ad1ea50e359f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3247,
+      "scheme_id": "64466ce93650ad1ea50e359f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3247,
+      "scheme_id": "64466ce93650ad1ea50e359f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3248,
+      "scheme_id": "6420389aa8de9410f7db3758",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3248,
+      "scheme_id": "6420389aa8de9410f7db3758",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3248,
+      "scheme_id": "6420389aa8de9410f7db3758",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3250,
+      "scheme_id": "64350f1bca99235bd0ee01a9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3250,
+      "scheme_id": "64350f1bca99235bd0ee01a9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3250,
+      "scheme_id": "64350f1bca99235bd0ee01a9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3256,
+      "scheme_id": "667e9c8fffe2e26487dbe419",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3262,
+      "scheme_id": "6440c2d34ffe322c5feb6143",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3262,
+      "scheme_id": "6440c2d34ffe322c5feb6143",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3262,
+      "scheme_id": "6440c2d34ffe322c5feb6143",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3275,
+      "scheme_id": "64191293452c04db90ad48ba",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3275,
+      "scheme_id": "64191293452c04db90ad48ba",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3275,
+      "scheme_id": "64191293452c04db90ad48ba",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3281,
+      "scheme_id": "6295e5d072acc0e5ffb2de09",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3282,
+      "scheme_id": "628c9f092fdfa1c42123aed8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3312,
+      "scheme_id": "64643b418919dbd7e6f5b906",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3312,
+      "scheme_id": "64643b418919dbd7e6f5b906",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3312,
+      "scheme_id": "64643b418919dbd7e6f5b906",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3313,
+      "scheme_id": "630c60c944993b57ca3eb3c2",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3313,
+      "scheme_id": "630c60c944993b57ca3eb3c2",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3313,
+      "scheme_id": "630c60c944993b57ca3eb3c2",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3333,
+      "scheme_id": "636b3e264037931b0cbe991a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3333,
+      "scheme_id": "636b3e264037931b0cbe991a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3333,
+      "scheme_id": "636b3e264037931b0cbe991a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3343,
+      "scheme_id": "645a1529fd9bf6b43da0431f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3351,
+      "scheme_id": "630dd9d5af8ebc25ea4a196b",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3354,
+      "scheme_id": "6453302e2a276aa319b8ca0a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3354,
+      "scheme_id": "6453302e2a276aa319b8ca0a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3354,
+      "scheme_id": "6453302e2a276aa319b8ca0a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3361,
+      "scheme_id": "631096ff28a50f71346f26e9",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3361,
+      "scheme_id": "631096ff28a50f71346f26e9",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3361,
+      "scheme_id": "631096ff28a50f71346f26e9",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3380,
+      "scheme_id": "6447ae10aca47f16a8710b90",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3380,
+      "scheme_id": "6447ae10aca47f16a8710b90",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3380,
+      "scheme_id": "6447ae10aca47f16a8710b90",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3387,
+      "scheme_id": "645b7692596f4ae45d7acf40",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3387,
+      "scheme_id": "645b7692596f4ae45d7acf40",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3387,
+      "scheme_id": "645b7692596f4ae45d7acf40",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3390,
+      "scheme_id": "6427f50703bfdca5ad43bb12",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3390,
+      "scheme_id": "6427f50703bfdca5ad43bb12",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3390,
+      "scheme_id": "6427f50703bfdca5ad43bb12",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3397,
+      "scheme_id": "64267cc5dab6343ea3327c7a",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3397,
+      "scheme_id": "64267cc5dab6343ea3327c7a",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3397,
+      "scheme_id": "64267cc5dab6343ea3327c7a",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3399,
+      "scheme_id": "63fedda0378a09382a83594f",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3399,
+      "scheme_id": "63fedda0378a09382a83594f",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3399,
+      "scheme_id": "63fedda0378a09382a83594f",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3425,
+      "scheme_id": "642177364f8ff772d6079f76",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3429,
+      "scheme_id": "641d5bc3996096c32e07ea43",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3444,
+      "scheme_id": "64353e6a742b6991c00e4462",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3444,
+      "scheme_id": "64353e6a742b6991c00e4462",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3444,
+      "scheme_id": "64353e6a742b6991c00e4462",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3450,
+      "scheme_id": "642969215d75a5f7b931d9c8",
+      "issue": "missing_benefits"
+    },
+    {
+      "csv_row": 3450,
+      "scheme_id": "642969215d75a5f7b931d9c8",
+      "issue": "missing_application_process"
+    },
+    {
+      "csv_row": 3450,
+      "scheme_id": "642969215d75a5f7b931d9c8",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3511,
+      "scheme_id": "62959a02b958ab1c5e80d4ff",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3512,
+      "scheme_id": "6295a304b958ab1c5e80dc96",
+      "issue": "missing_documents"
+    },
+    {
+      "csv_row": 3513,
+      "scheme_id": "628b395bc9b440ca7f31fe33",
+      "issue": "missing_documents"
+    }
+  ],
+  "limitations": [
+    "This is a formatting cleanup, not factual verification.",
+    "HTML tags were converted to readable text; link destinations embedded in HTML may not be preserved.",
+    "No records were intentionally removed.",
+    "Scheme names and eligibility rules were not rewritten.",
+    "Official source authenticity, scheme status, and licence/reuse permissions remain unverified."
+  ]
+}

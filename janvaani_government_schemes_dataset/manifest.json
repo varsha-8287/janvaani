@@ -1,0 +1,105 @@
+{
+  "dataset_name": "Janvaani Government Schemes Knowledge Dataset",
+  "dataset_version": "0.1.0",
+  "created_date": "2026-10-28",
+  "scope": {
+    "geography": "India: central government, all states, all union territories",
+    "languages_target": [
+      {
+        "code": "en",
+        "name": "English"
+      },
+      {
+        "code": "hi",
+        "name": "Hindi"
+      },
+      {
+        "code": "ta",
+        "name": "Tamil"
+      },
+      {
+        "code": "te",
+        "name": "Telugu"
+      },
+      {
+        "code": "kn",
+        "name": "Kannada"
+      },
+      {
+        "code": "ml",
+        "name": "Malayalam"
+      },
+      {
+        "code": "bn",
+        "name": "Bengali"
+      },
+      {
+        "code": "gu",
+        "name": "Gujarati"
+      },
+      {
+        "code": "mr",
+        "name": "Marathi"
+      },
+      {
+        "code": "or",
+        "name": "Odia"
+      },
+      {
+        "code": "pa",
+        "name": "Punjabi"
+      },
+      {
+        "code": "as",
+        "name": "Assamese"
+      }
+    ],
+    "record_depth": [
+      "catalogue",
+      "benefits",
+      "eligibility",
+      "required_documents",
+      "application_process",
+      "source_provenance",
+      "translations",
+      "review_status"
+    ]
+  },
+  "status_note": "This is a production-oriented dataset starter package, not a complete populated dataset. No scheme is marked verified or approved. Bulk collection from myScheme is not included because its published terms prohibit bots/scrapers absent express written authorization.",
+  "source_policy": {
+    "preferred_sources": [
+      "Official administering ministry/department scheme page or guidelines",
+      "Official state/UT department portal or government notification",
+      "data.gov.in dataset/API where the individual resource license/terms permit reuse",
+      "Authorized government data export/API with written permission where required"
+    ],
+    "myScheme": "Discovery/reference only until written authorization or an expressly permitted data access method is obtained; do not bulk scrape/copy pages.",
+    "secondary_sources": "Use only to discover candidate schemes; do not use as the sole authority for eligibility, amounts, documents, or deadlines.",
+    "no_inference": "Do not infer eligibility thresholds, benefit amounts, documents, deadlines, or active status. Use null/unknown and send to review if official evidence is absent."
+  },
+  "workflow_statuses": [
+    "discovered",
+    "draft",
+    "pending_review",
+    "approved",
+    "rejected",
+    "archived"
+  ],
+  "source_statuses": [
+    "pending",
+    "verified",
+    "rejected"
+  ],
+  "translation_statuses": [
+    "not_started",
+    "machine_draft",
+    "human_review",
+    "approved"
+  ],
+  "initial_baseline": {
+    "discovered_records": 0,
+    "draft_records": 0,
+    "approved_records": 0,
+    "verified_sources": 0
+  }
+}

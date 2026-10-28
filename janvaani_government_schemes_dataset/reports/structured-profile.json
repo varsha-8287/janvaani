@@ -1,0 +1,587 @@
+{
+  "generated_at_utc": "2026-10-28T16:24:20.534844+00:00",
+  "source_file": "janvaani_government_schemes_dataset\\incoming\\kaggle_structured\\structured.csv",
+  "sha256": "60246938f542f9807273f0e3828ddb46cd35b2a721c3964d81319c2d564946ab",
+  "row_count": 3534,
+  "column_count": 19,
+  "columns": {
+    "slug": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3534,
+      "most_common_values": [
+        {
+          "value": "15dsugt",
+          "count": 1
+        },
+        {
+          "value": "25-ciss",
+          "count": 1
+        },
+        {
+          "value": "40shydcs",
+          "count": 1
+        },
+        {
+          "value": "a-gainer",
+          "count": 1
+        },
+        {
+          "value": "a-pudu",
+          "count": 1
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "scheme_id": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3534,
+      "most_common_values": [
+        {
+          "value": "66f2d1ea6d8f86fca119a681",
+          "count": 1
+        },
+        {
+          "value": "65128ba77846de4ead1da88e",
+          "count": 1
+        },
+        {
+          "value": "643f6c168bc93657e59ddaf9",
+          "count": 1
+        },
+        {
+          "value": "638edac4657b8af471a32b5d",
+          "count": 1
+        },
+        {
+          "value": "65a631976093f0fa3320e7ba",
+          "count": 1
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "scheme_name": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3533,
+      "most_common_values": [
+        {
+          "value": "Freeship less than ₹1,00,000 (UG students only)",
+          "count": 2
+        },
+        {
+          "value": "15 Days Skill Up-gradation Training",
+          "count": 1
+        },
+        {
+          "value": "25% Capital Investment Subsidy Scheme",
+          "count": 1
+        },
+        {
+          "value": "40% Subsidy On Hank Yarn, Dyes & Chemicals Scheme",
+          "count": 1
+        },
+        {
+          "value": "AICTE - Grant For Augmenting Infrastructure In North Eastern Region",
+          "count": 1
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "short_title": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3534,
+      "most_common_values": [
+        {
+          "value": "15DSUGT",
+          "count": 1
+        },
+        {
+          "value": "25%CISS",
+          "count": 1
+        },
+        {
+          "value": "40SHYDCS",
+          "count": 1
+        },
+        {
+          "value": "A-GAINER",
+          "count": 1
+        },
+        {
+          "value": "A-PUDU",
+          "count": 1
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "state": {
+      "missing_count": 488,
+      "missing_percent": 13.81,
+      "unique_nonempty": 36,
+      "most_common_values": [
+        {
+          "value": "Gujarat",
+          "count": 377
+        },
+        {
+          "value": "Haryana",
+          "count": 238
+        },
+        {
+          "value": "Tamil Nadu",
+          "count": 234
+        },
+        {
+          "value": "Puducherry",
+          "count": 225
+        },
+        {
+          "value": "Madhya Pradesh",
+          "count": 180
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "department": {
+      "missing_count": 172,
+      "missing_percent": 4.87,
+      "unique_nonempty": 325,
+      "most_common_values": [
+        {
+          "value": "Labour Department",
+          "count": 263
+        },
+        {
+          "value": "Social Justice and Empowerment Department",
+          "count": 141
+        },
+        {
+          "value": "Agriculture, Farmers Welfare and Cooperation Department",
+          "count": 131
+        },
+        {
+          "value": "Agriculture Department",
+          "count": 122
+        },
+        {
+          "value": "Industries and Mines Department",
+          "count": 109
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "level": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3,
+      "most_common_values": [
+        {
+          "value": "State/ UT",
+          "count": 2270
+        },
+        {
+          "value": "State",
+          "count": 776
+        },
+        {
+          "value": "Central",
+          "count": 488
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "categories": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 227,
+      "most_common_values": [
+        {
+          "value": "Social welfare & Empowerment",
+          "count": 622
+        },
+        {
+          "value": "Education & Learning",
+          "count": 578
+        },
+        {
+          "value": "Agriculture,Rural & Environment",
+          "count": 434
+        },
+        {
+          "value": "Business & Entrepreneurship",
+          "count": 336
+        },
+        {
+          "value": "Social welfare & Empowerment, Women and Child",
+          "count": 147
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "subcategories": {
+      "missing_count": 247,
+      "missing_percent": 6.99,
+      "unique_nonempty": 844,
+      "most_common_values": [
+        {
+          "value": "Financial assistance",
+          "count": 374
+        },
+        {
+          "value": "Scholarships and student finance",
+          "count": 291
+        },
+        {
+          "value": "Setting up / start-up / entrepreneurship",
+          "count": 175
+        },
+        {
+          "value": "Pension",
+          "count": 108
+        },
+        {
+          "value": "Loan",
+          "count": 74
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "tags": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3439,
+      "most_common_values": [
+        {
+          "value": "Business, Entrepreneurship, MSMEs, Start Up, Scheduled Caste, Scheduled Tribe",
+          "count": 10
+        },
+        {
+          "value": "Business, Entrepreneurship, MSMEs, Start Up",
+          "count": 9
+        },
+        {
+          "value": "Business, Entrepreneurship, MSMEs, Textile Industry",
+          "count": 8
+        },
+        {
+          "value": "Business, Entrepreneurship, MSMEs, Textile Industry, Labour Intensive Unit",
+          "count": 5
+        },
+        {
+          "value": "Agriculture, Farmer, Subsidy, DBT",
+          "count": 4
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "beneficiaries": {
+      "missing_count": 46,
+      "missing_percent": 1.3,
+      "unique_nonempty": 151,
+      "most_common_values": [
+        {
+          "value": "Individual",
+          "count": 2621
+        },
+        {
+          "value": "Business Entity",
+          "count": 139
+        },
+        {
+          "value": "Business Entity, Industries",
+          "count": 116
+        },
+        {
+          "value": "Family",
+          "count": 101
+        },
+        {
+          "value": "Individual, Family",
+          "count": 64
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "brief_description": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3437,
+      "most_common_values": [
+        {
+          "value": "The \"Aatmanirbhar Gujarat Scheme for assistance to MSMEs\" aims to empower the state's dynamic MSME sector, which significantly contributes to employment, GDP, and exports.",
+          "count": 16
+        },
+        {
+          "value": "The scheme \"Dr.Babasaheb Ambedkar Udyog Uday Yojana\" aims to support SC/ST entrepreneurs and strengthen MSMEs, making them globally competitive.",
+          "count": 16
+        },
+        {
+          "value": "The \"Gujarat Textile Policy\" introduced by the Industries and Mines Department aims to create a vibrant Textile Sector ecosystem and generate enormous employment opportunities in t",
+          "count": 13
+        },
+        {
+          "value": "The \"Scheme for Assistance to Micro, Small and Medium Enterprises (MSME)\" launched by the Industries and Mines Department aims to position Gujarat as a global business hub, promoti",
+          "count": 12
+        },
+        {
+          "value": "The \"Scheme for Assistance for Start Ups/ Innovation\" under the Gujarat Industrial Policy, aims to drive economic growth by generating jobs, fostering competition, and introducing ",
+          "count": 7
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "description": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3525,
+      "most_common_values": [
+        {
+          "value": "The “Bihar Shatabdi Asangathit Karyakshetra Kamagaar Evan Shilpakar Samajik Suraksha Yojana” launched by the Labour Resources Department, Bihar, aims to provide social security thr",
+          "count": 4
+        },
+        {
+          "value": "The “Bihar Shatabdi Asangathit Karyakshetra Kamagaar Evan Shilpakar Samajik Suraksha Yojana” launched by the Labour Resources Department, Bihar, aims to provide social security thr",
+          "count": 2
+        },
+        {
+          "value": "The 'Chief Minister’s Girl Child Protection Scheme-I' was launched by the Social Welfare and Women Empowerment Department, Government of Tamil Nadu. The scheme aims to provide fina",
+          "count": 2
+        },
+        {
+          "value": "The &quot;Gujarat Textile Policy&quot; is an umbrella scheme introduced by the Industries and Mines Department, Gujarat. It aimed at augmenting investments in the textile sector an",
+          "count": 2
+        },
+        {
+          "value": "The &quot;Gujarat Textile Policy&quot; is an umbrella scheme introduced by the Industries and Mines Department, Gujarat. It aimed at augmenting investments in the textile sector an",
+          "count": 2
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 1038
+    },
+    "benefits": {
+      "missing_count": 214,
+      "missing_percent": 6.06,
+      "unique_nonempty": 3240,
+      "most_common_values": [
+        {
+          "value": "Pension: - ₹1,000/- per month. Free Clothes during Pongal and Deepavali: - One free dhoti to a male pensioner. - One free saree to a female pensioner. Free Rice in Anganwadi Centre",
+          "count": 6
+        },
+        {
+          "value": "Cash Award of ₹2,00,000/- and a Citation.",
+          "count": 6
+        },
+        {
+          "value": "Amount : ₹ 1,500/- per month",
+          "count": 4
+        },
+        {
+          "value": "Pension: - ₹1,000/- per month. Free Clothes during Pongal and Deepavali: - One free saree. Free Rice in Anganwadi Centres: - 2kg/month to those who are taking nutritious meals. - 4",
+          "count": 4
+        },
+        {
+          "value": "Pension Amount: The scale of benefit under the pension will be notified by the Government of Andhra Pradesh. Mode of Disbursement: The Panchayat Secretary disburses the pension to ",
+          "count": 4
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 1025
+    },
+    "eligibility": {
+      "missing_count": 0,
+      "missing_percent": 0.0,
+      "unique_nonempty": 3419,
+      "most_common_values": [
+        {
+          "value": "1. The applicant should be a resident of Meghalaya. 1. The applicant should be a bonafide farmer engaged in agriculture.",
+          "count": 10
+        },
+        {
+          "value": "- Any individual or group of individuals with an innovative idea or concept, recommended by an approved Nodal Institution, is eligible. - The scheme is open to startups in any sect",
+          "count": 7
+        },
+        {
+          "value": "1. The applicant should be a permanent resident of Meghalaya. 1. The applicant should be a bonafide farmer engaged in agriculture.",
+          "count": 5
+        },
+        {
+          "value": "1. The applicant should be a resident of Haryana. 1. The applicant should belong to the Scheduled Caste Category. 1. The applicant should belong to the Below Poverty Line (BPL) fam",
+          "count": 5
+        },
+        {
+          "value": "- Should be a Private sector entity or Existing/ Operational industrial parks. - Should have a minimum of 5 acres of legally owned land (by direct purchase or lease from the State ",
+          "count": 5
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 790
+    },
+    "application_process": {
+      "missing_count": 214,
+      "missing_percent": 6.06,
+      "unique_nonempty": 2622,
+      "most_common_values": [
+        {
+          "value": "Registration Process: Step-1: Visit the Investor Facilitation Portal (IFP) (https://ifp.gujarat.gov.in/DIGIGOV/) portal. Click on \"New Investor Registration\" to access the registra",
+          "count": 27
+        },
+        {
+          "value": "Step 1: The applicant may visit and apply online at I-Khedut Portal: https://ikhedut.gujarat.gov.in/ (https://ikhedut.gujarat.gov.in/) Step 2: On the home page, click on ‘Schemes’ ",
+          "count": 23
+        },
+        {
+          "value": "Step 1: Collect the application form from the nearest Agricultural Office. Step 2: Fill out the application form with the required details and attach mandatory documents (self-atte",
+          "count": 21
+        },
+        {
+          "value": "Unregistered Applicant : 1. All the applicant have to visit the official website (https://cglabour.nic.in) Chhattisgarh Labour Department. 1. On the home page click on \"Apply (http",
+          "count": 19
+        },
+        {
+          "value": "Registration Process: Step 1: Visit the Registration (https://swp.dddgov.in/registration)page of the Official Website. Step 2: Provide the information in the respective input space",
+          "count": 18
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 1323
+    },
+    "documents": {
+      "missing_count": 342,
+      "missing_percent": 9.68,
+      "unique_nonempty": 2890,
+      "most_common_values": [
+        {
+          "value": "1. Passport-size Photograph 1. Aadhaar card 1. Domicile certificate of Madhya Pradesh 1. Caste certificate 1. Previous class passing certificate/marksheet 1. Samagra ID 1. Bank acc",
+          "count": 15
+        },
+        {
+          "value": "1. Corporate Identification Number (CIN) Document. 1. Taxpayer Identification Number (TIN) Document. 1. Permanent Account Number (PAN) Document.* 1. Goods and Services Tax Number (",
+          "count": 13
+        },
+        {
+          "value": "1. Printed copy of the application along with declaration and undertaking in the application form signed by an authorized person, including their designation and name with the ente",
+          "count": 10
+        },
+        {
+          "value": "1. Passport-size photograph 2. Identity Proof 3. Bank passbook/account details 4. Documents proof of possessing own or leased land 5. Any other document as required",
+          "count": 10
+        },
+        {
+          "value": "1. Passport-size photograph 1. Identity Proof 1. Documents proof of having sufficient available cultivable land 1. Any other document as required",
+          "count": 9
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 581
+    },
+    "references": {
+      "missing_count": 5,
+      "missing_percent": 0.14,
+      "unique_nonempty": 2914,
+      "most_common_values": [
+        {
+          "value": "Citizen's Charter (2022): https://cms.tn.gov.in/sites/default/files/documents/wda_e_cc_2022_23.pdf",
+          "count": 42
+        },
+        {
+          "value": "Guidelines: https://swp.dddgov.in/assets/pdf/Notification_IPS_2022_DNH_DD.pdf FAQs: https://swp.dddgov.in/assets/pdf/FAQs_IPS_2022.pdf",
+          "count": 24
+        },
+        {
+          "value": "Guidelines: https://www.goa.gov.in/wp-content/uploads/2020/08/ITPolicySchemes2018.pdf Official Gazette: https://ditc.goa.gov.in/sites/default/files/Target-Schemes.pdf Contact Us: h",
+          "count": 16
+        },
+        {
+          "value": "Guidelines 1: https://msmec.gujarat.gov.in/uploads/homepagescroll/GR09082023.pdf Guidelines 2: https://msmec.gujarat.gov.in/uploads/homepagescroll/Guideline09082023.pdf Online Appl",
+          "count": 15
+        },
+        {
+          "value": "Guidelines: https://ic.gujarat.gov.in/documents/commondoc/2020/2-GR_02092020.pdf Online Application Portal: https://ifp.gujarat.gov.in/IC/digigov.htm?actionFlag=loadCitizenRegPage",
+          "count": 15
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 0
+    },
+    "faqs": {
+      "missing_count": 4,
+      "missing_percent": 0.11,
+      "unique_nonempty": 3499,
+      "most_common_values": [
+        {
+          "value": "Q: What areas are classified under Zone A for the purpose of determining incentives? A: Zone A includes the Kolkata Municipal Corporation Area, all municipal areas of North 24-Parg",
+          "count": 9
+        },
+        {
+          "value": "Q: What is an “Approved Project” as defined under the guidelines? A: \"Approved Project\" means the industrial project of an industry/an expansion project in the manufacturing of tex",
+          "count": 6
+        },
+        {
+          "value": "Q: Which Department Manages This Scheme? A: This scheme is managed by the Department of Labour, Employment, Training & Skill Development, Govt. of Jharkhand. Q: Is This Scheme Stat",
+          "count": 5
+        },
+        {
+          "value": "Q: Which Department of the NCT of Delhi administers this scheme? A: This scheme is administered by the Labour Department, of the National Capital Territory of Delhi. Q: Where can I",
+          "count": 4
+        },
+        {
+          "value": "Q: How much employment must be provided to residents of Puducherry for a unit to be eligible for incentives/subsidies/assistance? A: At least 60% of employment must be provided to ",
+          "count": 3
+        }
+      ],
+      "placeholder_count": 0,
+      "html_like_values": 404
+    }
+  },
+  "exact_duplicate_rows": 0,
+  "duplicate_checks": {
+    "scheme_id": {
+      "missing_count": 0,
+      "duplicate_value_count": 0,
+      "rows_in_duplicate_groups": 0,
+      "examples": []
+    },
+    "slug": {
+      "missing_count": 0,
+      "duplicate_value_count": 0,
+      "rows_in_duplicate_groups": 0,
+      "examples": []
+    },
+    "scheme_name": {
+      "missing_count": 0,
+      "duplicate_value_count": 1,
+      "rows_in_duplicate_groups": 2,
+      "examples": [
+        {
+          "value": "freeship less than ₹1,00,000 (ug students only)",
+          "count": 2
+        }
+      ]
+    },
+    "short_title": {
+      "missing_count": 0,
+      "duplicate_value_count": 0,
+      "rows_in_duplicate_groups": 0,
+      "examples": []
+    }
+  },
+  "review_flags": [
+    "This is a structural profile only; it does not verify scheme accuracy, official URLs, current status, or licence/reuse permissions."
+  ]
+}

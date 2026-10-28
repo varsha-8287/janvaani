@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://janvaani.example/schemas/scheme-record.schema.json",
+  "title": "Janvaani Scheme Record",
+  "type": "object",
+  "required": [
+    "slug",
+    "title",
+    "government_level",
+    "applicability",
+    "language",
+    "source_records",
+    "record_status"
+  ],
+  "properties": {
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "namespace",
+          "value"
+        ],
+        "properties": {
+          "namespace": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "official_title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "administering_authority": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "government_level": {
+      "enum": [
+        "central",
+        "state",
+        "union_territory",
+        "local",
+        "other"
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "required": [
+        "india_wide",
+        "states",
+        "union_territories"
+      ],
+      "properties": {
+        "india_wide": {
+          "type": "boolean"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "union_territories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "districts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "beneficiary_groups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "amount": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "currency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "frequency": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "properties": {
+        "logic": {
+          "enum": [
+            "all",
+            "any"
+          ]
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "rule_id",
+              "profile_field",
+              "operator",
+              "explanation",
+              "source_ref"
+            ],
+            "properties": {
+              "rule_id": {
+                "type": "string"
+              },
+              "profile_field": {
+                "type": "string"
+              },
+              "operator": {
+                "enum": [
+                  "eq",
+                  "neq",
+                  "in",
+                  "not_in",
+                  "gte",
+                  "gt",
+                  "lte",
+                  "lt",
+                  "exists"
+                ]
+              },
+              "expected_value": {},
+              "explanation": {
+                "type": "string"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "source_ref": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "required_documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "condition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "application_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "step",
+          "description"
+        ],
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "application_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "valid_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "last_checked_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "source_records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_ref",
+          "url",
+          "publisher",
+          "retrieved_at",
+          "content_hash",
+          "review_status"
+        ],
+        "properties": {
+          "source_ref": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "document_title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "content_hash": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "license_or_reuse_basis": {
+            "type": "string"
+          },
+          "review_status": {
+            "enum": [
+              "pending",
+              "verified",
+              "rejected"
+            ]
+          }
+        }
+      }
+    },
+    "translations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "language_code",
+          "translation_status"
+        ],
+        "properties": {
+          "language_code": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "benefits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "eligibility_explanations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "translation_status": {
+            "enum": [
+              "not_started",
+              "machine_draft",
+              "human_review",
+              "approved"
+            ]
+          },
+          "reviewer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reviewed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "record_status": {
+      "enum": [
+        "discovered",
+        "draft",
+        "pending_review",
+        "approved",
+        "rejected",
+        "archived"
+      ]
+    },
+    "review_notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

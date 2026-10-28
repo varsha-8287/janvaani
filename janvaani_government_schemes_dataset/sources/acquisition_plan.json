@@ -1,0 +1,59 @@
+{
+  "batch_id": "BATCH-0001",
+  "status": "planned",
+  "scope": "All India discovery; start with official central source catalogues, then each state/UT's administering departments.",
+  "not_a_scheme_dataset": true,
+  "tasks": [
+    {
+      "task_id": "T001",
+      "task": "Import canonical supported language codes from the Expo app language registry",
+      "status": "done",
+      "completion_note": "Imported language codes from apps/mobile/src/screens/LanguageSelectScreen.tsx"
+    },
+    {
+      "task_id": "T002",
+      "task": "Request written myScheme bulk-data authorization or authorized export/API specification",
+      "status": "todo"
+    },
+    {
+      "task_id": "T003",
+      "task": "Review data.gov.in API/resource-specific reuse terms and select scheme-relevant resources",
+      "status": "todo"
+    },
+    {
+      "task_id": "T004",
+      "task": "Create canonical state/UT and district code mapping from official directory",
+      "status": "todo"
+    },
+    {
+      "task_id": "T005",
+      "task": "Build authorized central scheme catalogue batch",
+      "status": "todo"
+    },
+    {
+      "task_id": "T006",
+      "task": "Build state/UT catalogue batches from official portals/exports",
+      "status": "todo"
+    },
+    {
+      "task_id": "T007",
+      "task": "Populate detailed content from primary guidelines and retain provenance",
+      "status": "todo"
+    },
+    {
+      "task_id": "T008",
+      "task": "Run deduplication candidate generation and human adjudication",
+      "status": "todo"
+    },
+    {
+      "task_id": "T009",
+      "task": "Translate and human-review all supported languages",
+      "status": "todo"
+    },
+    {
+      "task_id": "T010",
+      "task": "Submit records for review; verify sources; approve release batch",
+      "status": "todo"
+    }
+  ]
+}

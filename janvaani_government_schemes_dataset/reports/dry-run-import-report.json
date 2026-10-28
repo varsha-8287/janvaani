@@ -1,0 +1,422 @@
+{
+  "generated_at_utc": "2026-10-28T16:32:30.740687+00:00",
+  "source_file": "janvaani_government_schemes_dataset\\staging\\structured.cleaned.csv",
+  "source_sha256": "23079ec28537ef8ae61aeea4f1277278172390d3059e404f92da00b29c3474df",
+  "database_connection_opened": false,
+  "rows_total": 3534,
+  "schema_valid_count": 3437,
+  "schema_invalid_count": 97,
+  "pending_provenance_review_count": 3534,
+  "eligibility_review_required_count": 3534,
+  "counts_by_level": {
+    "state": 3046,
+    "central": 488
+  },
+  "issues": {
+    "no_valid_https_reference": 92,
+    "no_reference_url": 5
+  },
+  "examples": [
+    {
+      "csv_row": 165,
+      "external_scheme_id": "644a1b4da782eb960900071b",
+      "slug": "amas-haryana",
+      "title": "Dr. Ambedkar Medical Aid Scheme (Revised – 2009)",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://haryanascbc.gov.in/dr-ambedkar-medical-aid-scheme-revised-2009"
+      ]
+    },
+    {
+      "csv_row": 171,
+      "external_scheme_id": "62a2e4078021f04b470efa89",
+      "slug": "amrut",
+      "title": "Atal Mission For Rejuvenation And Urban Transformation",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://amrut.gov.in/upload/uploadfiles/files/AMRUT%20Guidelines%20(1).pdf",
+        "http://amrut.gov.in/content/"
+      ]
+    },
+    {
+      "csv_row": 175,
+      "external_scheme_id": "65db4dea938a0b13cc947aaa",
+      "slug": "aniadws",
+      "title": "The Andaman & Nicobar Islands Allowance to Destitute Women Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://andssw1.and.nic.in/socialwelfare/",
+        "http://andssw1.and.nic.in/socialwelfare/pdf/destnotif.pdf",
+        "http://andssw1.and.nic.in/socialwelfare/pdf/allowances_form.pdf"
+      ]
+    },
+    {
+      "csv_row": 176,
+      "external_scheme_id": "65db385acd96dc5e07645098",
+      "slug": "anidas",
+      "title": "The Andaman & Nicobar Islands Disability Allowance Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://andssw1.and.nic.in/socialwelfare/pdf/DisabilityAllowance.pdf",
+        "http://andssw1.and.nic.in/socialwelfare/",
+        "http://andssw1.and.nic.in/socialwelfare/pdf/allowances_form.pdf"
+      ]
+    },
+    {
+      "csv_row": 179,
+      "external_scheme_id": "65db599f938a0b13cc948c1b",
+      "slug": "aniwps",
+      "title": "The Andaman & Nicobar Islands Widow Pension Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://andssw1.and.nic.in/socialwelfare/",
+        "http://andssw1.and.nic.in/socialwelfare/pdf/widownotif.pdf",
+        "http://andssw1.and.nic.in/socialwelfare/pdf/allowances_form.pdf"
+      ]
+    },
+    {
+      "csv_row": 224,
+      "external_scheme_id": "64d078fb953fce59784421a3",
+      "slug": "as-fadw",
+      "title": "Abhayakiranam Scheme-Financial Assistance To Destitute Widows",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://swd.kerala.gov.in/scheme-info.php?scheme_id=MTI1c1Y4dXFSI3Z5",
+        "http://swd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/13927.pdf",
+        "http://swd.kerala.gov.in/DOCUMENTS/Order_new/GOs/13928.pdf"
+      ]
+    },
+    {
+      "csv_row": 443,
+      "external_scheme_id": "62f626bef16ba41eabac77f1",
+      "slug": "cccsaw",
+      "title": "Credit Card Scheme For Artisans And Weavers Of Handicrafts And Handloom Sector",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://jkindustriescommerce.nic.in/Orders%202020/155%20IND%20OF%202020.pdf"
+      ]
+    },
+    {
+      "csv_row": 512,
+      "external_scheme_id": "641bc580d88401653151a051",
+      "slug": "cmchis",
+      "title": "Chief Minister's Comprehensive Health Insurance Scheme",
+      "issues": [
+        "no_reference_url"
+      ],
+      "reference_urls_found": []
+    },
+    {
+      "csv_row": 519,
+      "external_scheme_id": "65d83237938a0b13cc8eaa67",
+      "slug": "cmegp",
+      "title": "CHIEF MINISTER EMPLOYMENT GENERATION PROGRAMME (CMEGP)",
+      "issues": [
+        "no_reference_url"
+      ],
+      "reference_urls_found": []
+    },
+    {
+      "csv_row": 523,
+      "external_scheme_id": "646715bf527a0d6debceaa85",
+      "slug": "cmfds",
+      "title": "Chief Minister’s Free Diagnostic Services",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://cmfreelabservicesassam.com/"
+      ]
+    },
+    {
+      "csv_row": 605,
+      "external_scheme_id": "654778f9ae050a9d8fc8e5e6",
+      "slug": "cvy-citus",
+      "title": "Coir Vikas Yojana- Coir Industry Technology Upgradation Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://coirboard.gov.in/?page_id=221",
+        "http://coirboard.gov.in/wp-content/uploads/2018/12/CITUS.pdf",
+        "http://coirboard.gov.in/wp-content/uploads/2018/03/coir-final.pdf"
+      ]
+    },
+    {
+      "csv_row": 606,
+      "external_scheme_id": "6547b568ae050a9d8fc90fb7",
+      "slug": "cvy-emps",
+      "title": "Coir Vikas Yojana- Export Market Promotion Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://coirboard.gov.in/wp-content/uploads/2018/03/emp.pdf",
+        "http://coirboard.gov.in/?page_id=221"
+      ]
+    },
+    {
+      "csv_row": 620,
+      "external_scheme_id": "64423b12b0d40451db212573",
+      "slug": "dak",
+      "title": "Delhi Arogya Kosh",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://health.delhigovt.nic.in/wps/wcm/connect/doit_health/Health/Home/Directorate+General+of+Health+Services/Delhi+Arogya+Kosh",
+        "http://health.delhigovt.nic.in/wps/wcm/connect/083fff004d3a3c1181a5f5d1e963ea50/DAJSAl.pdf?MOD=AJPERES&lmod=95301809&CACHEID=083fff004d3a3c1181a5f5d1e963ea50",
+        "http://health.delhigovt.nic.in/wps/wcm/connect/05fce300463cb0f6b136f79f4cfcc4fd/LE.pdf?MOD=AJPERES&lmod=1841210420&CACHEID=05fce300463cb0f6b136f79f4cfcc4fd"
+      ]
+    },
+    {
+      "csv_row": 650,
+      "external_scheme_id": "644647c4ffb3f2cde2689091",
+      "slug": "dbrasa",
+      "title": "Dr. B. R. Ambedkar State Award To SC/ST/OBC/Minorities Students",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://scstwelfare.delhigovt.nic.in/wps/wcm/connect/6178ef804898ce98816ef707b564309c/guidelines202223.pdf?MOD=AJPERES&lmod=2036318689&CACHEID=6178ef804898ce98816ef707b564309c"
+      ]
+    },
+    {
+      "csv_row": 691,
+      "external_scheme_id": "64be6459481f59106a77cbd5",
+      "slug": "des-sdspdpgc",
+      "title": "Distance Education Scholarship–Scholarship For Disabled Students Pursuing Degree, PG Courses",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTE2c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/12528.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/12527.pdf"
+      ]
+    },
+    {
+      "csv_row": 706,
+      "external_scheme_id": "64114826d58cf01bf7d0ac0d",
+      "slug": "dk",
+      "title": "Dulari Kanya",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://health.arunachal.gov.in/wp-content/uploads/2018/08/Dulari-Kanya.pdf"
+      ]
+    },
+    {
+      "csv_row": 755,
+      "external_scheme_id": "64c24361481f59106a79c4f8",
+      "slug": "drfdamt",
+      "title": "Distress Relief Fund For The Differently Abled (Medical Treatment)",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=NzRzVjh1cVIjdnk=",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/11544.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/Internal%20Orders/15707.pdf"
+      ]
+    },
+    {
+      "csv_row": 794,
+      "external_scheme_id": "64c37044481f59106a7a2d2a",
+      "slug": "eacp",
+      "title": "Educational Assistance To Children Of Prisoners",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTAxc1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/12323.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/12330.pdf"
+      ]
+    },
+    {
+      "csv_row": 795,
+      "external_scheme_id": "64c38c27481f59106a7a371a",
+      "slug": "eacpppc",
+      "title": "Educational Assistance To Children Of Prisoners (Pursuing Professional Course)",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTM5c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/22125.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/22126.pdf"
+      ]
+    },
+    {
+      "csv_row": 798,
+      "external_scheme_id": "64c74b84481f59106a7b801f",
+      "slug": "eacvc",
+      "title": "Educational Assistance For Children Of Victims Of Crime",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTU3c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/30719.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/30693.pdf"
+      ]
+    },
+    {
+      "csv_row": 800,
+      "external_scheme_id": "656dbe4df2dded0c80944ec9",
+      "slug": "eacwhf-kerala",
+      "title": "Educational Assistance to Children of Women Headed Families",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=IDg0c1Y4dXFSI3Z5#",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/12014.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/12013.pdf"
+      ]
+    },
+    {
+      "csv_row": 908,
+      "external_scheme_id": "64df14dcd74267d9a4f8cd73",
+      "slug": "fadsp1012e",
+      "title": "Financial Assistance To Disabled Students Pursuing (10th, 11th, 12th Equivalent Exams)",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTE3c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/24910.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/24907.pdf"
+      ]
+    },
+    {
+      "csv_row": 909,
+      "external_scheme_id": "64c78de3b594314dec85adf3",
+      "slug": "fae-c",
+      "title": "Financial Assistance To Ex-Convicts",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTQwc1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/22166.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/22167.pdf"
+      ]
+    },
+    {
+      "csv_row": 912,
+      "external_scheme_id": "66f6b431c50f851fc661b374",
+      "slug": "faecb",
+      "title": "Financial Assistance for Education of Children of Beneficiary",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://manipurbcwb.in/files/2023/notification/2023-09-04%20020816.pdf",
+        "http://manipurbcwb.in/"
+      ]
+    },
+    {
+      "csv_row": 929,
+      "external_scheme_id": "644664963650ad1ea50e3403",
+      "slug": "fafps",
+      "title": "Financial Assistance For Purchase Of Stationery To SC/ST/OBC/Minorities Students",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://scstwelfare.delhigovt.nic.in/wps/wcm/connect/doit_welfare/Welfare/Home/Citizen+Charter"
+      ]
+    },
+    {
+      "csv_row": 939,
+      "external_scheme_id": "64d1b9f2953fce5978447ca4",
+      "slug": "faimcescstc",
+      "title": "Financial Assistance To Inter-Caste Married Couples (Except SC/ST Category)",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTI0c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/12995.pdf",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Order_new/GOs/37212.pdf"
+      ]
+    },
+    {
+      "csv_row": 971,
+      "external_scheme_id": "64bbbec2481f59106a76db7c",
+      "slug": "faphfts",
+      "title": "Financial Aid For Providing Hostel Facility To Transgender Students",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=MTQ4c1Y4dXFSI3Z5",
+        "http://sjd.kerala.gov.in/DOCUMENTS/Downloadables/Application%20Forms/27306.pdf"
+      ]
+    },
+    {
+      "csv_row": 1035,
+      "external_scheme_id": "64c0e9abb594314dec831b9a",
+      "slug": "favia",
+      "title": "Financial Assistance To Visually Impaired Advocates",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://sjd.kerala.gov.in/scheme-info.php?scheme_id=NzVzVjh1cVIjdnk=#"
+      ]
+    },
+    {
+      "csv_row": 1317,
+      "external_scheme_id": "64421bbb6d197502adc177d5",
+      "slug": "hesdgs",
+      "title": "Higher Education And Skill Development Guarantee Scheme",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://web.delhi.gov.in/wps/wcm/connect/6c696c00497228e69f26bff3f26be34f/HE%26SDGS++Final+Amended+Approved+Scheme_final.pdf?MOD=AJPERES&lmod=-1079783884&CACHEID=6c696c00497228e69f26bff3f26be34f&HIGHER%20EDUCATION%20AND%20SKILL%20DEVELOPMENT%20GUARANTEE%20SCHEME%20FOR%20PURSUING%20HIGHER%20EDUCATION%20IN%20DELHI",
+        "http://web.delhi.gov.in/wps/wcm/connect/doit_he/Higher+Education/Home/Schemes+under+Higher+Education%2C+GNCT+of+Delhi/HIGHER+EDUCATION+AND+SKILL+DEVELOPMENT+GUARANTEE+SCHEME+FOR+PURSUING+HIGHER+EDUCATION+IN+DELHI",
+        "http://web.delhi.gov.in/wps/wcm/connect/25f7fb804a1afa968082b122821fb040/List+of+Approved+Banks+for+Education+Loan-6.pdf?MOD=AJPERES&lmod=283045766&CACHEID=25f7fb804a1afa968082b122821fb040"
+      ]
+    },
+    {
+      "csv_row": 1343,
+      "external_scheme_id": "6659c30002cfbde316551a09",
+      "slug": "hppky",
+      "title": "Himachal Pradesh Patrakar Kalyan Yojana",
+      "issues": [
+        "no_valid_https_reference"
+      ],
+      "reference_urls_found": [
+        "http://www.himachalpr.gov.in/index.aspx?Data=111&AspxAutoDetectCookieSupport=1#:~:text=25%2C000%2F%2D%20(Rupees%20Twenty%20five,certificate%2C%20illness%20or%20accident%20etc"
+      ]
+    }
+  ],
+  "limitations": [
+    "No database connection or writes were performed.",
+    "Schema validation does not verify factual accuracy or reuse permissions.",
+    "The validation timestamp is generated only to exercise the Pydantic contract; it is NOT evidence of when the official source was retrieved.",
+    "Eligibility text is deliberately not converted into approved structured rules.",
+    "External CSV scheme IDs, state, category, tags, FAQs and beneficiaries are not persisted by the current ingestion contract.",
+    "A valid HTTPS URL does not establish that the source is official or that its contents are licensed for reuse."
+  ],
+  "ready_for_real_import_count": 0
+}

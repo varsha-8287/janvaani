@@ -1,0 +1,73 @@
+[
+  {
+    "source_id": "SRC-MYSCHEME-DISCOVERY",
+    "name": "myScheme",
+    "url": "https://www.myscheme.gov.in/",
+    "type": "discovery_reference",
+    "reuse_status": "restricted_pending_authorization",
+    "allowed_use": "Manual discovery and link-out/reference subject to current terms; no automated scraping or copying without express written authorization.",
+    "notes": "Obtain written authorization or an expressly permitted export/API before bulk ingestion."
+  },
+  {
+    "source_id": "SRC-INDIAGOV-SCHEMES",
+    "name": "National Portal of India - Government Schemes",
+    "url": "https://www.india.gov.in/my-government/schemes",
+    "type": "official_discovery_portal",
+    "reuse_status": "review_terms_per_resource",
+    "allowed_use": "Discover scheme categories and official administering authorities; follow links to primary source for detailed claims.",
+    "notes": "Portal indicates its schemes data is sourced from myScheme; do not treat it as a separate license to bulk-copy that data."
+  },
+  {
+    "source_id": "SRC-DATAGOVIN",
+    "name": "Open Government Data Platform India",
+    "url": "https://data.gov.in/",
+    "type": "open_data_catalogue",
+    "reuse_status": "resource_specific_license_check",
+    "allowed_use": "Use published datasets/APIs only after checking each resource's terms/license and provenance.",
+    "notes": "Record resource ID, publisher, license, access date and API/export method for every imported dataset."
+  },
+  {
+    "source_id": "SRC-LGD",
+    "name": "Local Government Directory",
+    "url": "https://lgdirectory.gov.in/",
+    "type": "government_reference",
+    "reuse_status": "resource_specific_license_check",
+    "allowed_use": "Canonical state/UT/district/locality identifiers if reuse terms permit.",
+    "notes": "Use stable codes for geographic deduplication and applicability."
+  },
+  {
+    "source_id": "SRC-PIB",
+    "name": "Press Information Bureau",
+    "url": "https://pib.gov.in/",
+    "type": "official_announcements",
+    "reuse_status": "verify_specific_content_terms",
+    "allowed_use": "Discover launches, changes, extensions and announcements; verify policy details against administering ministry guidelines.",
+    "notes": "Press releases alone should not be the sole source for detailed eligibility when scheme guidelines exist."
+  },
+  {
+    "source_id": "SRC-DGOV-PMKISAN-BENEFICIARIES",
+    "name": "PM-KISAN Scheme - beneficiary data catalogue",
+    "url": "https://ap.data.gov.in/catalog/pm-kisan-scheme",
+    "type": "official_open_data_catalogue",
+    "publisher": "Ministry of Agriculture and Farmers Welfare, Department of Agriculture and Farmers Welfare",
+    "reuse_status": "license_check_pending",
+    "allowed_use": "Candidate for supporting aggregate beneficiary statistics only, after resource-level license, attribution, access terms and data fields are checked.",
+    "acquisition_method": "data.gov.in_resource",
+    "intended_use": "Supporting statistics and scheme discovery; not a source for individual eligibility decisions.",
+    "scheme_detail_source_required": true,
+    "notes": "Inspect individual resources in the catalogue. Do not treat beneficiary counts as full scheme eligibility, benefits, documents or application instructions."
+  },
+  {
+    "source_id": "SRC-DGOV-NSAP-BENEFICIARIES",
+    "name": "National Social Assistance Programme - beneficiary abstracts",
+    "url": "https://data.gov.in/catalog/national-social-assistance-programmensap-beneficiaries-abstract",
+    "type": "official_open_data_catalogue",
+    "publisher": "Ministry of Rural Development, Department of Rural Development",
+    "reuse_status": "license_check_pending",
+    "allowed_use": "Candidate for supporting aggregate pension beneficiary statistics only, after resource-level license, attribution, access terms and data fields are checked.",
+    "acquisition_method": "data.gov.in_resource",
+    "intended_use": "Supporting statistics and scheme discovery; not a source for individual eligibility decisions.",
+    "scheme_detail_source_required": true,
+    "notes": "Catalogue includes pension-scheme beneficiary abstracts. Verify the exact resource, reporting period and geographic coverage before use."
+  }
+]

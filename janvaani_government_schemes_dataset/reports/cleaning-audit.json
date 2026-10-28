@@ -1,0 +1,33 @@
+{
+  "original_rows": 3534,
+  "cleaned_rows": 3534,
+  "nonempty_values_changed_to_empty_count": 4,
+  "changed_to_empty_examples": [
+    {
+      "csv_row": 2215,
+      "scheme_id": "63b7f2f772ddfd539b3f81c9",
+      "column": "benefits",
+      "original_excerpt": "<br>"
+    },
+    {
+      "csv_row": 2216,
+      "scheme_id": "6421ad1bdb63e235af50f97f",
+      "column": "documents",
+      "original_excerpt": "<br>"
+    },
+    {
+      "csv_row": 2447,
+      "scheme_id": "62a1a38e07ac3b4e623091b1",
+      "column": "documents",
+      "original_excerpt": "<br>"
+    },
+    {
+      "csv_row": 3256,
+      "scheme_id": "667e9c8fffe2e26487dbe419",
+      "column": "documents",
+      "original_excerpt": "<br>"
+    }
+  ],
+  "html_link_examples": [],
+  "note": "Audit only. Neither CSV was modified."
+}

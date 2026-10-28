@@ -1,0 +1,31 @@
+{
+  "slug": "example-scheme-draft-do-not-publish",
+  "title": "Example scheme record — NOT REAL DATA",
+  "official_title": null,
+  "administering_authority": null,
+  "government_level": "central",
+  "applicability": {
+    "india_wide": true,
+    "states": [],
+    "union_territories": [],
+    "districts": []
+  },
+  "category": [],
+  "beneficiary_groups": [],
+  "summary": null,
+  "benefits": [],
+  "eligibility": {
+    "logic": "all",
+    "rules": []
+  },
+  "required_documents": [],
+  "application_steps": [],
+  "application_url": null,
+  "valid_from": null,
+  "valid_until": null,
+  "last_checked_at": null,
+  "source_records": [],
+  "translations": [],
+  "record_status": "discovered",
+  "review_notes": "Illustrative schema example only. Not a real scheme. Must not be ingested or published."
+}

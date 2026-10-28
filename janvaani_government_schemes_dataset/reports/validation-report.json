@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-10-28T15:48:04.450641+00:00",
+  "schema_file": "janvaani_government_schemes_dataset\\schemas\\scheme-record.schema.json",
+  "input_path": "janvaani_government_schemes_dataset\\templates\\example-record-NOT-REAL.json",
+  "files_checked": 1,
+  "schema_valid_count": 0,
+  "files_with_release_blockers": 1,
+  "database_modified": false,
+  "records_approved": 0,
+  "results": [
+    {
+      "file": "janvaani_government_schemes_dataset\\templates\\example-record-NOT-REAL.json",
+      "input_sha256": "3ac8cf7ca3a0fc95c59a109932912e6e74b7181d0b6803c5417721b9ad5f0e0f",
+      "valid_against_schema": false,
+      "release_blockers": [
+        "At least one source record is required."
+      ],
+      "schema_errors": [
+        {
+          "path": "/",
+          "message": "'language' is a required property"
+        },
+        {
+          "path": "/source_records",
+          "message": "[] should be non-empty"
+        }
+      ]
+    }
+  ]
+}

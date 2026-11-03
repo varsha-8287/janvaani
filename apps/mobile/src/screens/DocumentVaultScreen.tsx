@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -123,6 +123,30 @@ export default function DocumentVaultScreen({ onBack }: Props) {
   // Editable fields for citizen review
   const [editableFields, setEditableFields] = useState<Record<string, string>>({});
 
+  // Recover pending camera results if Xiaomi camera boost terminated the app
+  useEffect(() => {
+    const checkPending = async () => {
+      try {
+        const pending: any = await ImagePicker.getPendingResultAsync();
+        if (pending && !pending.canceled && pending.assets && pending.assets[0]) {
+          const b64 = await readAssetBase64(pending.assets[0]);
+          if (b64) {
+            setCropRotation(0);
+            setPendingCropAsset({
+              uri: pending.assets[0].uri,
+              b64,
+              mime: pending.assets[0].mimeType || 'image/jpeg',
+              docType: targetUploadType,
+            });
+          }
+        }
+      } catch (e) {
+        // No pending camera result
+      }
+    };
+    checkPending();
+  }, []);
+
   const openUploadPicker = (type = 'income_certificate') => {
     setTargetUploadType(type);
     setPickerModalVisible(true);
@@ -174,33 +198,48 @@ export default function DocumentVaultScreen({ onBack }: Props) {
     }
   };
 
+  // Stable refs for PanResponder gestures to guarantee smooth 1:1 movement without erratic jumping
+  const cropBoxRef = useRef(cropBox);
+  cropBoxRef.current = cropBox;
+  const startDragBoxRef = useRef({ x: 24, y: 50, w: 290, h: 220 });
+
   const dragPanResponder = useMemo(
     () =>
       PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onMoveShouldSetPanResponder: () => true,
+        onPanResponderGrant: () => {
+          startDragBoxRef.current = { ...cropBoxRef.current };
+        },
         onPanResponderMove: (_, gestureState) => {
-          setCropBox((prev) => {
-            const newX = Math.max(0, Math.min(previewSize.width - prev.w, prev.x + gestureState.dx));
-            const newY = Math.max(0, Math.min(previewSize.height - prev.h, prev.y + gestureState.dy));
-            return { ...prev, x: newX, y: newY };
-          });
+          const start = startDragBoxRef.current;
+          const maxLeft = Math.max(0, previewSize.width - start.w);
+          const maxTop = Math.max(0, previewSize.height - start.h);
+          const newX = Math.max(0, Math.min(maxLeft, start.x + gestureState.dx));
+          const newY = Math.max(0, Math.min(maxTop, start.y + gestureState.dy));
+          setCropBox((prev) => ({ ...prev, x: Math.round(newX), y: Math.round(newY) }));
         },
       }),
     [previewSize]
   );
+
+  const startResizeBoxRef = useRef({ x: 24, y: 50, w: 290, h: 220 });
 
   const resizePanResponder = useMemo(
     () =>
       PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onMoveShouldSetPanResponder: () => true,
+        onPanResponderGrant: () => {
+          startResizeBoxRef.current = { ...cropBoxRef.current };
+        },
         onPanResponderMove: (_, gestureState) => {
-          setCropBox((prev) => {
-            const newW = Math.max(90, Math.min(previewSize.width - prev.x, prev.w + gestureState.dx));
-            const newH = Math.max(70, Math.min(previewSize.height - prev.y, prev.h + gestureState.dy));
-            return { ...prev, w: newW, h: newH };
-          });
+          const start = startResizeBoxRef.current;
+          const maxW = Math.max(80, previewSize.width - start.x);
+          const maxH = Math.max(60, previewSize.height - start.y);
+          const newW = Math.max(80, Math.min(maxW, start.w + gestureState.dx));
+          const newH = Math.max(60, Math.min(maxH, start.h + gestureState.dy));
+          setCropBox((prev) => ({ ...prev, w: Math.round(newW), h: Math.round(newH) }));
         },
       }),
     [previewSize]
@@ -244,59 +283,56 @@ export default function DocumentVaultScreen({ onBack }: Props) {
   const handlePickFromCamera = async () => {
     try {
       if (Platform.OS === 'android') {
-        const perm = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
-        if (perm !== PermissionsAndroid.RESULTS.GRANTED) {
-          Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
-          return;
-        }
-      }
-
-      // Try camera launch; on Android release builds with cropper issues, seamlessly fallback to system media picker
-      try {
-        const res = await ImagePicker.launchCameraAsync({
-          base64: true,
-          quality: 0.5,
-          allowsEditing: false,
-        });
-
-        if (!res.canceled && res.assets && res.assets[0]) {
-          setPickerModalVisible(false);
-          const b64 = await readAssetBase64(res.assets[0]);
-          if (b64) {
-            setCropRotation(0);
-            setPendingCropAsset({
-              uri: res.assets[0].uri,
-              b64,
-              mime: res.assets[0].mimeType || 'image/jpeg',
-              docType: targetUploadType,
-            });
+        try {
+          const { status } = await ImagePicker.requestCameraPermissionsAsync();
+          if (status !== 'granted') {
+            const perm = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
+            if (perm !== PermissionsAndroid.RESULTS.GRANTED) {
+              Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
+              return;
+            }
           }
-          return;
-        }
-        if (res.canceled) return;
-      } catch (nativeErr: any) {
-        console.warn('Native camera cropper error, falling back to system picker:', nativeErr);
-        // Fallback directly to crash-free DocumentPicker
-        const docRes = await DocumentPicker.getDocumentAsync({
-          type: ['image/*'],
-          copyToCacheDirectory: true,
-        });
-        if (!docRes.canceled && docRes.assets && docRes.assets[0]) {
-          setPickerModalVisible(false);
-          const b64 = await readAssetBase64(docRes.assets[0]);
-          if (b64) {
-            setCropRotation(0);
-            setPendingCropAsset({
-              uri: docRes.assets[0].uri,
-              b64,
-              mime: docRes.assets[0].mimeType || 'image/jpeg',
-              docType: targetUploadType,
-            });
+        } catch {
+          const perm = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
+          if (perm !== PermissionsAndroid.RESULTS.GRANTED) {
+            Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
+            return;
           }
         }
       }
+
+      const res = await ImagePicker.launchCameraAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: false,
+        quality: 0.6,
+        base64: true,
+      });
+
+      if (!res.canceled && res.assets && res.assets[0]) {
+        setPickerModalVisible(false);
+        const b64 = await readAssetBase64(res.assets[0]);
+        if (b64) {
+          setCropRotation(0);
+          setPendingCropAsset({
+            uri: res.assets[0].uri,
+            b64,
+            mime: res.assets[0].mimeType || 'image/jpeg',
+            docType: targetUploadType,
+          });
+        }
+        return;
+      }
+      if (res.canceled) return;
     } catch (err: any) {
-      Alert.alert(t('cameraError') || 'Camera Error', err?.message || 'Could not launch camera');
+      console.warn('Camera launch failed:', err);
+      Alert.alert(
+        t('cameraError') || 'Camera Error',
+        'Could not open camera on this device. Would you like to select a photo from your gallery instead?',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Open Gallery', onPress: () => handlePickFromGallery() },
+        ]
+      );
     }
   };
 

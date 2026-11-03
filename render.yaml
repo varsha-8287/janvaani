@@ -23,6 +23,8 @@ services:
         value: 7f7a16dbb2564131bee470d969899203
       - key: BHASHINI_ULCA_API_KEY
         value: 378f6c24b8-ea4e-4c3c-98b7-23bdb2e96e8c
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
 
 databases:
   - name: janvaani-db

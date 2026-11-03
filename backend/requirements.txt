@@ -10,3 +10,8 @@ httpx
 google-genai
 firebase-admin
 requests
+av
+soundfile
+numpy
+pillow
+pypdf

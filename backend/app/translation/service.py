@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import base64
 """Translation Service for Janvaani.
 
@@ -6,7 +8,6 @@ with automated Gemini fallback and persistent 2-tier caching for ultra-fast,
 reliable translation of schemes, eligibility rules, and citizen interface.
 """
 
-from __future__ import annotations
 
 import json
 import logging

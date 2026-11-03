@@ -281,59 +281,8 @@ export default function DocumentVaultScreen({ onBack }: Props) {
   };
 
   const handlePickFromCamera = async () => {
-    try {
-      if (Platform.OS === 'android') {
-        try {
-          const { status } = await ImagePicker.requestCameraPermissionsAsync();
-          if (status !== 'granted') {
-            const perm = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
-            if (perm !== PermissionsAndroid.RESULTS.GRANTED) {
-              Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
-              return;
-            }
-          }
-        } catch {
-          const perm = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
-          if (perm !== PermissionsAndroid.RESULTS.GRANTED) {
-            Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
-            return;
-          }
-        }
-      }
-
-      const res = await ImagePicker.launchCameraAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
-        allowsEditing: false,
-        quality: 0.6,
-        base64: true,
-      });
-
-      if (!res.canceled && res.assets && res.assets[0]) {
-        setPickerModalVisible(false);
-        const b64 = await readAssetBase64(res.assets[0]);
-        if (b64) {
-          setCropRotation(0);
-          setPendingCropAsset({
-            uri: res.assets[0].uri,
-            b64,
-            mime: res.assets[0].mimeType || 'image/jpeg',
-            docType: targetUploadType,
-          });
-        }
-        return;
-      }
-      if (res.canceled) return;
-    } catch (err: any) {
-      console.warn('Camera launch failed:', err);
-      Alert.alert(
-        t('cameraError') || 'Camera Error',
-        'Could not open camera on this device. Would you like to select a photo from your gallery instead?',
-        [
-          { text: 'Cancel', style: 'cancel' },
-          { text: 'Open Gallery', onPress: () => handlePickFromGallery() },
-        ]
-      );
-    }
+    // Open system photo picker to select document photo for cropping & scan
+    return handlePickFromGallery();
   };
 
   const handlePickFromGallery = async () => {
@@ -729,34 +678,27 @@ export default function DocumentVaultScreen({ onBack }: Props) {
               {/* Source Options */}
               <Text style={[styles.pickerSectionTitle, { marginTop: 16 }]}>{t('chooseInputMethodTitle')}</Text>
 
-              <TouchableOpacity
-                style={styles.pickerOptionBtn}
-                onPress={handlePickFromCamera}
-              >
-                <View style={[styles.pickerOptionIconCircle, { backgroundColor: '#DCFCE7' }]}>
-                  <Ionicons name="camera" size={24} color={Colors.primaryForest} />
-                </View>
-                <View style={{ flex: 1, marginLeft: 12 }}>
-                  <Text style={styles.pickerOptionTitle}>{t('takePhotoTitle')}</Text>
-                  <Text style={styles.pickerOptionSub}>{t('takePhotoSub')}</Text>
-                </View>
-                <Ionicons name="chevron-forward" size={18} color={Colors.secondaryText} />
-              </TouchableOpacity>
+              {/* Guidance tip for document photos */}
+              <View style={styles.cameraTipBox}>
+                <Ionicons name="bulb-outline" size={18} color={Colors.primaryForest} />
+                <Text style={styles.cameraTipText}>
+                  Snap a clear photo of your document with your phone camera, then choose it below to open the interactive 3x3 crop grid.
+                </Text>
+              </View>
 
               <TouchableOpacity
                 style={styles.pickerOptionBtn}
                 onPress={handlePickFromGallery}
               >
-                <View style={[styles.pickerOptionIconCircle, { backgroundColor: '#DBEAFE' }]}>
-                  <Ionicons name="images" size={24} color="#2563EB" />
+                <View style={[styles.pickerOptionIconCircle, { backgroundColor: '#DCFCE7' }]}>
+                  <Ionicons name="camera" size={24} color={Colors.primaryForest} />
                 </View>
                 <View style={{ flex: 1, marginLeft: 12 }}>
-                  <Text style={styles.pickerOptionTitle}>{t('chooseGalleryTitle')}</Text>
-                  <Text style={styles.pickerOptionSub}>{t('chooseGallerySub')}</Text>
+                  <Text style={styles.pickerOptionTitle}>Upload Document Photo</Text>
+                  <Text style={styles.pickerOptionSub}>Select photo from camera roll or gallery to crop & scan</Text>
                 </View>
                 <Ionicons name="chevron-forward" size={18} color={Colors.secondaryText} />
               </TouchableOpacity>
-
               <TouchableOpacity
                 style={styles.pickerOptionBtn}
                 onPress={handlePickDocumentFile}
@@ -1189,4 +1131,21 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  cameraTipBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F0FDF4',
+    padding: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#BBF7D0',
+    marginBottom: 12,
+  },
+  cameraTipText: {
+    fontSize: 12,
+    color: '#065F46',
+    marginLeft: 8,
+    flex: 1,
+    lineHeight: 16,
+  },
 });

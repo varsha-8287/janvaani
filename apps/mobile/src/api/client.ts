@@ -538,6 +538,8 @@ export const JanvaaniApi = {
     document_type?: string;
     language?: string;
     preferred_provider?: string;
+    crop_box?: number[];
+    rotation_degrees?: number;
   }): Promise<DocumentExtractResult> => {
     const docType = payload.document_type || 'income_certificate';
     const lang = payload.language || 'en';
@@ -553,6 +555,8 @@ export const JanvaaniApi = {
           document_type: docType,
           language: lang,
           preferred_provider: payload.preferred_provider || null,
+          crop_box: payload.crop_box || null,
+          rotation_degrees: payload.rotation_degrees || 0,
         }),
       },
       0, // No retry on OCR upload

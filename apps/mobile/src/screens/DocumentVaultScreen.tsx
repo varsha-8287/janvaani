@@ -114,6 +114,9 @@ export default function DocumentVaultScreen({ onBack }: Props) {
   const [extractResult, setExtractResult] = useState<DocumentExtractResult | null>(null);
   const [reviewModalVisible, setReviewModalVisible] = useState<boolean>(false);
   const [extractError, setExtractError] = useState<string | null>(null);
+  const [pendingCropAsset, setPendingCropAsset] = useState<{ uri: string; b64: string; mime: string; docType: string } | null>(null);
+  const [cropPreset, setCropPreset] = useState<'card' | 'a4' | 'square' | 'full'>('card');
+  const [cropRotation, setCropRotation] = useState<number>(0);
 
   // Editable fields for citizen review
   const [editableFields, setEditableFields] = useState<Record<string, string>>({});
@@ -123,7 +126,7 @@ export default function DocumentVaultScreen({ onBack }: Props) {
     setPickerModalVisible(true);
   };
 
-  const processUploadedDocument = async (base64Data: string, mimeType: string, docType: string) => {
+  const processUploadedDocument = async (base64Data: string, mimeType: string, docType: string, cropBox?: number[], rotationDegrees?: number) => {
     const existing = vaultDocs.find((d) => d.type === docType) || {
       id: String(Date.now()),
       type: docType,
@@ -143,6 +146,8 @@ export default function DocumentVaultScreen({ onBack }: Props) {
         mime_type: mimeType,
         document_type: docType,
         language: preferredLanguage || 'en',
+        crop_box: cropBox,
+        rotation_degrees: rotationDegrees,
       });
 
       setExtractResult(result);
@@ -165,6 +170,21 @@ export default function DocumentVaultScreen({ onBack }: Props) {
     } finally {
       setExtracting(false);
     }
+  };
+
+  const handleConfirmCropAndScan = async () => {
+    if (!pendingCropAsset) return;
+    const { b64, mime, docType } = pendingCropAsset;
+    setPendingCropAsset(null);
+    let box: number[] = [0.0, 0.0, 1.0, 1.0];
+    if (cropPreset === 'card') {
+      box = [0.05, 0.18, 0.90, 0.64];
+    } else if (cropPreset === 'a4') {
+      box = [0.04, 0.04, 0.92, 0.92];
+    } else if (cropPreset === 'square') {
+      box = [0.10, 0.15, 0.80, 0.70];
+    }
+    await processUploadedDocument(b64, mime, docType, box, cropRotation);
   };
 
   const readAssetBase64 = async (asset: { uri: string; base64?: string | null }): Promise<string> => {
@@ -213,11 +233,14 @@ export default function DocumentVaultScreen({ onBack }: Props) {
         setPickerModalVisible(false);
         const b64 = await readAssetBase64(res.assets[0]);
         if (b64) {
-          await processUploadedDocument(
+          setCropRotation(0);
+          setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
+          setPendingCropAsset({
+            uri: res.assets[0].uri,
             b64,
-            res.assets[0].mimeType || 'image/jpeg',
-            targetUploadType
-          );
+            mime: res.assets[0].mimeType || 'image/jpeg',
+            docType: targetUploadType,
+          });
         }
       }
     } catch (err: any) {
@@ -246,11 +269,14 @@ export default function DocumentVaultScreen({ onBack }: Props) {
         setPickerModalVisible(false);
         const b64 = await readAssetBase64(res.assets[0]);
         if (b64) {
-          await processUploadedDocument(
+          setCropRotation(0);
+          setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
+          setPendingCropAsset({
+            uri: res.assets[0].uri,
             b64,
-            res.assets[0].mimeType || 'image/jpeg',
-            targetUploadType
-          );
+            mime: res.assets[0].mimeType || 'image/jpeg',
+            docType: targetUploadType,
+          });
         }
       }
     } catch (err: any) {
@@ -484,6 +510,125 @@ export default function DocumentVaultScreen({ onBack }: Props) {
                 </View>
               )}
             </ScrollView>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Interactive Crop & Document Framing Modal */}
+      <Modal visible={!!pendingCropAsset} animationType="fade" transparent>
+        <View style={styles.cropModalOverlay}>
+          <View style={styles.cropModalContent}>
+            <View style={styles.cropModalHeader}>
+              <View style={{ flex: 1 }}>
+                <Text style={styles.cropModalTitle}>✂️ Crop & Align Document</Text>
+                <Text style={styles.cropModalSub}>
+                  Select document framing & orientation
+                </Text>
+              </View>
+              <TouchableOpacity onPress={() => setPendingCropAsset(null)} style={styles.cropCloseBtn}>
+                <Ionicons name="close" size={22} color={Colors.primaryText} />
+              </TouchableOpacity>
+            </View>
+
+            {/* Image Preview with Framing Overlay */}
+            <View style={styles.cropPreviewContainer}>
+              {pendingCropAsset && (
+                <Image
+                  source={{ uri: pendingCropAsset.uri }}
+                  style={[
+                    styles.cropImagePreview,
+                    { transform: [{ rotate: `${cropRotation}deg` }] }
+                  ]}
+                  resizeMode="contain"
+                />
+              )}
+              {/* Overlay Frame Box */}
+              <View
+                style={[
+                  styles.cropGuideFrame,
+                  cropPreset === 'card' && styles.frameCard,
+                  cropPreset === 'a4' && styles.frameA4,
+                  cropPreset === 'square' && styles.frameSquare,
+                  cropPreset === 'full' && styles.frameFull,
+                ]}
+              >
+                <View style={[styles.cornerGuide, styles.cornerTL]} />
+                <View style={[styles.cornerGuide, styles.cornerTR]} />
+                <View style={[styles.cornerGuide, styles.cornerBL]} />
+                <View style={[styles.cornerGuide, styles.cornerBR]} />
+                <Text style={styles.frameLabel}>
+                  {cropPreset === 'card' ? '🪪 ID / Card' : cropPreset === 'a4' ? '📄 A4 Sheet' : cropPreset === 'square' ? '⏹️ Square' : '🔍 Full'}
+                </Text>
+              </View>
+            </View>
+
+            {/* Presets and Rotation Controls */}
+            <View style={styles.cropControlsSection}>
+              <Text style={styles.cropSectionLabel}>Frame Preset:</Text>
+              <View style={styles.presetButtonsRow}>
+                <TouchableOpacity
+                  style={[styles.presetBtn, cropPreset === 'card' && styles.presetBtnActive]}
+                  onPress={() => setCropPreset('card')}
+                >
+                  <Text style={[styles.presetBtnText, cropPreset === 'card' && styles.presetBtnTextActive]}>
+                    🪪 ID Card
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[styles.presetBtn, cropPreset === 'a4' && styles.presetBtnActive]}
+                  onPress={() => setCropPreset('a4')}
+                >
+                  <Text style={[styles.presetBtnText, cropPreset === 'a4' && styles.presetBtnTextActive]}>
+                    📄 Certificate
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[styles.presetBtn, cropPreset === 'square' && styles.presetBtnActive]}
+                  onPress={() => setCropPreset('square')}
+                >
+                  <Text style={[styles.presetBtnText, cropPreset === 'square' && styles.presetBtnTextActive]}>
+                    ⏹️ Square
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[styles.presetBtn, cropPreset === 'full' && styles.presetBtnActive]}
+                  onPress={() => setCropPreset('full')}
+                >
+                  <Text style={[styles.presetBtnText, cropPreset === 'full' && styles.presetBtnTextActive]}>
+                    🔍 Full
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Rotate Button */}
+              <TouchableOpacity
+                style={styles.rotateBtn}
+                onPress={() => setCropRotation((prev) => (prev + 90) % 360)}
+              >
+                <Ionicons name="refresh" size={18} color={Colors.primaryForest} />
+                <Text style={styles.rotateBtnText}>Rotate {cropRotation}°</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Confirm Crop & Scan Button */}
+            <View style={styles.cropActionsRow}>
+              <TouchableOpacity
+                style={styles.cropCancelBtn}
+                onPress={() => setPendingCropAsset(null)}
+              >
+                <Text style={styles.cropCancelBtnText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.cropConfirmBtn}
+                onPress={handleConfirmCropAndScan}
+              >
+                <Ionicons name="scan-outline" size={18} color={Colors.white} />
+                <Text style={styles.cropConfirmBtnText}>✂️ Crop & Scan</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -862,4 +1007,181 @@ const styles = StyleSheet.create({
     color: Colors.secondaryText,
     marginTop: 2,
   },
+  cropModalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.85)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+  },
+  cropModalContent: {
+    width: '100%',
+    backgroundColor: Colors.white,
+    borderRadius: 20,
+    padding: 16,
+    maxHeight: '92%',
+  },
+  cropModalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  cropModalTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.primaryText,
+  },
+  cropModalSub: {
+    fontSize: 11,
+    color: Colors.secondaryText,
+    marginTop: 2,
+  },
+  cropCloseBtn: {
+    padding: 6,
+  },
+  cropPreviewContainer: {
+    width: '100%',
+    height: 260,
+    backgroundColor: '#0F172A',
+    borderRadius: 12,
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  cropImagePreview: {
+    width: '100%',
+    height: '100%',
+  },
+  cropGuideFrame: {
+    position: 'absolute',
+    borderWidth: 2,
+    borderColor: '#22C55E',
+    borderRadius: 6,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 6,
+  },
+  frameCard: {
+    width: '88%',
+    height: '66%',
+  },
+  frameA4: {
+    width: '75%',
+    height: '92%',
+  },
+  frameSquare: {
+    width: '76%',
+    height: '76%',
+  },
+  frameFull: {
+    width: '96%',
+    height: '96%',
+  },
+  cornerGuide: {
+    position: 'absolute',
+    width: 14,
+    height: 14,
+    borderColor: '#4ADE80',
+  },
+  cornerTL: { top: -2, left: -2, borderTopWidth: 3, borderLeftWidth: 3 },
+  cornerTR: { top: -2, right: -2, borderTopWidth: 3, borderRightWidth: 3 },
+  cornerBL: { bottom: -2, left: -2, borderBottomWidth: 3, borderLeftWidth: 3 },
+  cornerBR: { bottom: -2, right: -2, borderBottomWidth: 3, borderRightWidth: 3 },
+  frameLabel: {
+    color: '#22C55E',
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 4,
+    fontSize: 11,
+    fontWeight: 'bold',
+  },
+  cropControlsSection: {
+    marginTop: 12,
+  },
+  cropSectionLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: Colors.primaryText,
+    marginBottom: 6,
+  },
+  presetButtonsRow: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  presetBtn: {
+    flex: 1,
+    paddingVertical: 8,
+    borderRadius: 8,
+    backgroundColor: Colors.softCream,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  presetBtnActive: {
+    backgroundColor: '#F0FDF4',
+    borderColor: Colors.primaryForest,
+  },
+  presetBtnText: {
+    fontSize: 11,
+    color: Colors.secondaryText,
+    fontWeight: '500',
+  },
+  presetBtnTextActive: {
+    color: Colors.primaryForest,
+    fontWeight: 'bold',
+  },
+  rotateBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 8,
+    borderRadius: 8,
+    backgroundColor: '#F8FAFC',
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    marginTop: 8,
+  },
+  rotateBtnText: {
+    fontSize: 12,
+    color: Colors.primaryForest,
+    fontWeight: '600',
+  },
+  cropActionsRow: {
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: 14,
+  },
+  cropCancelBtn: {
+    flex: 1,
+    backgroundColor: '#F1F5F9',
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  cropCancelBtnText: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    color: Colors.secondaryText,
+  },
+  cropConfirmBtn: {
+    flex: 2,
+    flexDirection: 'row',
+    gap: 6,
+    backgroundColor: Colors.primaryForest,
+    paddingVertical: 12,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cropConfirmBtnText: {
+    fontSize: 13,
+    fontWeight: 'bold',
+    color: Colors.white,
+  },
+
 });

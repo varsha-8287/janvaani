@@ -5,6 +5,7 @@ services:
     dockerfilePath: Dockerfile
     plan: free
     region: singapore
+    autoDeploy: true
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -19,11 +20,9 @@ services:
       - key: BHASHINI_TIMEOUT_SECONDS
         value: "8"
       - key: BHASHINI_USER_ID
-        sync: false
+        value: 7f7a16dbb2564131bee470d969899203
       - key: BHASHINI_ULCA_API_KEY
-        sync: false
-      - key: GEMINI_API_KEY
-        sync: false
+        value: 378f6c24b8-ea4e-4c3c-98b7-23bdb2e96e8c
 
 databases:
   - name: janvaani-db

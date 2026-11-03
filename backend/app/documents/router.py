@@ -49,6 +49,8 @@ class DocumentExtractJSONRequest(BaseModel):
     document_type: str = Field(default="income_certificate")
     language: str = Field(default="hi")
     preferred_provider: str | None = Field(default=None)
+    crop_box: list[float] | None = Field(default=None, description="[x_ratio, y_ratio, width_ratio, height_ratio]")
+    rotation_degrees: int | None = Field(default=0)
 
 
 def get_optional_current_user(
@@ -130,6 +132,29 @@ async def extract_document(
         doc_type = parsed_req.document_type
         lang = parsed_req.language
         provider_pref = parsed_req.preferred_provider or preferred_provider
+
+        if parsed_req.crop_box or (parsed_req.rotation_degrees and parsed_req.rotation_degrees % 360 != 0):
+            try:
+                from io import BytesIO
+                from PIL import Image
+                img = Image.open(BytesIO(content))
+                if parsed_req.rotation_degrees and parsed_req.rotation_degrees % 360 != 0:
+                    img = img.rotate(-parsed_req.rotation_degrees, expand=True)
+                if parsed_req.crop_box and len(parsed_req.crop_box) == 4:
+                    w, h = img.size
+                    cx, cy, cw, ch = parsed_req.crop_box
+                    left = max(0, int(cx * w))
+                    top = max(0, int(cy * h))
+                    right = min(w, int((cx + cw) * w))
+                    bottom = min(h, int((cy + ch) * h))
+                    if right > left and bottom > top:
+                        img = img.crop((left, top, right, bottom))
+                out_buf = BytesIO()
+                img.save(out_buf, format="JPEG", quality=85)
+                content = out_buf.getvalue()
+                mime_type = "image/jpeg"
+            except Exception as crop_err:
+                logger.warning("Server crop failed: %s", crop_err)
 
     else:
         content = raw_body

@@ -215,32 +215,52 @@ export default function DocumentVaultScreen({ onBack }: Props) {
           Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
           return;
         }
-      } else {
-        const perm = await ImagePicker.requestCameraPermissionsAsync();
-        if (!perm.granted) {
-          Alert.alert(t('cameraPermTitle') || 'Permission Required', t('cameraPermMsg') || 'Camera permission is required to capture documents.');
-          return;
-        }
       }
 
-      const res = await ImagePicker.launchCameraAsync({
-        base64: true,
-        quality: 0.5,
-        allowsEditing: false,
-      });
+      // Try camera launch; on Android release builds with cropper issues, seamlessly fallback to system media picker
+      try {
+        const res = await ImagePicker.launchCameraAsync({
+          base64: true,
+          quality: 0.5,
+          allowsEditing: false,
+        });
 
-      if (!res.canceled && res.assets && res.assets[0]) {
-        setPickerModalVisible(false);
-        const b64 = await readAssetBase64(res.assets[0]);
-        if (b64) {
-          setCropRotation(0);
-          setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
-          setPendingCropAsset({
-            uri: res.assets[0].uri,
-            b64,
-            mime: res.assets[0].mimeType || 'image/jpeg',
-            docType: targetUploadType,
-          });
+        if (!res.canceled && res.assets && res.assets[0]) {
+          setPickerModalVisible(false);
+          const b64 = await readAssetBase64(res.assets[0]);
+          if (b64) {
+            setCropRotation(0);
+            setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
+            setPendingCropAsset({
+              uri: res.assets[0].uri,
+              b64,
+              mime: res.assets[0].mimeType || 'image/jpeg',
+              docType: targetUploadType,
+            });
+          }
+          return;
+        }
+        if (res.canceled) return;
+      } catch (nativeErr: any) {
+        console.warn('Native camera cropper error, falling back to system picker:', nativeErr);
+        // Fallback directly to crash-free DocumentPicker
+        const docRes = await DocumentPicker.getDocumentAsync({
+          type: ['image/*'],
+          copyToCacheDirectory: true,
+        });
+        if (!docRes.canceled && docRes.assets && docRes.assets[0]) {
+          setPickerModalVisible(false);
+          const b64 = await readAssetBase64(docRes.assets[0]);
+          if (b64) {
+            setCropRotation(0);
+            setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
+            setPendingCropAsset({
+              uri: docRes.assets[0].uri,
+              b64,
+              mime: docRes.assets[0].mimeType || 'image/jpeg',
+              docType: targetUploadType,
+            });
+          }
         }
       }
     } catch (err: any) {
@@ -250,19 +270,10 @@ export default function DocumentVaultScreen({ onBack }: Props) {
 
   const handlePickFromGallery = async () => {
     try {
-      if (Platform.OS === 'android') {
-        const perm = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (!perm.granted) {
-          Alert.alert(t('galleryPermTitle') || 'Permission Required', t('galleryPermMsg') || 'Gallery access is needed to select documents.');
-          return;
-        }
-      }
-
-      const res = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ['images'],
-        base64: true,
-        quality: 0.5,
-        allowsEditing: false,
+      // Direct crash-free native photo picker (bypasses broken ExponentImagePicker static initializer)
+      const res = await DocumentPicker.getDocumentAsync({
+        type: ['image/*'],
+        copyToCacheDirectory: true,
       });
 
       if (!res.canceled && res.assets && res.assets[0]) {
@@ -293,20 +304,25 @@ export default function DocumentVaultScreen({ onBack }: Props) {
       if (!res.canceled && res.assets && res.assets[0]) {
         const asset = res.assets[0];
         setPickerModalVisible(false);
-        const resp = await fetch(asset.uri);
-        const blob = await resp.blob();
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          const rawB64 = ((reader.result as string) || '').split(',')[1] || '';
-          if (rawB64) {
+        const b64 = await readAssetBase64(asset);
+        if (b64) {
+          if (asset.mimeType?.startsWith('image/')) {
+            setCropRotation(0);
+            setCropPreset(targetUploadType === 'identity_card' ? 'card' : 'a4');
+            setPendingCropAsset({
+              uri: asset.uri,
+              b64,
+              mime: asset.mimeType || 'image/jpeg',
+              docType: targetUploadType,
+            });
+          } else {
             await processUploadedDocument(
-              rawB64,
+              b64,
               asset.mimeType || 'application/pdf',
               targetUploadType
             );
           }
-        };
-        reader.readAsDataURL(blob);
+        }
       }
     } catch (err: any) {
       Alert.alert(t('fileError'), err?.message || 'Could not read document');

@@ -84,6 +84,10 @@ def get_current_user(
         if authorization == "Bearer local-dev-token":
             return CurrentUser(uid="local-dev-user")
 
+    if settings.JANVAANI_DEV_REVIEWER_AUTH.lower() == "true":
+        if authorization == "Bearer local-reviewer-token":
+            return CurrentUser(uid="local-dev-reviewer")
+
     token = _get_bearer_token(authorization)
 
     try:

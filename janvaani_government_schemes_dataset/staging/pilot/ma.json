@@ -1,0 +1,141 @@
+{
+  "slug": "ma",
+  "title": "Mukhyamantri Amrutum (MA / MA Vatsalya) Yojana",
+  "official_title": "Mukhyamantri Amrutum Yojana",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "6434724ebd37517394eb16f7"
+    }
+  ],
+  "administering_authority": "Health & Family Welfare Department, Government of Gujarat",
+  "government_level": "state",
+  "applicability": {
+    "india_wide": false,
+    "states": [
+      "Gujarat"
+    ],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Healthcare",
+    "Health Insurance",
+    "Catastrophic Illness Care"
+  ],
+  "beneficiary_groups": [
+    "BPL Families",
+    "Lower Income Families up to 4 Lakh",
+    "Senior Citizens (up to 6 Lakh)",
+    "ASHA Workers & Journalists"
+  ],
+  "summary": "Mukhyamantri Amrutum (MA) and MA Vatsalya provide cashless tertiary and secondary hospitalization coverage up to ₹5,00,000 per family per year to BPL families, families with annual income up to ₹4,00,000, and senior citizens in Gujarat.",
+  "benefits": [
+    {
+      "description": "Cashless secondary and tertiary hospitalization coverage up to ₹5,00,000 per family per year across empanelled hospitals for critical illnesses including cardiology, oncology, neurosurgery, burns, poly-trauma, and renal diseases.",
+      "amount": 500000,
+      "currency": "INR",
+      "frequency": "annual",
+      "conditions": [
+        "State BPL families eligible automatically",
+        "MA Vatsalya families eligible with annual income up to ₹4,00,000",
+        "Senior citizen families eligible up to ₹6,00,000 annual income"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "ma-state-residence",
+        "profile_field": "state",
+        "operator": "eq",
+        "expected_value": "Gujarat",
+        "explanation": "Beneficiary family must be resident of Gujarat.",
+        "required": true,
+        "source_ref": "nhm-gujarat-ma-details",
+        "source": {
+          "source_document_id": "nhm-gujarat-ma-details",
+          "source_url": "https://nhm.gujarat.gov.in/mukhya-mantri-amrutam.htm",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Mukhyamantri Amrutum Official Details"
+        }
+      },
+      {
+        "rule_id": "ma-income-limit",
+        "profile_field": "annual_income",
+        "operator": "lte",
+        "expected_value": 400000,
+        "explanation": "Family annual income must be up to ₹4,00,000 for MA Vatsalya (BPL families eligible automatically; senior citizen families up to ₹6,00,000).",
+        "required": true,
+        "source_ref": "nhm-gujarat-ma-details",
+        "source": {
+          "source_document_id": "nhm-gujarat-ma-details",
+          "source_url": "https://nhm.gujarat.gov.in/mukhya-mantri-amrutam.htm",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Mukhyamantri Amrutum Official Details"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Income Certificate",
+      "condition": "Issued by Mamlatdar / Taluka Development Officer certifying income under ₹4 Lakh",
+      "source_ref": "nhm-gujarat-ma-details"
+    },
+    {
+      "name": "Ration Card",
+      "condition": "Proof of residence and family member roster in Gujarat",
+      "source_ref": "nhm-gujarat-ma-details"
+    },
+    {
+      "name": "Aadhaar Card",
+      "condition": "Identity verification for all enrolling family members",
+      "source_ref": "nhm-gujarat-ma-details"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit registration kiosk at Taluka Civic Centre, District Hospital, Community Health Centre (CHC), or UTI-ITSL kiosk in Gujarat.",
+      "url": "https://nhm.gujarat.gov.in/mukhya-mantri-amrutam.htm"
+    },
+    {
+      "step": 2,
+      "description": "Submit income certificate, ration card, and family Aadhaar details.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Complete biometric capture (fingerprint and photograph) of all enrolling family members.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Receive the MA / MA Vatsalya health card with unique family identification number.",
+      "url": null
+    }
+  ],
+  "application_url": "https://nhm.gujarat.gov.in/mukhya-mantri-amrutam.htm",
+  "valid_from": "2012-09-04",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "nhm-gujarat-ma-details",
+      "url": "https://nhm.gujarat.gov.in/mukhya-mantri-amrutam.htm",
+      "publisher": "Health & Family Welfare Department, Government of Gujarat",
+      "document_title": "Mukhyamantri Amrutum (MA) Scheme Details",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "3f910ea09bbd69784112e753443a677461e1fa4c8850942d7659df5bb730cf19",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official NHM Gujarat portal. In Gujarat, MA and MA Vatsalya have been integrated with PMJAY (Pradhan Mantri Jan Arogya Yojana - MA). Higher income limit for senior citizens (₹6 Lakh) and occupational exemptions documented as engine representation gaps."
+}

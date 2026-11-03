@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-10-28T20:18:11.196729+00:00",
+  "schema_file": "janvaani_government_schemes_dataset\\schemas\\scheme-record.schema.json",
+  "input_path": "janvaani_government_schemes_dataset\\staging\\pilot",
+  "files_checked": 8,
+  "schema_valid_count": 8,
+  "files_with_release_blockers": 0,
+  "database_modified": false,
+  "records_approved": 0,
+  "results": [
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ab-pmjay.json",
+      "input_sha256": "b8554bd5135ce4e126629c775a6f5802bb8747cfbb933ca67b91a95af8a1ce87",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\apy.json",
+      "input_sha256": "682417fa3cb26395a2305b7d00cafae6735b6b273b65affe7e53d157e8a9e05c",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\dpmss.json",
+      "input_sha256": "2a2458868468709c45ca49a997214b88d44712eb02be69284796819a103d274a",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\hpms.json",
+      "input_sha256": "2756dd9634e29d5e7189a6c2d94765b6492e83f91c19c470870ddc5c9d09f4de",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ignoapstn.json",
+      "input_sha256": "6deb95e5578c8d18723e804a75b839d320974c7978725147ceea4bf1256e260d",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ksy.json",
+      "input_sha256": "db76299b46adc3efc415f6aaf7c62bf1ca8d757b9ed0df0e0adff9b937e113e3",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ma.json",
+      "input_sha256": "4b92422a3ac9b2bcc5f1ed06aa2779ab91e226c01a7123a3e22a73a466f0baf1",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    },
+    {
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\pm-kisan.json",
+      "input_sha256": "29a54ce368a001fb77b0fdfd535b40b2401031b3a9c7f6023f09c2e45707979a",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
+    }
+  ]
+}

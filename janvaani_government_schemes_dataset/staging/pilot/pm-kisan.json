@@ -1,0 +1,171 @@
+{
+  "slug": "pm-kisan",
+  "title": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+  "official_title": "Pradhan Mantri Kisan Samman Nidhi",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "62a70e86f038bd8499a6aa53"
+    }
+  ],
+  "administering_authority": "Department of Agriculture and Farmers Welfare, Ministry of Agriculture and Farmers Welfare, Government of India",
+  "government_level": "central",
+  "applicability": {
+    "india_wide": true,
+    "states": [],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Agriculture",
+    "Direct Income Support"
+  ],
+  "beneficiary_groups": [
+    "Farmers",
+    "Landholding Agricultural Households"
+  ],
+  "summary": "PM-KISAN provides income support of ₹6,000 per year to all landholding farmer families across India, payable in three equal four-monthly installments of ₹2,000 each directly into Aadhaar-seeded bank accounts through DBT.",
+  "benefits": [
+    {
+      "description": "Direct financial assistance of ₹6,000 per year paid in three equal 4-monthly installments of ₹2,000 each directly into the bank account via Direct Benefit Transfer (DBT).",
+      "amount": 6000,
+      "currency": "INR",
+      "frequency": "annual",
+      "conditions": [
+        "Must have cultivable landholding in the family name",
+        "Must complete mandatory Aadhaar e-KYC on the PM-KISAN portal",
+        "Not falling under any institutional or high-income exclusion criteria"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "pmkisan-cultivable-landholder",
+        "profile_field": "is_landholding_farmer",
+        "operator": "eq",
+        "expected_value": true,
+        "explanation": "Applicant family must possess cultivable landholding in their names.",
+        "required": true,
+        "source_ref": "pmkisan-operational-guidelines",
+        "source": {
+          "source_document_id": "pmkisan-operational-guidelines",
+          "source_url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Revised PM-KISAN Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "pmkisan-exclusion-incometax",
+        "profile_field": "is_income_tax_payer",
+        "operator": "eq",
+        "expected_value": false,
+        "explanation": "Exclusion: All persons who paid Income Tax in the last assessment year are ineligible.",
+        "required": true,
+        "source_ref": "pmkisan-operational-guidelines",
+        "source": {
+          "source_document_id": "pmkisan-operational-guidelines",
+          "source_url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Revised PM-KISAN Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "pmkisan-exclusion-institutional",
+        "profile_field": "is_institutional_landholder",
+        "operator": "eq",
+        "expected_value": false,
+        "explanation": "Exclusion: Institutional landholders are not eligible.",
+        "required": true,
+        "source_ref": "pmkisan-operational-guidelines",
+        "source": {
+          "source_document_id": "pmkisan-operational-guidelines",
+          "source_url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Revised PM-KISAN Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "pmkisan-exclusion-govt-employee",
+        "profile_field": "is_serving_or_retired_govt_employee",
+        "operator": "eq",
+        "expected_value": false,
+        "explanation": "Exclusion: Serving or retired officers and employees of central/state government departments, PSEs, and autonomous institutions (excluding MTS/Class IV staff) are ineligible.",
+        "required": true,
+        "source_ref": "pmkisan-operational-guidelines",
+        "source": {
+          "source_document_id": "pmkisan-operational-guidelines",
+          "source_url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Revised PM-KISAN Operational Guidelines"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Aadhaar Card",
+      "condition": "Mandatory for beneficiary identity verification and DBT linking",
+      "source_ref": "pmkisan-operational-guidelines"
+    },
+    {
+      "name": "Landholding Ownership Records (Khasra/Khatauni/RoR)",
+      "condition": "Proof of ownership of cultivable agricultural land",
+      "source_ref": "pmkisan-operational-guidelines"
+    },
+    {
+      "name": "Bank Account Passbook / Statement",
+      "condition": "Active savings account linked with Aadhaar and mobile number",
+      "source_ref": "pmkisan-operational-guidelines"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit the official PM-KISAN portal (https://pmkisan.gov.in) or visit nearest Common Service Centre (CSC).",
+      "url": "https://pmkisan.gov.in"
+    },
+    {
+      "step": 2,
+      "description": "Select 'New Farmer Registration' and choose Rural Farmer or Urban Farmer registration.",
+      "url": "https://pmkisan.gov.in/RegistrationFormupdated.aspx"
+    },
+    {
+      "step": 3,
+      "description": "Enter Aadhaar Number and registered mobile number, then submit the received OTP for UIDAI authentication.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Fill in land details (Survey/Khata/Khasra numbers, land area, registration ID) and upload supporting documents.",
+      "url": null
+    },
+    {
+      "step": 5,
+      "description": "Submit self-declaration regarding eligibility exclusions and finalize submission for State Nodal Officer verification.",
+      "url": null
+    }
+  ],
+  "application_url": "https://pmkisan.gov.in/RegistrationFormupdated.aspx",
+  "valid_from": "2018-12-01",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "pmkisan-operational-guidelines",
+      "url": "https://pmkisan.gov.in/Documents/RevisedPM-KISANOperationalGuidelines(English).pdf",
+      "publisher": "Department of Agriculture and Farmers Welfare, Ministry of Agriculture and Farmers Welfare, Government of India",
+      "document_title": "Revised Operational Guidelines for Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "b47372cf5a8a1c6a2e88a0b5b149b806d2c674c10c14c352a84fb8e9bf294db6",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official operational guidelines from pmkisan.gov.in. Exclusions for institutional landholders, income-tax payers, and government employees added to formal rules. Family-level multi-member exclusions documented as representation gap."
+}

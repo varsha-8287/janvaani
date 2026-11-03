@@ -58,17 +58,26 @@ def load_reviewed_scheme(
     Every rule must have verified source evidence belonging to that version.
     Returns (scheme, version, logic, rules).
     """
-    scheme_uuid = _parse_uuid(scheme_id, "scheme_id")
-
-    # unique() is required when joined eager loading a collection.
-    scheme = db.scalars(
-        select(Scheme)
-        .where(Scheme.id == scheme_uuid)
-        .options(joinedload(Scheme.versions))
-    ).unique().one_or_none()
+    scheme = None
+    try:
+        scheme_uuid = UUID(scheme_id)
+        scheme = db.scalars(
+            select(Scheme)
+            .where(Scheme.id == scheme_uuid)
+            .options(joinedload(Scheme.versions))
+        ).unique().one_or_none()
+    except (ValueError, TypeError, AttributeError):
+        pass
 
     if scheme is None:
-        raise SchemeNotFoundError("Scheme not found.")
+        scheme = db.scalars(
+            select(Scheme)
+            .where(Scheme.slug == scheme_id)
+            .options(joinedload(Scheme.versions))
+        ).unique().one_or_none()
+
+    if scheme is None:
+        raise SchemeNotFoundError(f"Scheme '{scheme_id}' not found.")
 
     if scheme.status != "published":
         raise ReviewRequiredError("Scheme is not published.")

@@ -1,0 +1,172 @@
+{
+  "slug": "ab-pmjay",
+  "title": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+  "official_title": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "62a0702feaca073ef50831fe"
+    }
+  ],
+  "administering_authority": "National Health Authority (NHA), Ministry of Health and Family Welfare, Government of India",
+  "government_level": "central",
+  "applicability": {
+    "india_wide": true,
+    "states": [],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Healthcare",
+    "Health Insurance",
+    "Social Security"
+  ],
+  "beneficiary_groups": [
+    "BPL Households",
+    "SECC Deprived Families",
+    "Vulnerable Urban Workers",
+    "Senior Citizens (70+)"
+  ],
+  "summary": "Ayushman Bharat PM-JAY provides cashless health coverage of up to ₹5,00,000 per family per year for secondary and tertiary care hospitalization to eligible rural and urban deprived families and senior citizens aged 70 and above across India.",
+  "benefits": [
+    {
+      "description": "Cashless inpatient hospitalization coverage up to ₹5,00,000 per family per year for secondary and tertiary care in empanelled public and private hospitals across India.",
+      "amount": 500000,
+      "currency": "INR",
+      "frequency": "annual",
+      "conditions": [
+        "Covers pre-existing conditions from day one",
+        "Includes 3 days pre-hospitalization and 15 days post-hospitalization costs",
+        "Pan-India portability across all empanelled hospitals"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "any",
+    "rules": [
+      {
+        "rule_id": "pmjay-rural-deprivation-entitled",
+        "profile_field": "secc_deprivation_category",
+        "operator": "in",
+        "expected_value": [
+          "d1_one_room_kucha",
+          "d2_no_adult_16_59",
+          "d3_female_headed_no_adult_male",
+          "d4_disabled_no_able_adult",
+          "d5_sc_st",
+          "d7_landless_manual_labour",
+          "destitute",
+          "manual_scavenger",
+          "primitive_tribal",
+          "bonded_labour"
+        ],
+        "explanation": "Rural families meeting at least one of the 6 SECC deprivation criteria or 4 automatic inclusion categories.",
+        "required": true,
+        "source_ref": "pmjay-official-overview",
+        "source": {
+          "source_document_id": "pmjay-official-overview",
+          "source_url": "https://www.pmjay.gov.in/about/pmjay",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Ayushman Bharat PM-JAY Official Overview"
+        }
+      },
+      {
+        "rule_id": "pmjay-urban-occupational-entitled",
+        "profile_field": "urban_occupational_category",
+        "operator": "in",
+        "expected_value": [
+          "ragpicker",
+          "beggar",
+          "domestic_worker",
+          "street_vendor",
+          "construction_worker",
+          "sweeper_sanitation",
+          "artisan_handicrafts",
+          "transport_worker",
+          "shop_worker",
+          "mechanic_electrician",
+          "washerman_chowkidar"
+        ],
+        "explanation": "Urban families belonging to one of the 11 defined occupational worker categories.",
+        "required": true,
+        "source_ref": "pmjay-official-overview",
+        "source": {
+          "source_document_id": "pmjay-official-overview",
+          "source_url": "https://www.pmjay.gov.in/about/pmjay",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Ayushman Bharat PM-JAY Official Overview"
+        }
+      },
+      {
+        "rule_id": "pmjay-senior-citizen-universal",
+        "profile_field": "age",
+        "operator": "gte",
+        "expected_value": 70,
+        "explanation": "All senior citizens aged 70 years and above are universally eligible under expanded PM-JAY.",
+        "required": true,
+        "source_ref": "pmjay-official-overview",
+        "source": {
+          "source_document_id": "pmjay-official-overview",
+          "source_url": "https://www.pmjay.gov.in/about/pmjay",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Ayushman Bharat PM-JAY Official Overview"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Aadhaar Card",
+      "condition": "Primary identity verification for individual and family members",
+      "source_ref": "pmjay-official-overview"
+    },
+    {
+      "name": "Ration Card / Family ID",
+      "condition": "Proof of family composition and SECC database linkage",
+      "source_ref": "pmjay-official-overview"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit the official NHA beneficiary portal (https://beneficiary.nha.gov.in) or visit nearest empanelled hospital / CSC.",
+      "url": "https://beneficiary.nha.gov.in"
+    },
+    {
+      "step": 2,
+      "description": "Search beneficiary records using Mobile number, Ration card number, PM-JAY ID, or Aadhaar.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Complete e-KYC using Aadhaar OTP, IRIS, or biometric fingerprint authentication.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Upon approval by the State Health Agency (SHA), download the Ayushman Card.",
+      "url": null
+    }
+  ],
+  "application_url": "https://beneficiary.nha.gov.in",
+  "valid_from": "2018-09-23",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "pmjay-official-overview",
+      "url": "https://www.pmjay.gov.in/about/pmjay",
+      "publisher": "National Health Authority, Ministry of Health and Family Welfare, Government of India",
+      "document_title": "Ayushman Bharat PM-JAY Scheme Overview",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "5cf83d29cb1ae1239aa8e385e490528b76a0d01d4a04d2e53efb1c0ea63013b2",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official NHA portal pmjay.gov.in. Logic is 'any' representing three alternative eligibility routes: rural SECC deprivation, urban occupational classification, and universal inclusion for senior citizens aged 70+. Database verification gap documented."
+}

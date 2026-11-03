@@ -1,0 +1,217 @@
+{
+  "slug": "hpms",
+  "title": "Haryana Post Matric Scholarship for Minorities",
+  "official_title": "Post Matric Scholarship Scheme for Minorities (Haryana)",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "6786aa1c4bf34a9c20858c9a"
+    }
+  ],
+  "administering_authority": "Department of Social Justice and Empowerment / Higher Education Department, Government of Haryana (with Ministry of Minority Affairs, GoI)",
+  "government_level": "state",
+  "applicability": {
+    "india_wide": false,
+    "states": [
+      "Haryana"
+    ],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Education",
+    "Scholarship",
+    "Minority Welfare"
+  ],
+  "beneficiary_groups": [
+    "Notified Minority Students (Muslim, Christian, Sikh, Buddhist, Jain, Parsi)",
+    "Post-Matric Students in Haryana"
+  ],
+  "summary": "Post Matric Scholarship Scheme for Minorities in Haryana provides financial assistance covering admission/tuition fees and monthly maintenance allowances to students belonging to notified minority communities studying in Class 11 through Ph.D. with family income up to ₹2,00,000.",
+  "benefits": [
+    {
+      "description": "Admission and tuition fee coverage (up to ₹3,000 - ₹10,000 per annum depending on course level) plus monthly maintenance allowance for 10 months (₹230 - ₹1,200 per month depending on hosteller/day scholar status and course).",
+      "amount": 10000,
+      "currency": "INR",
+      "frequency": "annual",
+      "conditions": [
+        "Must have secured at least 50% marks in the previous final examination",
+        "Annual family income from all sources must not exceed ₹2,00,000",
+        "Must not be receiving duplicate scholarship for the same course"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "hpms-state-residence",
+        "profile_field": "state",
+        "operator": "eq",
+        "expected_value": "Haryana",
+        "explanation": "Applicant must be a permanent resident/domicile of Haryana.",
+        "required": true,
+        "source_ref": "haryana-post-matric-guidelines",
+        "source": {
+          "source_document_id": "haryana-post-matric-guidelines",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Post Matric Scholarship Scheme for Minorities Guidelines"
+        }
+      },
+      {
+        "rule_id": "hpms-minority-community",
+        "profile_field": "religion",
+        "operator": "in",
+        "expected_value": [
+          "Muslim",
+          "Christian",
+          "Sikh",
+          "Buddhist",
+          "Jain",
+          "Parsi"
+        ],
+        "explanation": "Applicant must belong to a notified minority community (Muslim, Christian, Sikh, Buddhist, Jain, or Parsi).",
+        "required": true,
+        "source_ref": "haryana-post-matric-guidelines",
+        "source": {
+          "source_document_id": "haryana-post-matric-guidelines",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Post Matric Scholarship Scheme for Minorities Guidelines"
+        }
+      },
+      {
+        "rule_id": "hpms-academic-marks",
+        "profile_field": "previous_examination_marks_percentage",
+        "operator": "gte",
+        "expected_value": 50,
+        "explanation": "Applicant must have secured at least 50% marks in previous final examination.",
+        "required": true,
+        "source_ref": "haryana-post-matric-guidelines",
+        "source": {
+          "source_document_id": "haryana-post-matric-guidelines",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Post Matric Scholarship Scheme for Minorities Guidelines"
+        }
+      },
+      {
+        "rule_id": "hpms-family-income",
+        "profile_field": "annual_income",
+        "operator": "lte",
+        "expected_value": 200000,
+        "explanation": "Annual family income from all sources must not exceed ₹2,00,000.",
+        "required": true,
+        "source_ref": "haryana-post-matric-guidelines",
+        "source": {
+          "source_document_id": "haryana-post-matric-guidelines",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Post Matric Scholarship Scheme for Minorities Guidelines"
+        }
+      },
+      {
+        "rule_id": "hpms-course-level",
+        "profile_field": "education_level",
+        "operator": "in",
+        "expected_value": [
+          "higher_secondary",
+          "diploma",
+          "undergraduate",
+          "postgraduate",
+          "mphil_phd"
+        ],
+        "explanation": "Applicant must be a regular student in a recognized post-matric course (Class 11, 12, ITI, Polytechnic, UG, PG, or Research).",
+        "required": true,
+        "source_ref": "haryana-post-matric-guidelines",
+        "source": {
+          "source_document_id": "haryana-post-matric-guidelines",
+          "source_url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Post Matric Scholarship Scheme for Minorities Guidelines"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Self-Declaration of Minority Community Certificate",
+      "condition": "Proof of belonging to notified minority religion",
+      "source_ref": "haryana-post-matric-guidelines"
+    },
+    {
+      "name": "Self-Declaration / Income Certificate",
+      "condition": "Certifying family annual income up to ₹2,00,000",
+      "source_ref": "haryana-post-matric-guidelines"
+    },
+    {
+      "name": "Previous Academic Year Marksheet",
+      "condition": "Verifying >= 50% marks in qualifying examination",
+      "source_ref": "haryana-post-matric-guidelines"
+    },
+    {
+      "name": "Fee Receipt & Institution Verification Form",
+      "condition": "Proof of enrolment in recognized educational institution",
+      "source_ref": "haryana-post-matric-guidelines"
+    },
+    {
+      "name": "Haryana Domicile Certificate",
+      "condition": "Proof of permanent residence in Haryana",
+      "source_ref": "haryana-post-matric-guidelines"
+    },
+    {
+      "name": "Bank Account Passbook in Student's Name",
+      "condition": "Aadhaar-seeded bank account for scholarship DBT",
+      "source_ref": "haryana-post-matric-guidelines"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit the National Scholarship Portal (https://scholarships.gov.in) or Haryana Har-Chhatravratti portal.",
+      "url": "https://scholarships.gov.in"
+    },
+    {
+      "step": 2,
+      "description": "Register with One Time Registration (OTR) and obtain application credentials.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Fill in the application form with personal, course, and institution details.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Upload scanned copies of marksheets, minority declaration, fee receipt, and income certificate.",
+      "url": null
+    },
+    {
+      "step": 5,
+      "description": "Submit application for Institute Nodal Officer (INO) and State Nodal Officer (SNO) verification.",
+      "url": null
+    }
+  ],
+  "application_url": "https://scholarships.gov.in",
+  "valid_from": "2007-11-29",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "haryana-post-matric-guidelines",
+      "url": "https://cdnbbsr.s3waas.gov.in/s37b7a53e239400a13bd6be6c91c4f6c4e/uploads/2020/05/2020051426.pdf",
+      "publisher": "Ministry of Minority Affairs, Government of India / Government of Haryana",
+      "document_title": "Post Matric Scholarship Scheme for Minorities Operational Guidelines",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "e0394749f1db61fa485e985bca34d168579e2c659fa4f5d6f193796ec519572b",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official guidelines. Covers 6 notified minority communities, >= 50% marks threshold, and ₹2,00,000 income ceiling. 30% female earmarking documented as representation gap."
+}

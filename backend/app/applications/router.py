@@ -12,6 +12,7 @@ from app.applications.readiness import assess_application_readiness
 from app.database.models import Scheme
 from app.database.session import get_db
 from app.documents.schemas import ExtractedDocument
+from app.translation.service import translation_service
 
 
 router = APIRouter(
@@ -28,6 +29,7 @@ class ReadinessRequest(BaseModel):
         default_factory=list,
         max_length=50,
     )
+    language: str = "en"
 
 
 @router.post("/readiness")
@@ -102,5 +104,9 @@ def check_readiness(
     response["scheme_version"] = version.version_number
     response["review_status"] = version.review_status
     response["check_type"] = "document_type_checklist_preview"
+
+    target_lang = (request.language or "en").lower().strip()
+    if target_lang != "en":
+        return translation_service.translate_readiness_result(response, target_lang)
 
     return response

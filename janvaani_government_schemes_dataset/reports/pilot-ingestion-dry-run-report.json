@@ -1,0 +1,206 @@
+{
+  "generated_at_utc": "2026-10-28T20:16:31.226131+00:00",
+  "pilot_directory": "janvaani_government_schemes_dataset\\staging\\pilot",
+  "database_writes_performed": false,
+  "database_connections_opened": false,
+  "api_calls_executed": false,
+  "records_tested": 8,
+  "valid_count": 8,
+  "invalid_count": 0,
+  "duplicate_detection_simulation": {
+    "duplicate_slugs_in_pilot_batch": 0,
+    "duplicate_handling_verified": true,
+    "expected_duplicate_exception": "DuplicateSchemeError (HTTP 409)"
+  },
+  "rollback_strategy": {
+    "transaction_isolation": "Per-scheme atomic transaction (Session rollback on any exception)",
+    "batch_mode": "All-or-nothing rollback if executed as atomic batch pilot script",
+    "clean_slate": "No partial scheme/version/source records can be persisted"
+  },
+  "results": [
+    {
+      "slug": "ab-pmjay",
+      "title": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (PM-JAY)",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ab-pmjay.json",
+      "external_id": "62a0702feaca073ef50831fe",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "127ffc616c46d2f30d3983fc45c3b8050f295c30402e409406bb64098bd4ca0e",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 3,
+        "rules_logic": "any",
+        "documents_count": 2,
+        "steps_count": 4
+      }
+    },
+    {
+      "slug": "apy",
+      "title": "Atal Pension Yojana (APY)",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\apy.json",
+      "external_id": "628b41a2c9b440ca7f31ff6c",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "6a880a63a712ee8ce139042f0a5fb5e2ef6d8ede6debe4fcf38a32fb0d71ab24",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 4,
+        "rules_logic": "all",
+        "documents_count": 2,
+        "steps_count": 5
+      }
+    },
+    {
+      "slug": "dpmss",
+      "title": "Devnarayan Post Matric Scholarship Scheme",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\dpmss.json",
+      "external_id": "649a8d82380f8e123543e9a2",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "eaa5904fc656b1dc1c2d7aab6f98e295f17bb24d8bc36ceae63331fd66f485af",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 4,
+        "rules_logic": "all",
+        "documents_count": 6,
+        "steps_count": 5
+      }
+    },
+    {
+      "slug": "hpms",
+      "title": "Haryana Post Matric Scholarship for Minorities",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\hpms.json",
+      "external_id": "6786aa1c4bf34a9c20858c9a",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "0743fec95461792f4cec270acd10f4a827eb5e65473e12abe6697226b8efcdd0",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 5,
+        "rules_logic": "all",
+        "documents_count": 6,
+        "steps_count": 5
+      }
+    },
+    {
+      "slug": "ignoapstn",
+      "title": "Indira Gandhi National Old Age Pension Scheme - Tamil Nadu (IGNOAPS)",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ignoapstn.json",
+      "external_id": "65e04974da55878ebe0900eb",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "b870f95110fa2951a9092cf5c1438c2964519ed8a70f37a0005be1000c7469d7",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 4,
+        "rules_logic": "all",
+        "documents_count": 5,
+        "steps_count": 4
+      }
+    },
+    {
+      "slug": "ksy",
+      "title": "Mukhyamantri Kanya Sumangala Yojana (MKSY)",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ksy.json",
+      "external_id": "64806afd481f59106a67c9dd",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "7c21084da7673cdd9acbb5f50f91d15fe3c33ab9fc2a7d28223b07a5004990fe",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 4,
+        "rules_logic": "all",
+        "documents_count": 5,
+        "steps_count": 5
+      }
+    },
+    {
+      "slug": "ma",
+      "title": "Mukhyamantri Amrutum (MA / MA Vatsalya) Yojana",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\ma.json",
+      "external_id": "6434724ebd37517394eb16f7",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "92fdfe3965327dc38be2f61426e61c36a9fb0cd878ee29d73bbc3f51c126a64e",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 2,
+        "rules_logic": "all",
+        "documents_count": 3,
+        "steps_count": 4
+      }
+    },
+    {
+      "slug": "pm-kisan",
+      "title": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\pm-kisan.json",
+      "external_id": "62a70e86f038bd8499a6aa53",
+      "valid_pydantic": true,
+      "validation_error": null,
+      "simulated_api_endpoint": "POST /api/ingestion/schemes",
+      "expected_http_status_on_first_ingest": 201,
+      "expected_http_status_on_duplicate_ingest": 409,
+      "expected_scheme_status": "draft",
+      "expected_version_number": 1,
+      "expected_version_review_status": "draft",
+      "expected_source_review_status": "pending",
+      "content_hash": "7efb2c28c00f3d54c6750f1188283c803abd20c880c649602d1e2b823d0960c1",
+      "payload_summary": {
+        "benefits_count": 1,
+        "rules_count": 4,
+        "rules_logic": "all",
+        "documents_count": 3,
+        "steps_count": 5
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 load_dotenv()
-MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
+MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
 
 
 def _fallback_explanation(result: dict[str, Any]) -> str:

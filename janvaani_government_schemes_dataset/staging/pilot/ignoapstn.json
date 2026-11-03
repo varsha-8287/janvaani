@@ -1,0 +1,179 @@
+{
+  "slug": "ignoapstn",
+  "title": "Indira Gandhi National Old Age Pension Scheme - Tamil Nadu (IGNOAPS)",
+  "official_title": "Indira Gandhi National Old Age Pension Scheme",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "65e04974da55878ebe0900eb"
+    }
+  ],
+  "administering_authority": "Department of Social Welfare and Women Empowerment, Government of Tamil Nadu",
+  "government_level": "state",
+  "applicability": {
+    "india_wide": false,
+    "states": [
+      "Tamil Nadu"
+    ],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Social Welfare",
+    "Pension",
+    "Senior Citizens"
+  ],
+  "beneficiary_groups": [
+    "Destitute Senior Citizens (60+)",
+    "BPL Elderly"
+  ],
+  "summary": "Under the NSAP umbrella in Tamil Nadu, IGNOAPS provides a monthly pension of ₹1,000, along with free dhotis/sarees and subsidized rice, to destitute elderly citizens aged 60 and above belonging to BPL households.",
+  "benefits": [
+    {
+      "description": "Monthly social security pension of ₹1,000 via DBT, free dhoti/saree distributed during Pongal and Deepavali, and 2kg-4kg free rice per month.",
+      "amount": 1000,
+      "currency": "INR",
+      "frequency": "monthly",
+      "conditions": [
+        "Applicant must be aged 60 years or older",
+        "Must be a destitute individual with no steady means of subsistence",
+        "Must belong to a household Below Poverty Line (BPL) in Tamil Nadu"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "ignoapstn-state-residence",
+        "profile_field": "state",
+        "operator": "eq",
+        "expected_value": "Tamil Nadu",
+        "explanation": "Applicant must be a permanent resident of Tamil Nadu.",
+        "required": true,
+        "source_ref": "tn-swwe-citizens-charter",
+        "source": {
+          "source_document_id": "tn-swwe-citizens-charter",
+          "source_url": "https://cms.tn.gov.in/sites/default/files/documents/swwe_e_cc_2022_23.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Tamil Nadu SW&WE Department Citizen Charter"
+        }
+      },
+      {
+        "rule_id": "ignoapstn-min-age",
+        "profile_field": "age",
+        "operator": "gte",
+        "expected_value": 60,
+        "explanation": "Applicant must be aged 60 years or above.",
+        "required": true,
+        "source_ref": "tn-swwe-citizens-charter",
+        "source": {
+          "source_document_id": "tn-swwe-citizens-charter",
+          "source_url": "https://cms.tn.gov.in/sites/default/files/documents/swwe_e_cc_2022_23.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Tamil Nadu SW&WE Department Citizen Charter"
+        }
+      },
+      {
+        "rule_id": "ignoapstn-bpl-status",
+        "profile_field": "is_bpl",
+        "operator": "eq",
+        "expected_value": true,
+        "explanation": "Applicant must belong to a Below Poverty Line (BPL) household.",
+        "required": true,
+        "source_ref": "tn-swwe-citizens-charter",
+        "source": {
+          "source_document_id": "tn-swwe-citizens-charter",
+          "source_url": "https://cms.tn.gov.in/sites/default/files/documents/swwe_e_cc_2022_23.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Tamil Nadu SW&WE Department Citizen Charter"
+        }
+      },
+      {
+        "rule_id": "ignoapstn-destitute-status",
+        "profile_field": "is_destitute",
+        "operator": "eq",
+        "expected_value": true,
+        "explanation": "Applicant must be destitute with no steady source of income or family maintenance.",
+        "required": true,
+        "source_ref": "tn-swwe-citizens-charter",
+        "source": {
+          "source_document_id": "tn-swwe-citizens-charter",
+          "source_url": "https://cms.tn.gov.in/sites/default/files/documents/swwe_e_cc_2022_23.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Tamil Nadu SW&WE Department Citizen Charter"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Aadhaar Card",
+      "condition": "Identity verification and DBT seeding",
+      "source_ref": "tn-swwe-citizens-charter"
+    },
+    {
+      "name": "Smart Ration Card / Address Proof",
+      "condition": "Proof of residence in Tamil Nadu",
+      "source_ref": "tn-swwe-citizens-charter"
+    },
+    {
+      "name": "Age Proof (Birth Certificate / Voter ID / School Certificate)",
+      "condition": "Validating age >= 60",
+      "source_ref": "tn-swwe-citizens-charter"
+    },
+    {
+      "name": "BPL Certificate / Card Number",
+      "condition": "Proof of BPL status issued by competent authority",
+      "source_ref": "tn-swwe-citizens-charter"
+    },
+    {
+      "name": "Bank Passbook",
+      "condition": "Active bank account for monthly pension credit",
+      "source_ref": "tn-swwe-citizens-charter"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit nearest Common Service Centre (TNeGA e-Sevai centre) or Taluk Office / Revenue Inspector.",
+      "url": "https://tnega.tn.gov.in"
+    },
+    {
+      "step": 2,
+      "description": "Submit application form along with Aadhaar, age proof, smart ration card, and BPL details.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Village Administrative Officer (VAO) and Revenue Inspector (RI) conduct field inquiry into destitution status.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Special Tahsildar (Social Security Schemes) issues sanction order upon verification.",
+      "url": null
+    }
+  ],
+  "application_url": "https://tnega.tn.gov.in",
+  "valid_from": "2007-11-19",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "tn-swwe-citizens-charter",
+      "url": "https://cms.tn.gov.in/sites/default/files/documents/swwe_e_cc_2022_23.pdf",
+      "publisher": "Social Welfare and Women Empowerment Department, Government of Tamil Nadu",
+      "document_title": "Citizen's Charter - Social Welfare and Women Empowerment Department",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "71e98eb98877bc3db523c683b589417c82a17686a9f4c330d4fe80f5d7ee8b02",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official Tamil Nadu Government Citizen's Charter cms.tn.gov.in. Destitution condition requires local revenue inquiry and cannot be purely self-reported."
+}

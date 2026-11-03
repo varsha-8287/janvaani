@@ -96,15 +96,20 @@ def load_searchable_scheme_records(
         .order_by(Scheme.title, SchemeVersion.version_number)
     )
 
-    if language:
-        stmt = stmt.where(SchemeVersion.language == language)
-
     if scheme_slug:
         stmt = stmt.where(Scheme.slug == scheme_slug)
 
+    if language:
+        lang_stmt = stmt.where(SchemeVersion.language == language)
+        sources = db.scalars(lang_stmt).unique().all()
+        if not sources:
+            sources = db.scalars(stmt).unique().all()
+    else:
+        sources = db.scalars(stmt).unique().all()
+
     records: list[SchemeRecord] = []
 
-    for source in db.scalars(stmt).unique().all():
+    for source in sources:
         version = source.scheme_version
         scheme = version.scheme
         content = _version_content(version)

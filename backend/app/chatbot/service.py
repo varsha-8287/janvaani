@@ -5,7 +5,11 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
-from app.retrieval.answer_service import answer_from_evidence
+from app.retrieval.answer_service import (
+    INSUFFICIENT_EVIDENCE,
+    answer_from_evidence,
+    generate_gemini_direct_answer,
+)
 from app.retrieval.pipeline import search_scheme_records
 
 
@@ -18,10 +22,11 @@ def chat(
     history: list[dict[str, str]] | None = None,
     language: str | None = None,
 ) -> dict[str, Any]:
-    """Answer a chat question using reviewed scheme evidence.
+    """Answer a chat question using reviewed scheme evidence and Gemini.
 
-    History helps clarify follow-up questions but is not treated as
-    authoritative evidence about government schemes.
+    If database evidence is available and reviewed, answers are evidence-grounded.
+    If database evidence is sparse or conversational, Gemini answers directly
+    using official scheme knowledge without refusing.
     """
     question = question.strip()
     recent_history = (history or [])[-MAX_HISTORY_TURNS:]
@@ -61,9 +66,22 @@ def chat(
         for item in results
     ]
 
-    # The previous conversation is context, not evidence. The answer service
-    # still receives only the current question and retrieved evidence.
-    result = answer_from_evidence(question, evidence)
+    # 1. Attempt strict evidence-grounded answer if evidence is present
+    if language:
+        result = answer_from_evidence(question, evidence, language=language)
+    else:
+        result = answer_from_evidence(question, evidence)
+
+    # 2. If evidence was insufficient or lacking citation, fall back to Gemini direct answering
+    if result.get("answer") == INSUFFICIENT_EVIDENCE:
+        gemini_result = generate_gemini_direct_answer(
+            question=question,
+            history=recent_history,
+            language=language,
+            evidence=evidence,
+        )
+        if gemini_result.get("answer") and gemini_result["answer"] != INSUFFICIENT_EVIDENCE:
+            result = gemini_result
 
     return {
         "question": question,
@@ -71,3 +89,4 @@ def chat(
         "generated_by": result["generated_by"],
         "sources": result["sources"],
     }
+

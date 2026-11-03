@@ -1,0 +1,167 @@
+{
+  "slug": "apy",
+  "title": "Atal Pension Yojana (APY)",
+  "official_title": "Atal Pension Yojana",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "628b41a2c9b440ca7f31ff6c"
+    }
+  ],
+  "administering_authority": "Pension Fund Regulatory and Development Authority (PFRDA), Department of Financial Services, Ministry of Finance, Government of India",
+  "government_level": "central",
+  "applicability": {
+    "india_wide": true,
+    "states": [],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Pension",
+    "Social Security",
+    "Financial Inclusion"
+  ],
+  "beneficiary_groups": [
+    "Unorganised Sector Workers",
+    "Citizens Aged 18-40"
+  ],
+  "summary": "Atal Pension Yojana provides a guaranteed minimum monthly pension of ₹1,000 to ₹5,000 from age 60 until death to eligible unorganised workers, with spouse pension continuation and corpus return to nominees.",
+  "benefits": [
+    {
+      "description": "Guaranteed minimum monthly pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000, or ₹5,000 per month starting at age 60 until death, depending on entry age and chosen contribution tier.",
+      "amount": 5000,
+      "currency": "INR",
+      "frequency": "monthly",
+      "conditions": [
+        "Subscriber must make continuous auto-debit contributions until age 60",
+        "Spouse is entitled to same pension amount upon subscriber demise until spouse death",
+        "Accumulated pension corpus returned to nominee upon demise of both subscriber and spouse"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "apy-min-age",
+        "profile_field": "age",
+        "operator": "gte",
+        "expected_value": 18,
+        "explanation": "Applicant must be at least 18 years of age.",
+        "required": true,
+        "source_ref": "apy-scheme-guidelines",
+        "source": {
+          "source_document_id": "apy-scheme-guidelines",
+          "source_url": "https://jansuraksha.gov.in/Files/APY/ENGLISH/APY.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Atal Pension Yojana Scheme Guidelines"
+        }
+      },
+      {
+        "rule_id": "apy-max-age",
+        "profile_field": "age",
+        "operator": "lte",
+        "expected_value": 40,
+        "explanation": "Applicant must not be older than 40 years of age to join APY.",
+        "required": true,
+        "source_ref": "apy-scheme-guidelines",
+        "source": {
+          "source_document_id": "apy-scheme-guidelines",
+          "source_url": "https://jansuraksha.gov.in/Files/APY/ENGLISH/APY.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Atal Pension Yojana Scheme Guidelines"
+        }
+      },
+      {
+        "rule_id": "apy-income-tax-exclusion",
+        "profile_field": "is_income_tax_payer",
+        "operator": "eq",
+        "expected_value": false,
+        "explanation": "From 1st October 2022, any citizen who is or has been an income-tax payer is not eligible to join APY.",
+        "required": true,
+        "source_ref": "apy-scheme-guidelines",
+        "source": {
+          "source_document_id": "apy-scheme-guidelines",
+          "source_url": "https://jansuraksha.gov.in/Files/APY/ENGLISH/APY.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Atal Pension Yojana Scheme Guidelines"
+        }
+      },
+      {
+        "rule_id": "apy-savings-bank-account",
+        "profile_field": "has_savings_bank_account",
+        "operator": "eq",
+        "expected_value": true,
+        "explanation": "Applicant must possess an active savings bank or post office savings account for auto-debit.",
+        "required": true,
+        "source_ref": "apy-scheme-guidelines",
+        "source": {
+          "source_document_id": "apy-scheme-guidelines",
+          "source_url": "https://jansuraksha.gov.in/Files/APY/ENGLISH/APY.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "Atal Pension Yojana Scheme Guidelines"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Aadhaar Card",
+      "condition": "Primary KYC and identification document",
+      "source_ref": "apy-scheme-guidelines"
+    },
+    {
+      "name": "Savings Bank / Post Office Account Passbook",
+      "condition": "Mandatory for setting up automated recurring debit instructions",
+      "source_ref": "apy-scheme-guidelines"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit bank branch or post office where savings bank account is maintained, or access netbanking portal.",
+      "url": "https://jansuraksha.gov.in"
+    },
+    {
+      "step": 2,
+      "description": "Fill out the APY Registration Form with personal, bank account, and nominee details.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Select the desired monthly pension tier (₹1,000 to ₹5,000) and contribution frequency (monthly, quarterly, or half-yearly).",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Provide written or electronic consent for recurring auto-debit of contribution from savings account.",
+      "url": null
+    },
+    {
+      "step": 5,
+      "description": "Obtain PRAN acknowledgment receipt upon successful enrolment.",
+      "url": null
+    }
+  ],
+  "application_url": "https://enps.nsdl.com/eNPS/NationalPensionSystem.html",
+  "valid_from": "2015-05-09",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "apy-scheme-guidelines",
+      "url": "https://jansuraksha.gov.in/Files/APY/ENGLISH/APY.pdf",
+      "publisher": "Department of Financial Services, Ministry of Finance, Government of India",
+      "document_title": "Atal Pension Yojana (APY) Scheme Guidelines",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "2241cfceca23bc60d69b3e15b5dfaeb9265fefbfa98e3b508f7aa7a44fbc6250",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official Jan Suraksha portal guidelines. Corrected missing income-tax payer exclusion rule mandated effective October 1, 2022. Contribution amount variations by entry age documented."
+}

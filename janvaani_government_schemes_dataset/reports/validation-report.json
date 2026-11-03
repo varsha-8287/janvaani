@@ -1,30 +1,19 @@
 {
-  "generated_at": "2026-10-28T15:48:04.450641+00:00",
+  "generated_at": "2026-10-28T20:00:22.617840+00:00",
   "schema_file": "janvaani_government_schemes_dataset\\schemas\\scheme-record.schema.json",
-  "input_path": "janvaani_government_schemes_dataset\\templates\\example-record-NOT-REAL.json",
+  "input_path": "janvaani_government_schemes_dataset\\staging\\pilot\\pm-kisan.json",
   "files_checked": 1,
-  "schema_valid_count": 0,
-  "files_with_release_blockers": 1,
+  "schema_valid_count": 1,
+  "files_with_release_blockers": 0,
   "database_modified": false,
   "records_approved": 0,
   "results": [
     {
-      "file": "janvaani_government_schemes_dataset\\templates\\example-record-NOT-REAL.json",
-      "input_sha256": "3ac8cf7ca3a0fc95c59a109932912e6e74b7181d0b6803c5417721b9ad5f0e0f",
-      "valid_against_schema": false,
-      "release_blockers": [
-        "At least one source record is required."
-      ],
-      "schema_errors": [
-        {
-          "path": "/",
-          "message": "'language' is a required property"
-        },
-        {
-          "path": "/source_records",
-          "message": "[] should be non-empty"
-        }
-      ]
+      "file": "janvaani_government_schemes_dataset\\staging\\pilot\\pm-kisan.json",
+      "input_sha256": "29a54ce368a001fb77b0fdfd535b40b2401031b3a9c7f6023f09c2e45707979a",
+      "valid_against_schema": true,
+      "release_blockers": [],
+      "schema_errors": []
     }
   ]
 }

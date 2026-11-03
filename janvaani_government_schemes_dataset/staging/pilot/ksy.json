@@ -1,0 +1,185 @@
+{
+  "slug": "ksy",
+  "title": "Mukhyamantri Kanya Sumangala Yojana (MKSY)",
+  "official_title": "Mukhyamantri Kanya Sumangala Yojana",
+  "external_ids": [
+    {
+      "namespace": "kaggle_csv",
+      "value": "64806afd481f59106a67c9dd"
+    }
+  ],
+  "administering_authority": "Department of Women and Child Development, Government of Uttar Pradesh",
+  "government_level": "state",
+  "applicability": {
+    "india_wide": false,
+    "states": [
+      "Uttar Pradesh"
+    ],
+    "union_territories": [],
+    "districts": []
+  },
+  "language": "en",
+  "category": [
+    "Women & Child Development",
+    "Direct Benefit Transfer",
+    "Education",
+    "Girl Child Welfare"
+  ],
+  "beneficiary_groups": [
+    "Girl Children",
+    "Families with Annual Income up to 3 Lakh"
+  ],
+  "summary": "Mukhyamantri Kanya Sumangala Yojana is a conditional cash transfer scheme in Uttar Pradesh providing financial assistance across six milestone life stages (birth, vaccination, class 1, class 6, class 9, and degree/diploma admission) totaling ₹25,000 per girl child.",
+  "benefits": [
+    {
+      "description": "Six-stage conditional financial grant totaling ₹25,000 (revised from earlier ₹15,000): Stage 1 (Birth): ₹5,000; Stage 2 (Full immunisation up to 1 yr): ₹2,000; Stage 3 (Admission to Class 1): ₹3,000; Stage 4 (Admission to Class 6): ₹3,000; Stage 5 (Admission to Class 9): ₹5,000; Stage 6 (10th/12th pass & 2+ yr degree/diploma admission): ₹7,000.",
+      "amount": 25000,
+      "currency": "INR",
+      "frequency": "lump_sum",
+      "conditions": [
+        "Maximum 2 girl children per family eligible (or 3 in case of twin delivery on second pregnancy)",
+        "Family annual income from all sources must not exceed ₹3,00,000",
+        "Must be permanent resident of Uttar Pradesh"
+      ]
+    }
+  ],
+  "eligibility": {
+    "schema_version": 1,
+    "logic": "all",
+    "rules": [
+      {
+        "rule_id": "ksy-state-residence",
+        "profile_field": "state",
+        "operator": "eq",
+        "expected_value": "Uttar Pradesh",
+        "explanation": "Applicant family must be permanent residents of Uttar Pradesh.",
+        "required": true,
+        "source_ref": "mksy-guidelines",
+        "source": {
+          "source_document_id": "mksy-guidelines",
+          "source_url": "https://mksy.up.gov.in/women_welfare/pdf/ae0a20105201932342.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "MKSY Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "ksy-income-limit",
+        "profile_field": "annual_income",
+        "operator": "lte",
+        "expected_value": 300000,
+        "explanation": "Maximum annual family income from all sources must not exceed ₹3,00,000.",
+        "required": true,
+        "source_ref": "mksy-guidelines",
+        "source": {
+          "source_document_id": "mksy-guidelines",
+          "source_url": "https://mksy.up.gov.in/women_welfare/pdf/ae0a20105201932342.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "MKSY Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "ksy-gender",
+        "profile_field": "gender",
+        "operator": "eq",
+        "expected_value": "female",
+        "explanation": "The beneficiary child must be a female.",
+        "required": true,
+        "source_ref": "mksy-guidelines",
+        "source": {
+          "source_document_id": "mksy-guidelines",
+          "source_url": "https://mksy.up.gov.in/women_welfare/pdf/ae0a20105201932342.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "MKSY Operational Guidelines"
+        }
+      },
+      {
+        "rule_id": "ksy-family-girls-limit",
+        "profile_field": "eligible_girls_in_family",
+        "operator": "lte",
+        "expected_value": 2,
+        "explanation": "Maximum two girl children per family are eligible (third girl admissible if twins in second delivery).",
+        "required": true,
+        "source_ref": "mksy-guidelines",
+        "source": {
+          "source_document_id": "mksy-guidelines",
+          "source_url": "https://mksy.up.gov.in/women_welfare/pdf/ae0a20105201932342.pdf",
+          "retrieved_at": "2026-10-29T01:25:00+00:00",
+          "source_title": "MKSY Operational Guidelines"
+        }
+      }
+    ]
+  },
+  "required_documents": [
+    {
+      "name": "Aadhaar Card of Parent/Guardian and Child",
+      "condition": "Identity verification",
+      "source_ref": "mksy-guidelines"
+    },
+    {
+      "name": "UP Domicile / Permanent Residence Certificate",
+      "condition": "Proof of permanent residence in Uttar Pradesh (Ration card / Voter ID / Electricity bill)",
+      "source_ref": "mksy-guidelines"
+    },
+    {
+      "name": "Income Certificate",
+      "condition": "Certifying family annual income up to ₹3,00,000",
+      "source_ref": "mksy-guidelines"
+    },
+    {
+      "name": "Bank Passbook",
+      "condition": "Active bank account of parent/guardian or girl child for DBT",
+      "source_ref": "mksy-guidelines"
+    },
+    {
+      "name": "Milestone Proof (Birth Certificate / Immunization Card / Admission Certificate)",
+      "condition": "Required according to the specific stage applied for",
+      "source_ref": "mksy-guidelines"
+    }
+  ],
+  "application_steps": [
+    {
+      "step": 1,
+      "description": "Visit official MKSY portal (https://mksy.up.gov.in) and click on Citizen Service Portal.",
+      "url": "https://mksy.up.gov.in/women_welfare/citizen/guest_login.php"
+    },
+    {
+      "step": 2,
+      "description": "Register by providing name, mobile number, and Aadhaar details; verify OTP.",
+      "url": null
+    },
+    {
+      "step": 3,
+      "description": "Log in and select the appropriate milestone category for the girl child.",
+      "url": null
+    },
+    {
+      "step": 4,
+      "description": "Upload scanned documents including residence proof, income certificate, bank passbook, and stage-specific certificate.",
+      "url": null
+    },
+    {
+      "step": 5,
+      "description": "Submit application for verification by Block Development Officer / SDM / District Probation Officer.",
+      "url": null
+    }
+  ],
+  "application_url": "https://mksy.up.gov.in/women_welfare/citizen/guest_login.php",
+  "valid_from": "2019-04-01",
+  "valid_until": null,
+  "last_checked_at": "2026-10-29T01:25:00Z",
+  "source_records": [
+    {
+      "source_ref": "mksy-guidelines",
+      "url": "https://mksy.up.gov.in/women_welfare/pdf/ae0a20105201932342.pdf",
+      "publisher": "Women and Child Development Department, Government of Uttar Pradesh",
+      "document_title": "Mukhyamantri Kanya Sumangala Yojana Guidelines",
+      "retrieved_at": "2026-10-29T01:25:00Z",
+      "content_hash": "8d1c9ef00fa1c74681647a74826b17c9b0e27161b96435c24e0377e8a9391ab1",
+      "license_or_reuse_basis": "Government Open Data / Public Domain official scheme guidelines",
+      "review_status": "verified"
+    }
+  ],
+  "translations": [],
+  "record_status": "pending_review",
+  "review_notes": "Verified against official portal mksy.up.gov.in. Corrected outdated dataset benefit amount from ₹15,000 to updated ₹25,000 schedule. Multi-stage milestones and twin exception rules noted as engine representation gaps."
+}

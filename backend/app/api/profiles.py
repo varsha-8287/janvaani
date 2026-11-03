@@ -86,3 +86,13 @@ def update_my_profile(
             )
 
     return profile
+
+
+@router.put("/me", response_model=ProfileResponse)
+def replace_my_profile(
+    updates: ProfileUpdate,
+    user: CurrentUser = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return update_my_profile(updates=updates, user=user, db=db)
+

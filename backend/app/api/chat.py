@@ -53,7 +53,9 @@ class CreateConversationRequest(BaseModel):
 
 
 class SendMessageRequest(BaseModel):
-    message: str = Field(min_length=1, max_length=1000)
+    message: str | None = Field(default=None, max_length=1000)
+    content: str | None = Field(default=None, max_length=1000)
+    language: str | None = Field(default=None, max_length=12)
 
 
 class ChatMessageResponse(BaseModel):
@@ -285,17 +287,21 @@ def send_conversation_message(
     db: Session = Depends(get_db),
 ) -> ChatMessageResponse:
     """Send a message to an existing conversation, persist turns, and return grounded response."""
-    user_text = request.message.strip()
+    user_text = (request.message or request.content or "").strip()
     if not user_text:
         raise HTTPException(
             status_code=422,
             detail="Message must not be blank.",
         )
 
-    # 1. Acquire row lock on conversation before reading history
+    # 1. Retrieve verified conversation without blocking table locks across RAG
     conversation = _get_verified_conversation(
-        db, conversation_id, user.uid, for_update=True
+        db, conversation_id, user.uid, for_update=False
     )
+
+    # If client supplied an explicit language, update conversation language
+    if request.language and request.language.strip():
+        conversation.language = request.language.strip()
 
     # 2. Build history turns strictly after acquiring lock
     prior_messages = db.scalars(

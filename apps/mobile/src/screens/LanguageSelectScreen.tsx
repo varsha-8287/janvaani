@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { Colors } from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useAuth } from '../context/AuthContext';
 
 const LANGUAGES = [
   { id: 'en', name: 'English', script: 'English' },
   { id: 'hi', name: 'हिंदी', script: 'Hindi' },
   { id: 'ta', name: 'தமிழ்', script: 'Tamil' },
   { id: 'te', name: 'తెలుగు', script: 'Telugu' },
-  { id: 'kn', name: 'கன்னட / ಕನ್ನಡ', script: 'Kannada' },
+  { id: 'kn', name: 'ಕನ್ನಡ', script: 'Kannada' },
   { id: 'ml', name: 'മലയാളം', script: 'Malayalam' },
   { id: 'bn', name: 'বাংলা', script: 'Bengali' },
   { id: 'gu', name: 'ગુજરાતી', script: 'Gujarati' },
@@ -19,12 +20,26 @@ const LANGUAGES = [
 ];
 
 export default function LanguageSelectScreen({ onContinue }: { onContinue: () => void }) {
-  const [selected, setSelected] = useState('hi');
+  const { preferredLanguage, changeLanguage } = useAuth();
+  const [selected, setSelected] = useState(preferredLanguage || 'en');
   const [search, setSearch] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const filtered = LANGUAGES.filter(
     (l) => l.name.toLowerCase().includes(search.toLowerCase()) || l.script.toLowerCase().includes(search.toLowerCase())
   );
+
+  const handleContinue = async () => {
+    setIsSaving(true);
+    try {
+      await changeLanguage(selected);
+    } catch {
+      // Local fallback handled in context
+    } finally {
+      setIsSaving(false);
+      onContinue();
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -39,6 +54,11 @@ export default function LanguageSelectScreen({ onContinue }: { onContinue: () =>
           value={search}
           onChangeText={setSearch}
         />
+        {search.length > 0 && (
+          <TouchableOpacity onPress={() => setSearch('')}>
+            <Ionicons name="close-circle" size={18} color={Colors.secondaryText} />
+          </TouchableOpacity>
+        )}
       </View>
 
       <FlatList
@@ -61,8 +81,16 @@ export default function LanguageSelectScreen({ onContinue }: { onContinue: () =>
         }}
       />
 
-      <TouchableOpacity style={styles.continueBtn} onPress={onContinue}>
-        <Text style={styles.continueBtnText}>Continue • आगे बढ़ें</Text>
+      <TouchableOpacity
+        style={[styles.continueBtn, isSaving && { opacity: 0.7 }]}
+        onPress={handleContinue}
+        disabled={isSaving}
+      >
+        {isSaving ? (
+          <ActivityIndicator color={Colors.white} />
+        ) : (
+          <Text style={styles.continueBtnText}>Continue • आगे बढ़ें</Text>
+        )}
       </TouchableOpacity>
     </View>
   );

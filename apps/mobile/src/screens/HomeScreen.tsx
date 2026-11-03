@@ -1,107 +1,160 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Colors } from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useAuth } from '../context/AuthContext';
 
-export default function HomeScreen({ onNavigate,onSelectLanguage }: { onNavigate: (screen: string) => void ;onSelectLanguage?:()=>void;}) {
+interface Props {
+  onNavigate: (screen: string) => void;
+  onSelectLanguage?: () => void;
+}
+
+export default function HomeScreen({ onNavigate, onSelectLanguage }: Props) {
+  const { profile, preferredLanguage, t } = useAuth();
+
+  const citizenName = profile?.attributes?.name || t('greetingCitizen');
+  const citizenLocation = [profile?.district, profile?.state].filter(Boolean).join(', ') || t('locationNotSet');
+  const citizenCategory = profile?.attributes?.farmer_category || t('farmerCategoryNotSet');
+
+  const handleUnsupportedFeature = (title: string, message: string) => {
+    Alert.alert(title, message);
+  };
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
       {/* Top Bar Header */}
       <View style={styles.header}>
         <View>
-          <Text style={styles.brandTitle}>Janvaani | जनवाणी</Text>
-          <Text style={styles.brandSub}>आपकी आवाज, आपका अधिकार</Text>
+          <Text style={styles.brandTitle}>{t('brandTitle')}</Text>
+          <Text style={styles.brandSub}>{t('brandSub')}</Text>
         </View>
         <View style={styles.headerRight}>
-            <TouchableOpacity style={styles.langPill} onPress={onSelectLanguage}>
-    <Text style={styles.langText}>हिंदी / A</Text>
-  </TouchableOpacity>
-          {/* <TouchableOpacity style={styles.langPill}>
-            <Text style={styles.langText}>हिंदी / A</Text>
-          </TouchableOpacity> */}
-          <TouchableOpacity style={styles.iconBtn}>
+          <TouchableOpacity style={styles.langPill} onPress={onSelectLanguage}>
+            <Text style={styles.langText}>
+              {preferredLanguage?.toUpperCase() || 'EN'} / A
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.iconBtn}
+            onPress={() =>
+              handleUnsupportedFeature(
+                t('notificationsMenu'),
+                t('comingSoonNotificationsMsg')
+              )
+            }
+          >
             <Ionicons name="notifications-outline" size={20} color={Colors.primaryText} />
           </TouchableOpacity>
         </View>
       </View>
 
       {/* Greeting Banner */}
-      <View style={styles.userBanner}>
-        <Text style={styles.greetingText}>नमस्ते, रमेश जी! 🙏</Text>
-        <Text style={styles.locationText}>📍 सीहोर, मध्य प्रदेश • लघु कृषक (Small Farmer)</Text>
-      </View>
+      <TouchableOpacity style={styles.userBanner} onPress={() => onNavigate('profile')}>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.greetingText}>{t('greetingGreeting')}, {citizenName}! 🙏</Text>
+          <Text style={styles.locationText}>
+            📍 {citizenLocation} • {citizenCategory}
+          </Text>
+        </View>
+        <Ionicons name="chevron-forward" size={18} color={Colors.secondaryText} />
+      </TouchableOpacity>
 
-      {/* Weather & Rabi Advisory Card */}
+      {/* Advisory Card */}
       <View style={styles.advisoryCard}>
         <View style={styles.advisoryHeader}>
           <Ionicons name="sunny-outline" size={22} color="#15803D" />
-          <Text style={styles.advisoryTag}>रबी मौसम परामर्श • RABI ADVISORY</Text>
-          <Text style={styles.tempText}>24°C धूप</Text>
+          <Text style={styles.advisoryTag}>{t('seasonalAdvisoryTag')}</Text>
+          <Text style={styles.tempText}>{t('seasonalAdvisoryTemp')}</Text>
         </View>
-        <Text style={styles.advisoryTitle}>गेहूं की बुआई का उत्तम समय सक्रिय है</Text>
+        <Text style={styles.advisoryTitle}>{t('seasonalAdvisoryTitle')}</Text>
         <View style={styles.advisoryChips}>
-          <Text style={styles.chipText}>👍 मृदा नमी: पर्याप्त (Adequate)</Text>
-          <Text style={styles.chipText}>⚙️ डीएपी स्टॉक उपलब्ध</Text>
+          <Text style={styles.chipText}>{t('seasonalChip1')}</Text>
+          <Text style={styles.chipText}>{t('seasonalChip2')}</Text>
         </View>
       </View>
 
       {/* Janvaani AI Voice Search Banner */}
       <View style={styles.aiCard}>
         <View style={styles.aiBadge}>
-          <Text style={styles.aiBadgeText}>JANVAANI AI • आपका डिजिटल साथी</Text>
+          <Text style={styles.aiBadgeText}>{t('aiCardBadge')}</Text>
         </View>
-        <Text style={styles.aiHeading}>अपनी भाषा में बोलें, सही योजना तुरंत पाएं</Text>
-        <Text style={styles.aiSub}>खाद सब्सिडी, फसल बीमा, केसीसी लोन या ज़मीन के दस्तावेज़ के बारे में बेझिझक पूछें।</Text>
-        
+        <Text style={styles.aiHeading}>{t('aiCardHeading')}</Text>
+        <Text style={styles.aiSub}>
+          {t('aiCardSub')}
+        </Text>
+
         <View style={styles.aiButtons}>
           <TouchableOpacity style={styles.voiceBtn} onPress={() => onNavigate('chat')}>
             <Ionicons name="mic" size={18} color="#78350F" />
-            <Text style={styles.voiceBtnText}>बोलकर पूछें</Text>
+            <Text style={styles.voiceBtnText}>{t('askByVoice')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.typeBtn} onPress={() => onNavigate('chat')}>
             <Ionicons name="chatbox-ellipses-outline" size={18} color={Colors.white} />
-            <Text style={styles.typeBtnText}>लिखकर पूछें</Text>
+            <Text style={styles.typeBtnText}>{t('askByTyping')}</Text>
           </TouchableOpacity>
         </View>
       </View>
 
       {/* Key Services 2x3 Grid */}
-      <Text style={styles.sectionTitle}>मुख्य सेवाएं • Key Services</Text>
+      <Text style={styles.sectionTitle}>{t('keyServicesTitle')}</Text>
       <View style={styles.grid}>
         <TouchableOpacity style={styles.gridCard} onPress={() => onNavigate('schemes')}>
           <Ionicons name="search-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>योजनाएं खोजें</Text>
-          <Text style={styles.gridSub}>Discover Schemes</Text>
+          <Text style={styles.gridTitle}>{t('serviceDiscoverSchemes')}</Text>
+          <Text style={styles.gridSub}>{t('serviceDiscoverSchemesSub')}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.gridCard} onPress={() => onNavigate('chat')}>
+        <TouchableOpacity style={styles.gridCard} onPress={() => onNavigate('schemes')}>
           <Ionicons name="checkmark-done-circle-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>पात्रता जांचें</Text>
-          <Text style={styles.gridSub}>Check Eligibility</Text>
+          <Text style={styles.gridTitle}>{t('serviceCheckEligibility')}</Text>
+          <Text style={styles.gridSub}>{t('serviceCheckEligibilitySub')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.gridCard} onPress={() => onNavigate('docs')}>
           <Ionicons name="folder-open-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>दस्तावेज़ वॉल्ट</Text>
-          <Text style={styles.gridSub}>Digital Locker</Text>
+          <Text style={styles.gridTitle}>{t('serviceDigitalLocker')}</Text>
+          <Text style={styles.gridSub}>{t('serviceDigitalLockerSub')}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.gridCard} onPress={() => onNavigate('docs')}>
           <Ionicons name="time-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>आवेदन स्थिति</Text>
-          <Text style={styles.gridSub}>My Applications</Text>
+          <Text style={styles.gridTitle}>{t('serviceAppReadiness')}</Text>
+          <Text style={styles.gridSub}>{t('serviceAppReadinessSub')}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.gridCard}>
-          <Ionicons name="alert-circle-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>शिकायत निवारण</Text>
-          <Text style={styles.gridSub}>Grievance Portal</Text>
+        <TouchableOpacity
+          style={[styles.gridCard, styles.disabledCard]}
+          onPress={() =>
+            handleUnsupportedFeature(
+              t('serviceGrievance'),
+              t('comingSoonGrievanceMsg')
+            )
+          }
+        >
+          <View style={styles.badgeRow}>
+            <Ionicons name="alert-circle-outline" size={24} color={Colors.secondaryText} />
+            <Text style={styles.comingSoonBadge}>{t('comingSoon')}</Text>
+          </View>
+          <Text style={styles.disabledTitle}>{t('serviceGrievance')}</Text>
+          <Text style={styles.gridSub}>{t('serviceGrievanceSub')}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.gridCard}>
-          <Ionicons name="business-outline" size={24} color={Colors.primaryForest} />
-          <Text style={styles.gridTitle}>पैक्स सहकारी</Text>
-          <Text style={styles.gridSub}>PACS & Societies</Text>
+        <TouchableOpacity
+          style={[styles.gridCard, styles.disabledCard]}
+          onPress={() =>
+            handleUnsupportedFeature(
+              t('servicePacs'),
+              t('comingSoonPacsMsg')
+            )
+          }
+        >
+          <View style={styles.badgeRow}>
+            <Ionicons name="business-outline" size={24} color={Colors.secondaryText} />
+            <Text style={styles.comingSoonBadge}>{t('comingSoon')}</Text>
+          </View>
+          <Text style={styles.disabledTitle}>{t('servicePacs')}</Text>
+          <Text style={styles.gridSub}>{t('servicePacsSub')}</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -118,8 +171,17 @@ const styles = StyleSheet.create({
   langPill: { backgroundColor: '#E2E8F0', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12 },
   langText: { fontSize: 12, fontWeight: 'bold', color: Colors.primaryText },
   iconBtn: { padding: 6 },
-  userBanner: { marginBottom: 16 },
-  greetingText: { fontSize: 20, fontWeight: 'bold', color: Colors.primaryText },
+  userBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    backgroundColor: Colors.white,
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  greetingText: { fontSize: 17, fontWeight: 'bold', color: Colors.primaryText },
   locationText: { fontSize: 12, color: Colors.secondaryText, marginTop: 2 },
   advisoryCard: { backgroundColor: '#F0FDF4', borderRadius: 16, padding: 14, marginBottom: 16, borderWidth: 1, borderColor: '#DCFCE7' },
   advisoryHeader: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 },
@@ -143,4 +205,20 @@ const styles = StyleSheet.create({
   gridCard: { width: '48%', backgroundColor: Colors.white, padding: 14, borderRadius: 14, borderBottomWidth: 2, borderBottomColor: Colors.secondaryLeaf },
   gridTitle: { fontSize: 14, fontWeight: 'bold', color: Colors.primaryText, marginTop: 8 },
   gridSub: { fontSize: 11, color: Colors.secondaryText },
+  disabledCard: {
+    backgroundColor: '#F8FAFC',
+    borderBottomColor: '#CBD5E1',
+    opacity: 0.85,
+  },
+  disabledTitle: { fontSize: 14, fontWeight: 'bold', color: Colors.secondaryText, marginTop: 8 },
+  badgeRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  comingSoonBadge: {
+    fontSize: 9,
+    backgroundColor: '#E2E8F0',
+    color: Colors.secondaryText,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    borderRadius: 4,
+    fontWeight: 'bold',
+  },
 });

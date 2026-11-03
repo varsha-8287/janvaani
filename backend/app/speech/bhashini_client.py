@@ -3,6 +3,7 @@
 import httpx
 
 from app.speech.config import (
+    DEFAULT_BHASHINI_PIPELINE_ID,
     IIT_MADRAS_PIPELINE_ID,
     PIPELINE_CONFIG_URL,
     BhashiniSettings,
@@ -27,7 +28,7 @@ class BhashiniClient:
         payload = {
             "pipelineTasks": [{"taskType": task_type}],
             "pipelineRequestConfig": {
-                "pipelineId": IIT_MADRAS_PIPELINE_ID,
+                "pipelineId": DEFAULT_BHASHINI_PIPELINE_ID,
             },
         }
         headers = {

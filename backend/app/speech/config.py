@@ -1,4 +1,4 @@
-﻿import os
+import os
 from dataclasses import dataclass
 
 
@@ -6,6 +6,7 @@ PIPELINE_CONFIG_URL = (
     "https://meity-auth.ulcacontrib.org/ulca/apis/v0/model/getModelsPipeline"
 )
 
+DEFAULT_BHASHINI_PIPELINE_ID = "64392f96daac500b55c543cd"
 IIT_MADRAS_PIPELINE_ID = "660fa5bec7fb5b0328229016"
 
 

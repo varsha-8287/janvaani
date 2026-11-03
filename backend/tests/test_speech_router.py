@@ -81,3 +81,58 @@ def test_tts_returns_wav_audio(monkeypatch):
     assert response.status_code == 200
     assert response.headers["content-type"] == "audio/wav"
     assert response.content == fake_audio
+
+
+def test_tts_voice_fallback(monkeypatch):
+    """Test that TTS falls back to available voice if requested voice is not offered for that language."""
+    fake_config = {
+        "pipelineInferenceAPIEndPoint": {
+            "callbackUrl": "https://example.invalid/inference",
+            "inferenceApiKey": {"name": "x-api-key", "value": "fake"},
+            "isSyncApi": True,
+        },
+        "pipelineResponseConfig": [
+            {
+                "taskType": "tts",
+                "config": [
+                    {
+                        "serviceId": "fake-tts-en",
+                        "language": {"sourceLanguage": "en"},
+                        "supportedVoices": ["male"],  # English only offers male
+                    }
+                ],
+            }
+        ],
+    }
+
+    # Verify _language_service finds entry even when female is requested
+    entry = speech_router._language_service(fake_config, "tts", "en", gender="female")
+    assert entry["serviceId"] == "fake-tts-en"
+    assert "male" in entry["supportedVoices"]
+
+
+def test_asr_english_candidate_fallback(monkeypatch):
+    """Test that ASR falls back to Indian multilingual Hindi model when English ASR pipeline is not provisioned."""
+    fake_config = {
+        "pipelineInferenceAPIEndPoint": {
+            "callbackUrl": "https://example.invalid/inference",
+            "inferenceApiKey": {"name": "x-api-key", "value": "fake"},
+            "isSyncApi": True,
+        },
+        "pipelineResponseConfig": [
+            {
+                "taskType": "asr",
+                "config": [
+                    {
+                        "serviceId": "fake-asr-hi",
+                        "language": {"sourceLanguage": "hi"},
+                    }
+                ],
+            }
+        ],
+    }
+
+    # Verify _language_service selects Hindi model for English query
+    entry = speech_router._language_service(fake_config, "asr", "en")
+    assert entry["serviceId"] == "fake-asr-hi"
+

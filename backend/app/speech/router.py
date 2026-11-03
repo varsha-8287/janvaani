@@ -1,6 +1,8 @@
 
 import base64
 import binascii
+import io
+import wave
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query, Request
@@ -16,7 +18,19 @@ router = APIRouter(prefix="/speech", tags=["speech"])
 
 MAX_AUDIO_BYTES = 10 * 1024 * 1024
 MAX_TEXT_LENGTH = 5000
-SUPPORTED_AUDIO_TYPES = {"audio/wav", "audio/x-wav"}
+SUPPORTED_AUDIO_TYPES = {
+    "application/json",
+    "audio/wav",
+    "audio/x-wav",
+    "audio/m4a",
+    "audio/mp4",
+    "audio/x-m4a",
+    "audio/aac",
+    "audio/webm",
+    "audio/ogg",
+    "audio/mpeg",
+    "application/octet-stream",
+}
 
 
 class TTSRequest(BaseModel):
@@ -64,24 +78,47 @@ def _language_service(
             detail="Speech provider returned invalid task configuration.",
         )
 
-    for entry in entries:
-        if not isinstance(entry, dict):
-            continue
+    if task_type == "asr" and language.lower().startswith("as"):
+        return {
+            "serviceId": "ai4bharat/conformer-multilingual-indo_aryan-gpu--t4",
+            "language": {"sourceLanguage": "as"},
+        }
 
-        lang = entry.get("language")
-        if not isinstance(lang, dict):
-            continue
-        if lang.get("sourceLanguage") != language:
-            continue
+    candidate_languages = [language]
+    if task_type == "asr" and language.lower().startswith("en"):
+        candidate_languages.append("hi")
 
-        if gender is not None:
-            voices = entry.get("supportedVoices", [])
-            if not isinstance(voices, list) or gender not in voices:
+    for target_lang in candidate_languages:
+        # Pass 1: exact language and exact voice match
+        for entry in entries:
+            if not isinstance(entry, dict):
                 continue
 
-        service_id = entry.get("serviceId")
-        if isinstance(service_id, str) and service_id.strip():
-            return entry
+            lang_dict = entry.get("language")
+            if not isinstance(lang_dict, dict) or lang_dict.get("sourceLanguage") != target_lang:
+                continue
+
+            if gender is not None:
+                voices = entry.get("supportedVoices", [])
+                if not isinstance(voices, list) or gender not in voices:
+                    continue
+
+            service_id = entry.get("serviceId")
+            if isinstance(service_id, str) and service_id.strip():
+                return entry
+
+        # Pass 2: language match with any available voice
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+
+            lang_dict = entry.get("language")
+            if not isinstance(lang_dict, dict) or lang_dict.get("sourceLanguage") != target_lang:
+                continue
+
+            service_id = entry.get("serviceId")
+            if isinstance(service_id, str) and service_id.strip():
+                return entry
 
     raise HTTPException(
         status_code=422,
@@ -116,12 +153,61 @@ def _extract_transcription(result: dict[str, Any]) -> str:
         for item in output:
             if isinstance(item, dict):
                 text = item.get("source")
-                if isinstance(text, str) and text.strip():
+                if isinstance(text, str):
                     return text.strip()
 
+    return ""
+
+
+def _convert_to_wav_16k(audio_bytes: bytes) -> bytes:
+    """Normalize input audio to 16kHz mono WAV format expected by Bhashini."""
+    if audio_bytes.startswith(b"RIFF") and audio_bytes[8:12] == b"WAVE":
+        try:
+            with wave.open(io.BytesIO(audio_bytes), "rb") as wf:
+                if (
+                    wf.getframerate() == 16000
+                    and wf.getnchannels() == 1
+                    and wf.getsampwidth() == 2
+                ):
+                    return audio_bytes
+        except Exception:
+            pass
+
+    try:
+        import av
+
+        in_buf = io.BytesIO(audio_bytes)
+        container = av.open(in_buf)
+        audio_stream = next((s for s in container.streams if s.type == "audio"), None)
+        if not audio_stream:
+            raise ValueError("No audio stream in container")
+
+        resampler = av.AudioResampler(format="s16", layout="mono", rate=16000)
+        out_buf = io.BytesIO()
+        out_container = av.open(out_buf, mode="w", format="wav")
+        out_stream = out_container.add_stream("pcm_s16le", rate=16000)
+        out_stream.layout = "mono"
+
+        for frame in container.decode(audio_stream):
+            for resampled_frame in resampler.resample(frame):
+                for packet in out_stream.encode(resampled_frame):
+                    out_container.mux(packet)
+        for packet in out_stream.encode(None):
+            out_container.mux(packet)
+        out_container.close()
+
+        converted = out_buf.getvalue()
+        if converted.startswith(b"RIFF") and converted[8:12] == b"WAVE":
+            return converted
+    except Exception as exc:
+        raise HTTPException(
+            status_code=400,
+            detail="The uploaded audio could not be decoded into a valid WAV format.",
+        ) from exc
+
     raise HTTPException(
-        status_code=502,
-        detail="Speech provider did not return recognized text.",
+        status_code=400,
+        detail="The uploaded audio could not be converted.",
     )
 
 
@@ -131,22 +217,32 @@ async def speech_to_text(
     language: str = Query(min_length=2, max_length=10),
 ):
     content_type = request.headers.get("content-type", "").split(";")[0].strip().lower()
-    if content_type not in SUPPORTED_AUDIO_TYPES:
+    if content_type and content_type not in SUPPORTED_AUDIO_TYPES:
         raise HTTPException(
             status_code=415,
-            detail="Send a WAV file with Content-Type audio/wav.",
+            detail=f"Unsupported audio type '{content_type}'. Send a WAV or M4A audio file.",
         )
 
-    audio = await request.body()
+    if content_type == "application/json":
+        try:
+            body_json = await request.json()
+            b64_str = body_json.get("audio_base64", "")
+            if not b64_str:
+                raise HTTPException(status_code=400, detail="Missing audio_base64 field in JSON.")
+            audio = base64.b64decode(b64_str)
+        except HTTPException:
+            raise
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=f"Invalid base64 audio payload: {e}")
+    else:
+        audio = await request.body()
+
     if not audio:
         raise HTTPException(status_code=400, detail="Audio body is empty.")
     if len(audio) > MAX_AUDIO_BYTES:
         raise HTTPException(status_code=413, detail="Audio exceeds the 10 MB limit.")
-    if not audio.startswith(b"RIFF") or audio[8:12] != b"WAVE":
-        raise HTTPException(
-            status_code=400,
-            detail="The uploaded file is not a valid WAV container.",
-        )
+
+    wav_audio = _convert_to_wav_16k(audio)
 
     client = _client()
 
@@ -157,8 +253,8 @@ async def speech_to_text(
 
         result = client.transcribe_audio(
             endpoint=endpoint,
-            audio_base64=base64.b64encode(audio).decode("ascii"),
-            source_language=language,
+            audio_base64=base64.b64encode(wav_audio).decode("ascii"),
+            source_language=selected.get("language", {}).get("sourceLanguage", language),
             service_id=selected["serviceId"],
             sampling_rate=16000,
         )

@@ -16,6 +16,9 @@ from app.documents.schemas import (
 FIELD_FORMATS: dict[tuple[str, str], str] = {
     ("income_certificate", "annual_income"): "non_negative_number",
     ("income_certificate", "issue_date"): "iso_date",
+    ("land_record", "land_hectares"): "non_negative_number",
+    ("land_record", "issue_date"): "iso_date",
+    ("identity_proof", "issue_date"): "iso_date",
 }
 
 

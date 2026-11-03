@@ -70,13 +70,14 @@ def version():
 @app.get("/seed")
 def trigger_seed():
     try:
+        count = 0
         try:
             from scripts.seed_pilot_schemes import seed_schemes
-            seed_schemes()
+            count = seed_schemes()
         except Exception:
             from backend.scripts.seed_pilot_schemes import seed_schemes
-            seed_schemes()
-        return {"status": "ok", "message": "Pilot schemes seeded successfully"}
+            count = seed_schemes()
+        return {"status": "ok", "count": count, "message": f"Successfully seeded {count} pilot schemes"}
     except Exception as e:
         return {"status": "error", "detail": str(e)}
 

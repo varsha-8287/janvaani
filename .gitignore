@@ -89,6 +89,7 @@ document-uploads/
 *.jpg
 *.jpeg
 *.png
+!apps/mobile/assets/logo.png
 *.webp
 *.tiff
 *.heic
@@ -119,3 +120,8 @@ coverage/
 /recording.m4a
 /tts_api_test.wav
 /tts_test.wav
+
+*.idsig
+dist-test/
+backend/cache/
+*.sql

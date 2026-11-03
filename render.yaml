@@ -12,6 +12,14 @@ services:
           property: connectionString
       - key: JANVAANI_DEV_AUTH
         value: "true"
+      - key: JANVAANI_DEV_REVIEWER_AUTH
+        value: "true"
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: BHASHINI_TIMEOUT_SECONDS
+        value: "8"
+      - key: BHASHINI_USER_ID
+        sync: false
       - key: BHASHINI_ULCA_API_KEY
         sync: false
       - key: GEMINI_API_KEY

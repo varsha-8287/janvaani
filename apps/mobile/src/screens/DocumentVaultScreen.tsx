@@ -206,7 +206,7 @@ export default function DocumentVaultScreen({ onBack }: Props) {
       const res = await ImagePicker.launchCameraAsync({
         base64: true,
         quality: 0.5,
-        allowsEditing: true,
+        allowsEditing: false,
       });
 
       if (!res.canceled && res.assets && res.assets[0]) {
@@ -239,7 +239,7 @@ export default function DocumentVaultScreen({ onBack }: Props) {
         mediaTypes: ['images'],
         base64: true,
         quality: 0.5,
-        allowsEditing: true,
+        allowsEditing: false,
       });
 
       if (!res.canceled && res.assets && res.assets[0]) {

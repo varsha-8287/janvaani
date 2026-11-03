@@ -48,11 +48,6 @@ export const API_BASE_URL =
 const CANDIDATE_BASE_URLS = [
   'https://janvaani-backend-5u0z.onrender.com',
   API_BASE_URL,
-  'http://localhost:8000',
-  'https://loud-chefs-serve.loca.lt',
-  `http://${detectedHost}:8000`,
-  'http://10.142.122.61:8000',
-  'http://10.0.2.2:8000',
 ].filter((u, idx, self) => u && self.indexOf(u) === idx);
 
 let dynamicBaseUrl: string | null = null;

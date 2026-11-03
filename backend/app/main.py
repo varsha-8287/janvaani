@@ -65,7 +65,7 @@ def on_startup():
 
 @app.get("/version")
 def version():
-    return {"version": "0.1.0", "status": "deployed"}
+    return {"version": "0.2.0-bhashini-ready", "status": "deployed"}
 
 @app.get("/seed")
 def trigger_seed():

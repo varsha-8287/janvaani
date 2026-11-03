@@ -40,12 +40,13 @@ try {
   // Non-Expo or test environment
 }
 
-const DEFAULT_HOST = 'http://localhost:8000';
+const DEFAULT_HOST = 'https://janvaani-backend-5u0z.onrender.com';
 
 export const API_BASE_URL =
   (typeof process !== 'undefined' && process.env?.EXPO_PUBLIC_API_URL) || DEFAULT_HOST;
 
 const CANDIDATE_BASE_URLS = [
+  'https://janvaani-backend-5u0z.onrender.com',
   API_BASE_URL,
   'http://localhost:8000',
   'https://loud-chefs-serve.loca.lt',

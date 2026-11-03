@@ -42,6 +42,27 @@ app.include_router(speech_router)
 app.include_router(applications_router)
 app.include_router(documents_router)
 
+@app.on_event("startup")
+def on_startup():
+    try:
+        from app.database.base import Base
+        from app.database.session import engine
+        import app.database.models
+        Base.metadata.create_all(bind=engine)
+        print("[Startup] Database tables verified/created successfully.")
+    except Exception as e:
+        print("[Startup] Warning: create_all tables:", e)
+
+    try:
+        from scripts.seed_pilot_schemes import seed_schemes
+        seed_schemes()
+    except Exception:
+        try:
+            from backend.scripts.seed_pilot_schemes import seed_schemes
+            seed_schemes()
+        except Exception as e:
+            print("[Startup] Seed schemes skipped or failed:", e)
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}

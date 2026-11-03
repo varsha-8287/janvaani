@@ -24,12 +24,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend application code and dataset
 COPY backend/ /app/backend/
 COPY janvaani_government_schemes_dataset/ /app/janvaani_government_schemes_dataset/
+COPY scripts/ /app/scripts/
 
 WORKDIR /app/backend
 
-ENV PYTHONPATH=/app/backend
+ENV PYTHONPATH=/app/backend:/app
 ENV PORT=8000
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "alembic upgrade head && python scripts/seed_pilot_schemes.py || true && uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

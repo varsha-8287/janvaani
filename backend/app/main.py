@@ -63,6 +63,23 @@ def on_startup():
         except Exception as e:
             print("[Startup] Seed schemes skipped or failed:", e)
 
+@app.get("/version")
+def version():
+    return {"version": "0.1.0", "status": "deployed"}
+
+@app.get("/seed")
+def trigger_seed():
+    try:
+        try:
+            from scripts.seed_pilot_schemes import seed_schemes
+            seed_schemes()
+        except Exception:
+            from backend.scripts.seed_pilot_schemes import seed_schemes
+            seed_schemes()
+        return {"status": "ok", "message": "Pilot schemes seeded successfully"}
+    except Exception as e:
+        return {"status": "error", "detail": str(e)}
+
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
